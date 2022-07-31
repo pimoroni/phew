@@ -1096,3 +1096,44 @@ linuxize@example.com
 2021-01-01 01:29:37 [debug   ] > connecting to wifi network: melanzane
 2021-01-01 01:29:38 [debug   ]   - ip address:  192.168.86.20
 2021-01-01 01:29:38 [info    ] > starting webserver on port 80
+2021-01-01 01:47:01 [info    ] > let's go!
+2021-01-01 01:47:01 [debug   ] > connecting to wifi network: melanzane
+2021-01-01 01:47:02 [debug   ]   - ip address:  192.168.86.20
+2021-01-01 01:47:02 [info    ] > starting webserver on port 80
+2021-01-01 01:47:07 [info    ] > GET /random
+2021-01-01 01:47:25 [info    ] > let's go!
+2021-01-01 01:47:25 [debug   ] > connecting to wifi network: melanzane
+2021-01-01 01:47:26 [debug   ]   - ip address:  192.168.86.20
+2021-01-01 01:47:26 [info    ] > starting webserver on port 80
+2021-01-01 01:47:28 [info    ] > GET /random
+2021-01-01 01:47:40 [info    ] > GET /random
+2021-01-01 01:47:42 [info    ] > GET /random
+2021-01-01 01:47:47 [info    ] > GET /random
+2021-01-01 01:48:21 [info    ] > let's go!
+2021-01-01 01:48:21 [debug   ] > connecting to wifi network: melanzane
+2021-01-01 01:48:22 [debug   ]   - ip address:  192.168.86.20
+2021-01-01 01:48:22 [info    ] > starting webserver on port 80
+2021-01-01 01:48:24 [info    ] > GET /random
+2021-01-01 01:49:08 [info    ] > let's go!
+2021-01-01 01:49:08 [debug   ] > connecting to wifi network: melanzane
+2021-01-01 01:49:09 [debug   ]   - ip address:  192.168.86.20
+2021-01-01 01:49:09 [info    ] > starting webserver on port 80
+2021-01-01 01:49:13 [info    ] > GET /random
+2021-01-01 01:49:14 [info    ] > GET /random
+2021-01-01 01:49:15 [info    ] > GET /random
+2021-01-01 01:49:16 [info    ] > GET /random
+2021-01-01 01:49:21 [info    ] > GET /random
+2021-01-01 01:49:22 [info    ] > GET /random
+2021-01-01 01:49:23 [info    ] > GET /random
+2021-01-01 01:49:24 [info    ] > GET /random
+2021-01-01 02:14:22 [info    ] > let's go!
+2021-01-01 02:14:22 [debug   ] > connecting to wifi network: melanzane
+2021-01-01 02:14:23 [debug   ]   - ip address:  192.168.86.20
+2021-01-01 02:14:38 [info    ] > let's go!
+2021-01-01 02:14:38 [debug   ] > connecting to wifi network: melanzane
+2021-01-01 02:14:39 [debug   ]   - ip address:  192.168.86.20
+2021-01-01 02:14:39 [info    ] > starting webserver on port 80
+2021-01-01 02:14:41 [info    ] > GET /random
+2021-01-01 02:14:44 [info    ] > GET /random
+2021-01-01 02:14:46 [info    ] > GET /random
+2021-01-01 02:14:48 [info    ] > GET /random

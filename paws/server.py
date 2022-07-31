@@ -8,20 +8,16 @@ def urldecode(text):
   text.replace("+", " ")
   result = ""
   token_caret = 0
-
   # decode any % encoded characters
   while True:
     start = text.find("%", token_caret)
-
     if start == -1:
       result += text[token_caret:]
       break
-
     result += text[token_caret:start]
     code = (int(text[start + 1]) * 16) + int(text[start + 2])
     result += chr(code)
     token_caret = start + 3
-
   return result
 
 
@@ -119,7 +115,7 @@ async def _parse_headers(reader):
 
 
 # returns the route matching the supplied path or None
-def match_route(request):
+def _match_route(request):
   for route in _routes:
     if route.matches(request):
       return route
@@ -134,6 +130,11 @@ def add_route(path, handler, methods=["GET"]):
   _routes = sorted(_routes, key=lambda route: len(route.path_parts), reverse=True)
 
 
+def set_callback(handler):
+  global catchall_handler
+  catchall_handler = handler
+
+
 # decorator shorthand for adding a route
 def route(path, methods=["GET"]):
   def _route(f):
@@ -145,8 +146,7 @@ def route(path, methods=["GET"]):
 # decorator for adding catchall route
 def catchall():
   def _catchall(f):
-    global catchall_handler
-    catchall_handler = f
+    set_callback(f)
     return f
   return _catchall
   
@@ -220,7 +220,7 @@ async def _handle_request(reader, writer):
 
   response = None
 
-  route = match_route(request)
+  route = _match_route(request)
   if route:
     response = route.call_handler(request)
   elif catchall_handler:

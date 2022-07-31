@@ -43,6 +43,14 @@ def teapot(request):
 def response_object(request):
   return Response("test body", status=302, content_type="text/html", headers={"Cache-Control": "max-age=3600"})
 
+# query string example
+@server.route("/random", methods=["GET"])
+def random_number(request):
+  import random
+  min = int(request.query.get("min", 0))
+  max = int(request.query.get("max", 100))
+  return str(random.randint(min, max))
+
 # catchall example
 @server.catchall()
 def catchall(request):
