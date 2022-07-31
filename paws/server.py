@@ -1,5 +1,5 @@
 import uasyncio
-from picohttp import logging
+from paws import logging
 
 _routes = []
 catchall_handler = None
@@ -50,6 +50,7 @@ headers: {str(self.headers)}
 form: {str(self.form)}
 data: {str(self.data)}"""
 
+
 class Response:
   def __init__(self, body, status=200, content_type="text/html", headers={}):
     self.status = status
@@ -59,6 +60,7 @@ class Response:
 
   def add_header(self, name, value):
     self.headers[name] = value
+
 
 class Route:
   def __init__(self, path, handler, methods=["GET"]):
@@ -102,6 +104,7 @@ methods: {str(self.methods)}
   def __repr__(self):
     return f"<Route object {self.path} ({", ".join(self.methods)})>"
 
+
 # parses the headers for a http request (or the headers attached to
 # each field in a multipart/form-data)
 async def _parse_headers(reader):
@@ -114,12 +117,14 @@ async def _parse_headers(reader):
     headers[name.lower()] = value
   return headers
 
+
 # returns the route matching the supplied path or None
 def match_route(request):
   for route in _routes:
     if route.matches(request):
       return route
   return None
+
 
 # adds a new route to the routing table
 def add_route(path, handler, methods=["GET"]):
@@ -128,12 +133,14 @@ def add_route(path, handler, methods=["GET"]):
   # descending complexity order so most complex routes matched first
   _routes = sorted(_routes, key=lambda route: len(route.path_parts), reverse=True)
 
+
 # decorator shorthand for adding a route
 def route(path, methods=["GET"]):
   def _route(f):
     add_route(path, f, methods=methods)
     return f
   return _route
+
 
 # decorator for adding catchall route
 def catchall():
@@ -143,6 +150,7 @@ def catchall():
     return f
   return _catchall
   
+
 # if the content type is multipart/form-data then parse the fields
 async def _parse_form_data(reader, headers):
   boundary = headers["content-type"].split("boundary=")[1]
@@ -172,12 +180,14 @@ async def _parse_form_data(reader, headers):
       value += line
   return None
 
+
 # if the content type is application/json then parse the body
 async def _parse_json_body(reader, headers):
   import json
   content_length_bytes = int(headers["content-length"])
   body = yield from reader.readexactly(content_length_bytes)
   return json.loads(body.decode())
+
 
 status_message_map = {
   200: "OK", 201: "Created", 202: "Accepted", 
@@ -193,6 +203,7 @@ status_message_map = {
   416: "Range Not Satisfiable", 418: "I'm a teapot",
   500: "Internal Server Error", 501: "Not Implemented"
 }
+
 
 # handle an incoming request to the web server
 async def _handle_request(reader, writer):
@@ -252,6 +263,7 @@ async def _handle_request(reader, writer):
 
   writer.close()
   await writer.wait_closed()
+
 
 def run(host = "0.0.0.0", port = 80):
   logging.info("> starting webserver on port {}".format(port))

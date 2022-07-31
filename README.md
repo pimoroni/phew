@@ -4,7 +4,7 @@ A small webserver and templating library specifically designed for MicroPython o
 
 ```python
 import random
-from picohttp import server, logging, connect_to_wifi
+from paws import server, logging, connect_to_wifi
 
 connect_to_wifi("<ssid>", "<password>")
 

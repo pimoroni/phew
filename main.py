@@ -10,8 +10,8 @@
 
 import sys, network, time
 
-from picohttp import server, logging, connect_to_wifi
-from picohttp.template import render_template
+from paws import server, logging, connect_to_wifi
+from paws.template import render_template
 
 logging.info("> let's go!")
 

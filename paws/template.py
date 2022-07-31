@@ -1,4 +1,4 @@
-from picohttp import logging
+from paws import logging
 
 async def render_template(template, **kwargs):
   import time

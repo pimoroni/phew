@@ -1080,3 +1080,19 @@ linuxize@example.com
 2021-01-01 01:13:11 [info    ] > starting webserver on port 80
 2021-01-01 01:13:19 [info    ] > GET /hello/jon
 2021-01-01 01:13:19 [debug   ] > parsed template: test.tpl (took 39 ms)
+2021-01-01 01:28:34 [info    ] > let's go!
+2021-01-01 01:28:34 [debug   ] > connecting to wifi network: melanzane
+2021-01-01 01:28:35 [debug   ]   - ip address:  192.168.86.20
+2021-01-01 01:28:35 [info    ] > starting webserver on port 80
+2021-01-01 01:28:36 [info    ] > GET /hello/jon
+2021-01-01 01:28:37 [debug   ] > parsed template: example.tpl (took 40 ms)
+2021-01-01 01:29:20 [info    ] > let's go!
+2021-01-01 01:29:20 [debug   ] > connecting to wifi network: melanzane
+2021-01-01 01:29:21 [debug   ]   - ip address:  192.168.86.20
+2021-01-01 01:29:21 [info    ] > starting webserver on port 80
+2021-01-01 01:29:29 [info    ] > GET /hello/jon
+2021-01-01 01:29:29 [debug   ] > parsed template: example.tpl (took 38 ms)
+2021-01-01 01:29:37 [info    ] > let's go!
+2021-01-01 01:29:37 [debug   ] > connecting to wifi network: melanzane
+2021-01-01 01:29:38 [debug   ]   - ip address:  192.168.86.20
+2021-01-01 01:29:38 [info    ] > starting webserver on port 80
