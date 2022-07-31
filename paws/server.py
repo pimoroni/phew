@@ -22,6 +22,16 @@ def urldecode(text):
   return result
 
 
+def _parse_query_string(query_string):
+  result = {}
+  for parameter in query_string.split("&"):
+    key, value = parameter.split("=")
+    key = urldecode(key)
+    value = urldecode(value)
+    result[key] = value
+  return result
+
+
 class Request:
   def __init__(self, method, uri, protocol):
     self.method = method
@@ -34,12 +44,7 @@ class Request:
     self.path = uri[:query_string_start]
     self.query_string = uri[query_string_start + 1:]
     if self.query_string:
-      for parameter in self.query_string.split("&"):
-        key, value = parameter.split("=")
-        key = urldecode(key)
-        value = urldecode(value)
-        self.query[key] = value
-
+      self.query = _parse_query_string(self.query_string)
 
   def __str__(self):
     return f"""request: {self.method} {self.path} {self.protocol}
@@ -224,11 +229,15 @@ async def _handle_request(reader, writer):
   request = Request(method, uri, protocol)
   logging.info(">", request.method, request.path)
   request.headers = await _parse_headers(reader)
+
   if "content-length" in request.headers and "content-type" in request.headers:
     if request.headers["content-type"].startswith("multipart/form-data"):
       request.form = await _parse_form_data(reader, request.headers)
     if request.headers["content-type"].startswith("application/json"):
       request.data = await _parse_json_body(reader, request.headers)
+    if request.headers["content-type"].startswith("application/x-www-form-urlencoded"):
+      form_data = await reader.read(int(request.headers["content-length"]))
+      request.form = _parse_query_string(form_data.decode()) 
 
   response = None
 
@@ -268,7 +277,8 @@ async def _handle_request(reader, writer):
   writer.write("\r\n".encode("ascii"))
 
   import gc
-
+  gc.collect()
+  
   if isinstance(response, FileResponse):
     # file
     with open(response.file, "rb") as f:
@@ -278,13 +288,14 @@ async def _handle_request(reader, writer):
           break
         writer.write(chunk)
         await writer.drain()
+        del chunk
         gc.collect()
-
   elif type(response.body).__name__ == "generator":
     # generator
     for chunk in response.body:
       writer.write(chunk)
       await writer.drain()
+      del chunk
       gc.collect()
   else:
     # string/bytes
@@ -293,8 +304,6 @@ async def _handle_request(reader, writer):
   
   writer.close()
   await writer.wait_closed()
-
-
 
 
 # adds a new route to the routing table
