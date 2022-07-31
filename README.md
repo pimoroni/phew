@@ -20,7 +20,13 @@ using the [Raspberry Pi Pico W](https://shop.pimoroni.com/products/raspberry-pi-
   - [Types](#types)
     - [Request type](#request-type)
     - [Response type](#respone-type)
+      - [Shorthand](#shorthand)
   - [Templates](#templates)
+    - [render_template](#rendertemplate)
+    - [Template expressions](#template-expressions)
+      - [Variables](#variables)
+      - [Conditional display](#conditional-display)
+      - [Includes](#includes)
 
 ## What **paws** does:
 
@@ -239,26 +245,70 @@ than having to build the entire result as a string first.
 Generally you will call `render_template` to create the body of a `Response` in one
 of your handler methods.
 
-#### Template example
+#### Template expressions
 
-Your template can reference the parameters that are passed into it, these will be
-swapped out (and any Python code also evaluated) during parsing.
+Templates are not much use if you can't inject dynamic data into them. With **paws**
+you can embed Python expressions with `{{<expression here>}}` which will be evaluated 
+during parsing.
 
-Here's a simple template to greet a user with their name:
+##### Variables
+
+In the simplest form you can embed a simple value by just enclosing it in double curly braces. 
+It's also possible to perform more complicated transformations using any built in Python method.
 
 ```html
+  <div id="name">{{name}}</div>
+
+  <div id="name">{{name.upper()}}</div>
+  
+  <div id="name">{{"/".join(name.split(" "))}}</div>
+```
+
+##### Conditional display
+
+If you want to show a value only if some other condition is met then you can use the
+(slightly clunky) Python tenary operator.
+
+```html
+<div>
+  You won
+  {{"1st" if prize == 1 else ""}}
+  {{"2nd" if prize == 2 else ""}}
+  {{"3rd" if prize == 3 else ""}}
+  prize!
+</div>
+```
+
+or
+
+```html
+<div>
+  You won
+  {{["1st", "2nd", "3rd"][prize]}}
+  prize!
+</div>
+```
+
+While a bit unweildy this methods works. An alternative would be to select the appropriate
+value in your handler and simply pass it into the template as a parameter however that
+would mean having some of your copy embedded into your Python code rather than all of it
+in one place in the template file.
+
+##### Includes
+
+You can include another template by calling `render_template()` again within your outer template.
+
+`include.html`
+```html
+Hello there {{name}}!
+```
+
+`main.html`
+```html
 <!DOCTYPE html>
-<head>
-</head>
 <body>
-Hello {{name}}!
+  {{render_template("include.html", name=name)}}
 </body>
 ```
 
-And our handle implementation:
-
-```python
-@server.add_route("/greeting/<name>", ["GET"])
-def user_details(request, name):
-  return render_template("greeting.html", name=name)
-```
+:warning: Note: you need to explicitly pass through template parameters into the included template - they are not available by default.

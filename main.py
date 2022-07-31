@@ -31,7 +31,7 @@ def status_code(request):
 # url parameter and template render
 @server.route("/hello/<name>", methods=["GET"])
 def hello(request, name):
-  return await render_template("example.tpl", name=name)
+  return await render_template("example.html", name=name)
 
 # response with custom status code
 @server.route("/are/you/a/teapot", methods=["GET"])

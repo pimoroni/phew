@@ -1,6 +1,8 @@
 import uasyncio
 from paws import logging
 
+from paws.template import render_template as include
+
 _routes = []
 catchall_handler = None
 
