@@ -1,5 +1,6 @@
-import uasyncio
+import uasyncio, os
 from . import logging
+from enviro.helpers import file_exists
 
 _routes = []
 catchall_handler = None
@@ -55,6 +56,44 @@ class Response:
 
   def add_header(self, name, value):
     self.headers[name] = value
+
+  def __str__(self):
+    return f"""status: {self.status}
+headers: {str(self.headers)}
+body: {str(self.body)}"""
+
+
+content_type_map = {
+  "html": "text/html",
+  "jpg": "image/jpeg",
+  "jpeg": "image/jpeg",
+  "svg": "image/svg+xml",
+  "json": "application/json",
+  "png": "image/png",
+  "css": "text/css",
+  "js": "text/javascript",
+  "csv": "text/csv",
+}
+
+
+class FileResponse(Response):
+  def __init__(self, file, status=200, headers={}):
+    self.status = 404
+    self.headers = headers
+    self.file = file
+
+    try:
+      if (os.stat(self.file)[0] & 0x4000) == 0:
+        self.status = 200
+
+        # auto set content type
+        extension = self.file.split(".")[-1].lower()
+        if extension in content_type_map:
+          headers["Content-Type"] = content_type_map[extension]
+
+        headers["Content-Length"] = os.stat(self.file)[6]
+    except OSError:
+      return False
 
 
 class Route:
@@ -213,10 +252,10 @@ async def _handle_request(reader, writer):
     response.add_header("Content-Type", content_type)
     if hasattr(body, '__len__'):
       response.add_header("Content-Length", len(body))
-
+  
   # write status line
   status_message = status_message_map.get(response.status, "Unknown")
-  writer.write(f"HTTP/1.1 {status} {status_message}\r\n".encode("ascii"))
+  writer.write(f"HTTP/1.1 {response.status} {status_message}\r\n".encode("ascii"))
 
   # write headers
   for key, value in response.headers.items():
@@ -225,14 +264,30 @@ async def _handle_request(reader, writer):
   # blank line to denote end of headers
   writer.write("\r\n".encode("ascii"))
 
-  if type(body).__name__ == "generator":
-    for chunk in body:
+  if isinstance(response, FileResponse):
+    # file
+    with open(response.file, "rb") as f:
+      while True:
+        chunk = f.read(1024)
+        if not chunk:
+          break
+        writer.write(chunk)
+  elif type(response.body).__name__ == "generator":
+    # generator
+    for chunk in response.body:
       writer.write(chunk)
   else:
-    writer.write(body)
-
+    # string/bytes
+    writer.write(response.body)
+  
   writer.close()
   await writer.wait_closed()
+
+  # really helps to keep the available ram stable
+  # not sure why though
+  import gc
+  gc.collect()
+
 
 
 # adds a new route to the routing table
@@ -266,6 +321,10 @@ def catchall():
 
 def redirect(url, status = 301):
   return Response("", status, {"Location": url})
+
+
+def serve_file(file):
+  return FileResponse(file)
 
 
 def run(host = "0.0.0.0", port = 80):
