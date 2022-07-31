@@ -1,10 +1,25 @@
 # paws (pico's agile web server)
 
+> :warning: **Heads up! This is a very new project and should be considered, at best,
+alpha stage.**
+
 A small webserver and templating library specifically designed for MicroPython
 on the Pico W. It aims to provide a complete toolkit for easily creating high
 quality web based interfaces for your projects.
 
-Things **paws** provides:
+- [What **paws** does](#what-paws-does)
+- [Basic example](#basic-example)
+- [Function reference](#function-reference)
+  - [server](#server)
+    - [add_route](#add_route)
+    - [set_catchall](#set_catchall)
+    - [run](#run)
+  - [Types](#types)
+    - [Request type](#request-type)
+    - [Response type](#respone-type)
+  - [Templates](#templates)
+
+## What **paws** does:
 
 - a basic web server
 - parameterised routing rules `/greet/<name>`
@@ -49,17 +64,8 @@ Generally this means it will prioritise doing as little work as possible includi
 assuming the correctness of incoming requests.
 
 ## Function reference
-
-- [server](#server)
-  - [add_route](#add_route)
-  - [set_catchall](#set_catchall)
-  - [run](#run)
-- [Types](#types)
-  - [Request type](#request-type)
-  - [Response type](#respone-type)
-- [Templates](#templates)
   
-### `server`
+### server
 
 The `server` module provides all functionality for running a web server with 
 route handlers.
