@@ -1,4 +1,4 @@
-# paws - Pico's Agile Web Server
+# paws (pico's agile web server)
 
 A small webserver and templating library specifically designed for MicroPython
 on the Pico W. It aims to provide a complete toolkit for easily creating high
