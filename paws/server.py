@@ -1,6 +1,5 @@
 import uasyncio
 from . import logging
-from .template import render_template as include
 
 _routes = []
 catchall_handler = None
@@ -122,35 +121,6 @@ def _match_route(request):
   return None
 
 
-# adds a new route to the routing table
-def add_route(path, handler, methods=["GET"]):
-  global _routes
-  _routes.append(Route(path, handler, methods))
-  # descending complexity order so most complex routes matched first
-  _routes = sorted(_routes, key=lambda route: len(route.path_parts), reverse=True)
-
-
-def set_callback(handler):
-  global catchall_handler
-  catchall_handler = handler
-
-
-# decorator shorthand for adding a route
-def route(path, methods=["GET"]):
-  def _route(f):
-    add_route(path, f, methods=methods)
-    return f
-  return _route
-
-
-# decorator for adding catchall route
-def catchall():
-  def _catchall(f):
-    set_callback(f)
-    return f
-  return _catchall
-  
-
 # if the content type is multipart/form-data then parse the fields
 async def _parse_form_data(reader, headers):
   boundary = headers["content-type"].split("boundary=")[1]
@@ -263,6 +233,39 @@ async def _handle_request(reader, writer):
 
   writer.close()
   await writer.wait_closed()
+
+
+# adds a new route to the routing table
+def add_route(path, handler, methods=["GET"]):
+  global _routes
+  _routes.append(Route(path, handler, methods))
+  # descending complexity order so most complex routes matched first
+  _routes = sorted(_routes, key=lambda route: len(route.path_parts), reverse=True)
+
+
+def set_callback(handler):
+  global catchall_handler
+  catchall_handler = handler
+
+
+# decorator shorthand for adding a route
+def route(path, methods=["GET"]):
+  def _route(f):
+    add_route(path, f, methods=methods)
+    return f
+  return _route
+
+
+# decorator for adding catchall route
+def catchall():
+  def _catchall(f):
+    set_callback(f)
+    return f
+  return _catchall
+  
+
+def redirect(url, status = 301):
+  return Response("", status, {"Location": url})
 
 
 def run(host = "0.0.0.0", port = 80):
