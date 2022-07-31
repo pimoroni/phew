@@ -217,7 +217,10 @@ status_message_map = {
 # handle an incoming request to the web server
 async def _handle_request(reader, writer):
   request_line = yield from reader.readline()
-  method, uri, protocol = request_line.decode().split()
+  try:
+    method, uri, protocol = request_line.decode().split()
+  except Exception as e:
+    logging.error(e.message, e.args)
   request = Request(method, uri, protocol)
   logging.info(">", request.method, request.path)
   request.headers = await _parse_headers(reader)
@@ -264,6 +267,8 @@ async def _handle_request(reader, writer):
   # blank line to denote end of headers
   writer.write("\r\n".encode("ascii"))
 
+  import gc
+
   if isinstance(response, FileResponse):
     # file
     with open(response.file, "rb") as f:
@@ -272,21 +277,23 @@ async def _handle_request(reader, writer):
         if not chunk:
           break
         writer.write(chunk)
+        await writer.drain()
+        gc.collect()
+
   elif type(response.body).__name__ == "generator":
     # generator
     for chunk in response.body:
       writer.write(chunk)
+      await writer.drain()
+      gc.collect()
   else:
     # string/bytes
     writer.write(response.body)
+    await writer.drain()
   
   writer.close()
   await writer.wait_closed()
 
-  # really helps to keep the available ram stable
-  # not sure why though
-  import gc
-  gc.collect()
 
 
 
