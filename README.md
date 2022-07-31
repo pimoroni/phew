@@ -7,6 +7,9 @@ A small webserver and templating library specifically designed for MicroPython
 on the Pico W. It aims to provide a complete toolkit for easily creating high
 quality web based interfaces for your projects.
 
+**paws** is ideal for creating web based provisioning interfaces for connected projects
+using the [Raspberry Pi Pico W](https://shop.pimoroni.com/products/raspberry-pi-pico-w).
+
 - [What **paws** does](#what-paws-does)
 - [Basic example](#basic-example)
 - [Function reference](#function-reference)
@@ -22,14 +25,16 @@ quality web based interfaces for your projects.
 ## What **paws** does:
 
 - a basic web server
+- optimised for speed (at `import` and during execution)
+- minimal use of memory
 - parameterised routing rules `/greet/<name>`
 - templating engine that allows inline python expressions `{{name.lower()}}`
 - `GET`, `POST` request methods
+- query string decoding and parsing
+- catchall handler for unrouted requests
 - `multipart/form-data`, `x-www-form-urlencoded`, and JSON `POST` bodies
-- query string decoding
-- catchall handler for any request that doesn't match a route
 - string, byte, or generator based responses
-- convenience function for setting up wifi connections
+- `connect_to_wifi` convenience method
 
 Where possible **paws** tries to minimise the amount of code and setup that you,
 the developer, has to do in favour of picking sane defaults and hiding away bits
