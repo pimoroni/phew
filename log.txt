@@ -1,0 +1,1082 @@
+2021-01-01 00:00:33 [info    ] > connecting to wifi network: melanzane
+2021-01-01 00:00:42 [info    ] > connecting to wifi network: melanzane
+2021-01-01 00:00:49 [info    ] > connecting to wifi network: melanzane
+2021-01-01 00:00:52 [info    ]   - ip address:  192.168.86.250
+2021-01-01 00:00:03 [info    ] > connecting to wifi network: melanzane
+2021-01-01 00:00:13 [info    ]   - ip address:  192.168.86.20
+2021-01-01 00:00:03 [info    ] > connecting to wifi network: melanzane
+2021-01-01 00:00:11 [info    ]   - ip address:  192.168.86.20
+2021-01-01 00:00:02 [info    ] > connecting to wifi network: melanzane
+2021-01-01 00:00:06 [error   ]   - failed to connect
+2021-01-01 00:00:07 [info    ] > connecting to wifi network: melanzane
+2021-01-01 00:00:14 [info    ]   - ip address:  192.168.86.20
+2021-01-01 00:00:14 [info    ] > starting webserver on port 80
+2021-01-01 00:00:24 [info    ] > connecting to wifi network: melanzane
+2021-01-01 00:00:24 [info    ]   - ip address:  192.168.86.20
+2021-01-01 00:00:24 [info    ] > starting webserver on port 80
+2021-01-01 00:00:02 [info    ] > connecting to wifi network: melanzane
+2021-01-01 00:00:09 [info    ]   - ip address:  192.168.86.20
+2021-01-01 00:00:09 [info    ] > starting webserver on port 80
+2021-01-01 00:01:53 [info    ] > connecting to wifi network: melanzane
+2021-01-01 00:01:54 [info    ]   - ip address:  192.168.86.20
+2021-01-01 00:01:54 [info    ] > starting webserver on port 80
+2021-01-01 00:04:01 [info    ] > connecting to wifi network: melanzane
+2021-01-01 00:04:01 [info    ]   - ip address:  192.168.86.20
+2021-01-01 00:04:01 [info    ] > starting webserver on port 80
+2021-01-01 00:00:03 [info    ] > connecting to wifi network: melanzane
+2021-01-01 00:00:09 [info    ]   - ip address:  192.168.86.20
+2021-01-01 00:00:09 [info    ] > starting webserver on port 80
+2021-01-01 00:00:34 [info    ] > connecting to wifi network: melanzane
+2021-01-01 00:00:35 [info    ]   - ip address:  192.168.86.20
+2021-01-01 00:00:35 [info    ] > starting webserver on port 80
+2021-01-01 00:01:15 [info    ] > connecting to wifi network: melanzane
+2021-01-01 00:01:16 [info    ]   - ip address:  192.168.86.20
+2021-01-01 00:01:16 [info    ] > starting webserver on port 80
+2021-01-01 00:00:03 [info    ] > connecting to wifi network: melanzane
+2021-01-01 00:00:09 [info    ]   - ip address:  192.168.86.20
+2021-01-01 00:00:09 [info    ] > starting webserver on port 80
+2021-01-01 00:00:16 [info    ] > connecting to wifi network: melanzane
+2021-01-01 00:00:22 [info    ]   - ip address:  192.168.86.20
+2021-01-01 00:00:22 [info    ] > starting webserver on port 80
+2021-01-01 00:00:33 [info    ] > connecting to wifi network: melanzane
+2021-01-01 00:00:33 [info    ]   - ip address:  192.168.86.20
+2021-01-01 00:00:33 [info    ] > starting webserver on port 80
+2021-01-01 00:00:57 [info    ] > connecting to wifi network: melanzane
+2021-01-01 00:00:58 [info    ]   - ip address:  192.168.86.20
+2021-01-01 00:00:58 [info    ] > starting webserver on port 80
+2021-01-01 00:04:00 [info    ] > connecting to wifi network: melanzane
+2021-01-01 00:04:01 [info    ]   - ip address:  192.168.86.20
+2021-01-01 00:04:01 [info    ] > starting webserver on port 80
+2021-01-01 00:00:09 [info    ] > connecting to wifi network: melanzane
+2021-01-01 00:00:15 [info    ]   - ip address:  192.168.86.20
+2021-01-01 00:00:15 [info    ] > starting webserver on port 80
+2021-01-01 00:01:13 [info    ] > connecting to wifi network: melanzane
+2021-01-01 00:01:14 [info    ]   - ip address:  192.168.86.20
+2021-01-01 00:01:14 [info    ] > starting webserver on port 80
+2021-01-01 00:01:27 [info    ] > connecting to wifi network: melanzane
+2021-01-01 00:01:28 [info    ]   - ip address:  192.168.86.20
+2021-01-01 00:01:28 [info    ] > starting webserver on port 80
+2021-01-01 00:11:00 [info    ] > connecting to wifi network: melanzane
+2021-01-01 00:11:00 [info    ]   - ip address:  192.168.86.20
+2021-01-01 00:11:00 [info    ] > starting webserver on port 80
+2021-01-01 00:11:21 [info    ] > connecting to wifi network: melanzane
+2021-01-01 00:11:21 [info    ]   - ip address:  192.168.86.20
+2021-01-01 00:11:21 [info    ] > starting webserver on port 80
+2021-01-01 00:13:02 [info    ] > connecting to wifi network: melanzane
+2021-01-01 00:13:03 [info    ]   - ip address:  192.168.86.20
+2021-01-01 00:13:03 [info    ] > starting webserver on port 80
+2021-01-01 00:13:28 [info    ] > connecting to wifi network: melanzane
+2021-01-01 00:13:29 [info    ]   - ip address:  192.168.86.20
+2021-01-01 00:13:29 [info    ] > starting webserver on port 80
+2021-01-01 00:13:50 [info    ] > connecting to wifi network: melanzane
+2021-01-01 00:13:51 [info    ]   - ip address:  192.168.86.20
+2021-01-01 00:13:51 [info    ] > starting webserver on port 80
+2021-01-01 00:15:40 [info    ] > connecting to wifi network: melanzane
+2021-01-01 00:15:40 [info    ]   - ip address:  192.168.86.20
+2021-01-01 00:15:40 [info    ] > starting webserver on port 80
+2021-01-01 00:15:56 [info    ] > connecting to wifi network: melanzane
+2021-01-01 00:15:56 [info    ]   - ip address:  192.168.86.20
+2021-01-01 00:15:56 [info    ] > starting webserver on port 80
+2021-01-01 00:16:13 [info    ] > connecting to wifi network: melanzane
+2021-01-01 00:16:14 [info    ]   - ip address:  192.168.86.20
+2021-01-01 00:16:14 [info    ] > starting webserver on port 80
+2021-01-01 00:17:44 [info    ] > connecting to wifi network: melanzane
+2021-01-01 00:17:45 [info    ]   - ip address:  192.168.86.20
+2021-01-01 00:17:45 [info    ] > starting webserver on port 80
+2021-01-01 00:18:27 [info    ] > connecting to wifi network: melanzane
+2021-01-01 00:18:27 [info    ]   - ip address:  192.168.86.20
+2021-01-01 00:18:27 [info    ] > starting webserver on port 80
+2021-01-01 00:19:16 [info    ] > connecting to wifi network: melanzane
+2021-01-01 00:19:16 [info    ]   - ip address:  192.168.86.20
+2021-01-01 00:19:16 [info    ] > starting webserver on port 80
+2021-01-01 00:19:37 [info    ] > connecting to wifi network: melanzane
+2021-01-01 00:19:37 [info    ]   - ip address:  192.168.86.20
+2021-01-01 00:19:37 [info    ] > starting webserver on port 80
+2021-01-01 00:22:55 [info    ] > connecting to wifi network: melanzane
+2021-01-01 00:22:55 [info    ]   - ip address:  192.168.86.20
+2021-01-01 00:22:55 [info    ] > starting webserver on port 80
+2021-01-01 00:24:29 [info    ] > connecting to wifi network: melanzane
+2021-01-01 00:24:30 [info    ]   - ip address:  192.168.86.20
+2021-01-01 00:24:30 [info    ] > starting webserver on port 80
+2021-01-01 00:24:31 [debug   ] >  GET / HTTP/1.1
+2021-01-01 00:24:31 [debug   ]   - Host 192.168.86.20
+2021-01-01 00:24:31 [debug   ]   - User-Agent curl/7.79.1
+2021-01-01 00:24:31 [debug   ]   - Accept */*
+2021-01-01 00:26:23 [info    ] > connecting to wifi network: melanzane
+2021-01-01 00:26:24 [info    ]   - ip address:  192.168.86.20
+2021-01-01 00:26:24 [info    ] > starting webserver on port 80
+2021-01-01 00:26:25 [debug   ] > incoming request: GET / HTTP/1.1
+2021-01-01 00:26:25 [debug   ]   - headers:
+2021-01-01 00:26:25 [debug   ]      - Host 192.168.86.20
+2021-01-01 00:26:25 [debug   ]      - User-Agent curl/7.79.1
+2021-01-01 00:26:25 [debug   ]      - Accept */*
+2021-01-01 00:26:25 [debug   ]   - request processed
+2021-01-01 00:26:57 [debug   ] > incoming request: POST / HTTP/1.1
+2021-01-01 00:26:57 [debug   ]   - headers:
+2021-01-01 00:26:57 [debug   ]      - Host 192.168.86.20
+2021-01-01 00:26:57 [debug   ]      - User-Agent curl/7.79.1
+2021-01-01 00:26:57 [debug   ]      - Accept */*
+2021-01-01 00:26:57 [debug   ]      - Content-Length 261
+2021-01-01 00:26:57 [debug   ]      - Content-Type multipart/form-data; boundary=------------------------a5e8129cb9dd6c52
+2021-01-01 00:27:23 [info    ] > connecting to wifi network: melanzane
+2021-01-01 00:27:23 [info    ]   - ip address:  192.168.86.20
+2021-01-01 00:27:24 [info    ] > starting webserver on port 80
+2021-01-01 00:27:26 [debug   ] > incoming request: POST / HTTP/1.1
+2021-01-01 00:27:26 [debug   ]   - headers:
+2021-01-01 00:27:26 [debug   ]      - Host 192.168.86.20
+2021-01-01 00:27:26 [debug   ]      - User-Agent curl/7.79.1
+2021-01-01 00:27:26 [debug   ]      - Accept */*
+2021-01-01 00:27:26 [debug   ]      - Content-Length 261
+2021-01-01 00:27:26 [debug   ]      - Content-Type multipart/form-data; boundary=------------------------f27b7990fcd45871
+2021-01-01 00:27:26 [debug   ]   - body length 261 bytes
+2021-01-01 00:27:26 [debug   ]   - body content:
+2021-01-01 00:28:24 [info    ] > connecting to wifi network: melanzane
+2021-01-01 00:28:25 [info    ]   - ip address:  192.168.86.20
+2021-01-01 00:28:25 [info    ] > starting webserver on port 80
+2021-01-01 00:28:27 [debug   ] > incoming request: POST / HTTP/1.1
+2021-01-01 00:28:27 [debug   ]   - headers:
+2021-01-01 00:28:27 [debug   ]      - Host 192.168.86.20
+2021-01-01 00:28:27 [debug   ]      - User-Agent curl/7.79.1
+2021-01-01 00:28:27 [debug   ]      - Accept */*
+2021-01-01 00:28:27 [debug   ]      - Content-Length 261
+2021-01-01 00:28:27 [debug   ]      - Content-Type multipart/form-data; boundary=------------------------da784ed1144bdc55
+2021-01-01 00:28:27 [debug   ]   - body length 261 bytes
+2021-01-01 00:28:27 [debug   ]   - body content:
+2021-01-01 00:28:39 [info    ] > connecting to wifi network: melanzane
+2021-01-01 00:28:39 [info    ]   - ip address:  192.168.86.20
+2021-01-01 00:28:39 [info    ] > starting webserver on port 80
+2021-01-01 00:28:41 [debug   ] > incoming request: POST / HTTP/1.1
+2021-01-01 00:28:41 [debug   ]   - headers:
+2021-01-01 00:28:41 [debug   ]      - Host 192.168.86.20
+2021-01-01 00:28:41 [debug   ]      - User-Agent curl/7.79.1
+2021-01-01 00:28:41 [debug   ]      - Accept */*
+2021-01-01 00:28:41 [debug   ]      - Content-Length 261
+2021-01-01 00:28:41 [debug   ]      - Content-Type multipart/form-data; boundary=------------------------61fb127bbe2544e3
+2021-01-01 00:28:41 [debug   ]   - body length 261 bytes
+2021-01-01 00:28:41 [debug   ]   - body content:
+2021-01-01 00:29:43 [info    ] > connecting to wifi network: melanzane
+2021-01-01 00:29:43 [info    ]   - ip address:  192.168.86.20
+2021-01-01 00:29:43 [info    ] > starting webserver on port 80
+2021-01-01 00:29:45 [debug   ] > incoming request: POST / HTTP/1.1
+2021-01-01 00:29:45 [debug   ]   - headers:
+2021-01-01 00:29:45 [debug   ]      - Host 192.168.86.20
+2021-01-01 00:29:45 [debug   ]      - User-Agent curl/7.79.1
+2021-01-01 00:29:45 [debug   ]      - Accept */*
+2021-01-01 00:29:45 [debug   ]      - Content-Length 261
+2021-01-01 00:29:45 [debug   ]      - Content-Type multipart/form-data; boundary=------------------------8dc04aaa6c1212e6
+2021-01-01 00:29:45 [debug   ]   - body length 261 bytes
+2021-01-01 00:29:45 [debug   ]   - body content:
+2021-01-01 00:29:46 [debug   ] --------------------------8dc04aaa6c1212e6
+Content-Disposition: form-data; name="name"
+
+linuxize
+--------------------------8dc04aaa6c1212e6
+Content-Disposition: form-data; name="email"
+
+linuxize@example.com
+--------------------------8dc04aaa6c1212e6--
+
+2021-01-01 00:29:46 [debug   ]   - request processed
+2021-01-01 00:17:57 [info    ] > connecting to wifi network: melanzane
+2021-01-01 00:18:03 [info    ]   - ip address:  192.168.86.20
+2021-01-01 00:18:03 [info    ] > starting webserver on port 80
+2021-01-01 00:18:30 [info    ] > connecting to wifi network: melanzane
+2021-01-01 00:18:30 [info    ]   - ip address:  192.168.86.20
+2021-01-01 00:18:30 [info    ] > starting webserver on port 80
+2021-01-01 00:18:32 [debug   ] > incoming request: POST / HTTP/1.1
+2021-01-01 00:18:32 [debug   ]   - headers:
+2021-01-01 00:18:32 [debug   ]      - Host 192.168.86.20
+2021-01-01 00:18:32 [debug   ]      - User-Agent curl/7.79.1
+2021-01-01 00:18:32 [debug   ]      - Accept */*
+2021-01-01 00:18:32 [debug   ]      - Content-Length 261
+2021-01-01 00:18:32 [debug   ]      - Content-Type multipart/form-data; boundary=------------------------2f9e62778d3ceab9
+2021-01-01 00:18:43 [info    ] > connecting to wifi network: melanzane
+2021-01-01 00:18:44 [info    ]   - ip address:  192.168.86.20
+2021-01-01 00:18:44 [info    ] > starting webserver on port 80
+2021-01-01 00:18:45 [debug   ] > incoming request: POST / HTTP/1.1
+2021-01-01 00:18:45 [debug   ]   - headers:
+2021-01-01 00:18:45 [debug   ]      - Host 192.168.86.20
+2021-01-01 00:18:45 [debug   ]      - User-Agent curl/7.79.1
+2021-01-01 00:18:45 [debug   ]      - Accept */*
+2021-01-01 00:18:45 [debug   ]      - Content-Length 261
+2021-01-01 00:18:45 [debug   ]      - Content-Type multipart/form-data; boundary=------------------------1ce4134225bfeade
+2021-01-01 00:19:13 [info    ] > connecting to wifi network: melanzane
+2021-01-01 00:19:14 [info    ]   - ip address:  192.168.86.20
+2021-01-01 00:19:14 [info    ] > starting webserver on port 80
+2021-01-01 00:19:15 [debug   ] > incoming request: POST / HTTP/1.1
+2021-01-01 00:19:15 [debug   ]   - headers:
+2021-01-01 00:19:15 [debug   ]      - Host 192.168.86.20
+2021-01-01 00:19:15 [debug   ]      - User-Agent curl/7.79.1
+2021-01-01 00:19:15 [debug   ]      - Accept */*
+2021-01-01 00:19:16 [debug   ]      - Content-Length 261
+2021-01-01 00:19:16 [debug   ]      - Content-Type multipart/form-data; boundary=------------------------f8383b6a8fb7a29b
+2021-01-01 00:19:16 [debug   ]   - body length 261 bytes
+2021-01-01 00:19:16 [debug   ]   - body content:
+2021-01-01 00:19:16 [debug   ] 
+--------------------------f8383b6a8fb7a29b
+Content-Disposition: form-data; name="name"
+
+linuxize
+--------------------------f8383b6a8fb7a29b
+Content-Disposition: form-data; name="email"
+
+linuxize@example.com
+--------------------------f8383b6a8fb7a29b--
+
+2021-01-01 00:19:28 [info    ] > connecting to wifi network: melanzane
+2021-01-01 00:19:29 [info    ]   - ip address:  192.168.86.20
+2021-01-01 00:19:29 [info    ] > starting webserver on port 80
+2021-01-01 00:19:31 [debug   ] > incoming request: POST / HTTP/1.1
+2021-01-01 00:19:31 [debug   ]   - headers:
+2021-01-01 00:19:31 [debug   ]      - Host 192.168.86.20
+2021-01-01 00:19:31 [debug   ]      - User-Agent curl/7.79.1
+2021-01-01 00:19:31 [debug   ]      - Accept */*
+2021-01-01 00:19:31 [debug   ]      - Content-Length 261
+2021-01-01 00:19:31 [debug   ]      - Content-Type multipart/form-data; boundary=------------------------dbad7bae5f9cf903
+2021-01-01 00:19:31 [debug   ]   - body length 261 bytes
+2021-01-01 00:19:31 [debug   ]   - body content:
+2021-01-01 00:19:31 [debug   ] 
+--------------------------dbad7bae5f9cf903
+Content-Disposition: form-data; name="name"
+
+linuxize
+--------------------------dbad7bae5f9cf903
+Content-Disposition: form-data; name="email"
+
+linuxize@example.com
+--------------------------dbad7bae5f9cf903--
+
+2021-01-01 00:19:47 [info    ] > connecting to wifi network: melanzane
+2021-01-01 00:19:48 [info    ]   - ip address:  192.168.86.20
+2021-01-01 00:19:48 [info    ] > starting webserver on port 80
+2021-01-01 00:19:49 [debug   ] > incoming request: POST / HTTP/1.1
+2021-01-01 00:19:49 [debug   ]   - headers:
+2021-01-01 00:19:49 [debug   ]      - Host 192.168.86.20
+2021-01-01 00:19:49 [debug   ]      - User-Agent curl/7.79.1
+2021-01-01 00:19:49 [debug   ]      - Accept */*
+2021-01-01 00:19:49 [debug   ]      - Content-Length 261
+2021-01-01 00:19:49 [debug   ]      - Content-Type multipart/form-data; boundary=------------------------b601c231044b01a7
+2021-01-01 00:19:49 [debug   ]   - body length 261 bytes
+2021-01-01 00:19:49 [debug   ]   - body content:
+2021-01-01 00:19:50 [debug   ] 
+--------------------------b601c231044b01a7
+Content-Disposition: form-data; name="name"
+
+linuxize
+--------------------------b601c231044b01a7
+Content-Disposition: form-data; name="email"
+
+linuxize@example.com
+--------------------------b601c231044b01a7--
+
+2021-01-01 00:19:50 [debug   ]   - request processed
+2021-01-01 00:22:55 [info    ] > connecting to wifi network: melanzane
+2021-01-01 00:00:02 [info    ] > connecting to wifi network: melanzane
+2021-01-01 00:00:09 [info    ]   - ip address:  192.168.86.20
+2021-01-01 00:00:09 [info    ] > starting webserver on port 80
+2021-01-01 00:00:11 [debug   ] 
+--------------------------df6df3daffdecf1b
+Content-Disposition: form-data; name="name"
+
+linuxize
+--------------------------df6df3daffdecf1b
+Content-Disposition: form-data; name="email"
+
+linuxize@example.com
+--------------------------df6df3daffdecf1b--
+
+2021-01-01 00:00:52 [info    ] > connecting to wifi network: melanzane
+2021-01-01 00:00:52 [info    ]   - ip address:  192.168.86.20
+2021-01-01 00:00:52 [info    ] > starting webserver on port 80
+2021-01-01 00:18:04 [info    ] > connecting to wifi network: melanzane
+2021-01-01 00:18:05 [info    ]   - ip address:  192.168.86.20
+2021-01-01 00:18:05 [info    ] > starting webserver on port 80
+2021-01-01 00:18:06 [debug   ]   - request processed
+2021-01-01 00:18:28 [info    ] > connecting to wifi network: melanzane
+2021-01-01 00:18:28 [info    ]   - ip address:  192.168.86.20
+2021-01-01 00:18:28 [info    ] > starting webserver on port 80
+2021-01-01 00:18:30 [debug   ]   - request processed
+2021-01-01 00:18:57 [info    ] > connecting to wifi network: melanzane
+2021-01-01 00:18:58 [info    ]   - ip address:  192.168.86.20
+2021-01-01 00:18:58 [info    ] > starting webserver on port 80
+2021-01-01 00:19:02 [debug   ]   - request processed
+2021-01-01 00:19:18 [info    ] > connecting to wifi network: melanzane
+2021-01-01 00:19:19 [info    ]   - ip address:  192.168.86.20
+2021-01-01 00:19:19 [info    ] > starting webserver on port 80
+2021-01-01 00:19:21 [debug   ]   - request processed
+2021-01-01 00:19:56 [info    ] > connecting to wifi network: melanzane
+2021-01-01 00:19:56 [info    ]   - ip address:  192.168.86.20
+2021-01-01 00:19:56 [info    ] > starting webserver on port 80
+2021-01-01 00:19:58 [debug   ]   - request processed
+2021-01-01 00:20:19 [info    ] > connecting to wifi network: melanzane
+2021-01-01 00:20:20 [info    ]   - ip address:  192.168.86.20
+2021-01-01 00:20:20 [info    ] > starting webserver on port 80
+2021-01-01 00:20:21 [debug   ]   - request processed
+2021-01-01 00:20:46 [info    ] > connecting to wifi network: melanzane
+2021-01-01 00:20:47 [info    ]   - ip address:  192.168.86.20
+2021-01-01 00:20:47 [info    ] > starting webserver on port 80
+2021-01-01 00:20:48 [debug   ]   - request processed
+2021-01-01 00:21:03 [info    ] > connecting to wifi network: melanzane
+2021-01-01 00:21:04 [info    ]   - ip address:  192.168.86.20
+2021-01-01 00:21:04 [info    ] > starting webserver on port 80
+2021-01-01 00:21:49 [info    ] > connecting to wifi network: melanzane
+2021-01-01 00:21:50 [info    ]   - ip address:  192.168.86.20
+2021-01-01 00:21:50 [info    ] > starting webserver on port 80
+2021-01-01 00:22:09 [info    ] > connecting to wifi network: melanzane
+2021-01-01 00:22:10 [info    ]   - ip address:  192.168.86.20
+2021-01-01 00:22:10 [info    ] > starting webserver on port 80
+2021-01-01 00:22:31 [info    ] > connecting to wifi network: melanzane
+2021-01-01 00:22:32 [info    ]   - ip address:  192.168.86.20
+2021-01-01 00:22:32 [info    ] > starting webserver on port 80
+2021-01-01 00:22:56 [info    ] > connecting to wifi network: melanzane
+2021-01-01 00:22:56 [info    ]   - ip address:  192.168.86.20
+2021-01-01 00:22:56 [info    ] > starting webserver on port 80
+2021-01-01 00:23:26 [info    ] > connecting to wifi network: melanzane
+2021-01-01 00:23:26 [info    ]   - ip address:  192.168.86.20
+2021-01-01 00:23:27 [info    ] > starting webserver on port 80
+2021-01-01 00:23:41 [info    ] > connecting to wifi network: melanzane
+2021-01-01 00:23:41 [info    ]   - ip address:  192.168.86.20
+2021-01-01 00:23:42 [info    ] > starting webserver on port 80
+2021-01-01 00:24:18 [info    ] > connecting to wifi network: melanzane
+2021-01-01 00:24:18 [info    ]   - ip address:  192.168.86.20
+2021-01-01 00:24:18 [info    ] > starting webserver on port 80
+2021-01-01 00:24:50 [info    ] > connecting to wifi network: melanzane
+2021-01-01 00:24:51 [info    ]   - ip address:  192.168.86.20
+2021-01-01 00:24:51 [info    ] > starting webserver on port 80
+2021-01-01 00:25:45 [info    ] > connecting to wifi network: melanzane
+2021-01-01 00:25:45 [info    ]   - ip address:  192.168.86.20
+2021-01-01 00:25:45 [info    ] > starting webserver on port 80
+2021-01-01 00:26:07 [info    ] > connecting to wifi network: melanzane
+2021-01-01 00:26:08 [info    ]   - ip address:  192.168.86.20
+2021-01-01 00:26:08 [info    ] > starting webserver on port 80
+2021-01-01 00:26:27 [info    ] > connecting to wifi network: melanzane
+2021-01-01 00:26:27 [info    ]   - ip address:  192.168.86.20
+2021-01-01 00:26:27 [info    ] > starting webserver on port 80
+2021-01-01 00:27:20 [info    ] > connecting to wifi network: melanzane
+2021-01-01 00:27:20 [info    ]   - ip address:  192.168.86.20
+2021-01-01 00:27:20 [info    ] > starting webserver on port 80
+2021-01-01 00:27:55 [info    ] > connecting to wifi network: melanzane
+2021-01-01 00:27:56 [info    ]   - ip address:  192.168.86.20
+2021-01-01 00:27:56 [info    ] > starting webserver on port 80
+2021-01-01 00:28:34 [info    ] > connecting to wifi network: melanzane
+2021-01-01 00:28:35 [info    ]   - ip address:  192.168.86.20
+2021-01-01 00:28:35 [info    ] > starting webserver on port 80
+2021-01-01 00:30:22 [info    ] > connecting to wifi network: melanzane
+2021-01-01 00:30:22 [info    ]   - ip address:  192.168.86.20
+2021-01-01 00:30:22 [info    ] > starting webserver on port 80
+2021-01-01 00:30:29 [info    ] > connecting to wifi network: melanzane
+2021-01-01 00:30:30 [info    ]   - ip address:  192.168.86.20
+2021-01-01 00:30:30 [info    ] > starting webserver on port 80
+2021-01-01 00:31:59 [info    ] > connecting to wifi network: melanzane
+2021-01-01 00:32:00 [info    ]   - ip address:  192.168.86.20
+2021-01-01 00:32:00 [info    ] > starting webserver on port 80
+2021-01-01 00:32:35 [info    ] > connecting to wifi network: melanzane
+2021-01-01 00:32:36 [info    ]   - ip address:  192.168.86.20
+2021-01-01 00:32:36 [info    ] > starting webserver on port 80
+2021-01-01 00:33:51 [info    ] > connecting to wifi network: melanzane
+2021-01-01 00:33:52 [info    ]   - ip address:  192.168.86.20
+2021-01-01 00:33:52 [info    ] > starting webserver on port 80
+2021-01-01 00:35:55 [info    ] > connecting to wifi network: melanzane
+2021-01-01 00:35:56 [info    ]   - ip address:  192.168.86.20
+2021-01-01 00:35:56 [info    ] > starting webserver on port 80
+2021-01-01 00:35:58 [debug   ]   - request processed
+2021-01-01 00:37:47 [info    ] > connecting to wifi network: melanzane
+2021-01-01 00:37:48 [info    ]   - ip address:  192.168.86.20
+2021-01-01 00:37:48 [info    ] > starting webserver on port 80
+2021-01-01 00:37:50 [debug   ]   - request processed
+2021-01-01 00:38:23 [info    ] > connecting to wifi network: melanzane
+2021-01-01 00:38:24 [info    ]   - ip address:  192.168.86.20
+2021-01-01 00:38:24 [info    ] > starting webserver on port 80
+2021-01-01 00:38:26 [debug   ]   - request processed
+2021-01-01 00:38:35 [info    ] > connecting to wifi network: melanzane
+2021-01-01 00:38:35 [info    ]   - ip address:  192.168.86.20
+2021-01-01 00:38:35 [info    ] > starting webserver on port 80
+2021-01-01 00:38:38 [debug   ]   - request processed
+2021-01-01 00:39:18 [info    ] > connecting to wifi network: melanzane
+2021-01-01 00:39:19 [info    ]   - ip address:  192.168.86.20
+2021-01-01 00:39:19 [info    ] > starting webserver on port 80
+2021-01-01 00:39:21 [debug   ]   - request processed
+2021-01-01 00:40:32 [info    ] > connecting to wifi network: melanzane
+2021-01-01 00:40:32 [info    ]   - ip address:  192.168.86.20
+2021-01-01 00:40:32 [info    ] > starting webserver on port 80
+2021-01-01 00:40:35 [debug   ]   - request processed
+2021-01-01 00:40:45 [debug   ]   - request processed
+2021-01-01 00:40:50 [debug   ]   - request processed
+2021-01-01 00:41:34 [info    ] > connecting to wifi network: melanzane
+2021-01-01 00:41:34 [info    ]   - ip address:  192.168.86.20
+2021-01-01 00:41:34 [info    ] > starting webserver on port 80
+2021-01-01 00:41:36 [debug   ]   - request processed
+2021-01-01 00:42:09 [info    ] > connecting to wifi network: melanzane
+2021-01-01 00:42:09 [info    ]   - ip address:  192.168.86.20
+2021-01-01 00:42:09 [info    ] > starting webserver on port 80
+2021-01-01 00:42:11 [debug   ]   - request processed
+2021-01-01 00:42:17 [debug   ]   - request processed
+2021-01-01 00:42:35 [info    ] > connecting to wifi network: melanzane
+2021-01-01 00:42:36 [info    ]   - ip address:  192.168.86.20
+2021-01-01 00:42:36 [info    ] > starting webserver on port 80
+2021-01-01 00:42:38 [debug   ]   - request processed
+2021-01-01 00:44:53 [info    ] > connecting to wifi network: melanzane
+2021-01-01 00:44:54 [info    ]   - ip address:  192.168.86.20
+2021-01-01 00:44:54 [info    ] > starting webserver on port 80
+2021-01-01 00:44:55 [debug   ]   - request processed
+2021-01-01 00:45:04 [info    ] > connecting to wifi network: melanzane
+2021-01-01 00:45:04 [info    ]   - ip address:  192.168.86.20
+2021-01-01 00:45:04 [info    ] > starting webserver on port 80
+2021-01-01 00:45:06 [debug   ]   - request processed
+2021-01-01 00:46:04 [debug   ]   - request processed
+2021-01-01 00:47:34 [info    ] > connecting to wifi network: melanzane
+2021-01-01 00:47:34 [info    ]   - ip address:  192.168.86.20
+2021-01-01 00:47:34 [info    ] > starting webserver on port 80
+2021-01-01 00:48:00 [info    ] > connecting to wifi network: melanzane
+2021-01-01 00:48:01 [info    ]   - ip address:  192.168.86.20
+2021-01-01 00:48:01 [info    ] > starting webserver on port 80
+2021-01-01 00:48:07 [info    ] > connecting to wifi network: melanzane
+2021-01-01 00:48:07 [info    ]   - ip address:  192.168.86.20
+2021-01-01 00:48:07 [info    ] > starting webserver on port 80
+2021-01-01 00:50:09 [info    ] > connecting to wifi network: melanzane
+2021-01-01 00:50:10 [info    ]   - ip address:  192.168.86.20
+2021-01-01 00:50:10 [info    ] > starting webserver on port 80
+2021-01-01 00:50:51 [info    ] > connecting to wifi network: melanzane
+2021-01-01 00:50:52 [info    ]   - ip address:  192.168.86.20
+2021-01-01 00:50:52 [info    ] > starting webserver on port 80
+2021-01-01 00:50:57 [debug   ]   - request processed
+2021-01-01 00:51:28 [info    ] > connecting to wifi network: melanzane
+2021-01-01 00:51:29 [info    ]   - ip address:  192.168.86.20
+2021-01-01 00:51:29 [info    ] > starting webserver on port 80
+2021-01-01 00:51:32 [debug   ]   - request processed
+2021-01-01 00:51:46 [info    ] > connecting to wifi network: melanzane
+2021-01-01 00:51:47 [info    ]   - ip address:  192.168.86.20
+2021-01-01 00:51:47 [info    ] > starting webserver on port 80
+2021-01-01 00:51:48 [debug   ]   - request processed
+2021-01-01 00:53:39 [info    ] > connecting to wifi network: melanzane
+2021-01-01 00:53:40 [info    ]   - ip address:  192.168.86.20
+2021-01-01 00:53:40 [info    ] > starting webserver on port 80
+2021-01-01 00:53:43 [info    ] >  POST /
+2021-01-01 00:58:19 [info    ] > let's go!
+2021-01-01 00:58:19 [info    ] > connecting to wifi network: melanzane
+2021-01-01 00:58:20 [info    ]   - ip address:  192.168.86.20
+2021-01-01 00:58:20 [info    ] > starting webserver on port 80
+2021-01-01 00:58:24 [info    ] > POST /
+2021-01-01 00:59:37 [info    ] > let's go!
+2021-01-01 00:59:37 [info    ] > connecting to wifi network: melanzane
+2021-01-01 00:59:38 [info    ]   - ip address:  192.168.86.20
+2021-01-01 00:59:38 [info    ] > starting webserver on port 80
+2021-01-01 00:59:41 [info    ] > POST /
+2021-01-01 01:00:46 [info    ] > let's go!
+2021-01-01 01:00:46 [info    ] > connecting to wifi network: melanzane
+2021-01-01 01:00:47 [info    ]   - ip address:  192.168.86.20
+2021-01-01 01:00:47 [info    ] > starting webserver on port 80
+2021-01-01 01:00:51 [info    ] > POST /
+2021-01-01 01:01:24 [info    ] > let's go!
+2021-01-01 01:01:24 [info    ] > connecting to wifi network: melanzane
+2021-01-01 01:01:25 [info    ]   - ip address:  192.168.86.20
+2021-01-01 01:01:25 [info    ] > starting webserver on port 80
+2021-01-01 01:01:27 [info    ] > POST /
+2021-01-01 01:01:27 [info    ]   - done
+2021-01-01 02:58:56 [info    ] > let's go!
+2021-01-01 02:58:56 [info    ] > connecting to wifi network: melanzane
+2021-01-01 02:58:57 [info    ]   - ip address:  192.168.86.20
+2021-01-01 02:59:17 [info    ] > let's go!
+2021-01-01 02:59:17 [info    ] > connecting to wifi network: melanzane
+2021-01-01 02:59:18 [info    ]   - ip address:  192.168.86.20
+2021-01-01 02:59:18 [info    ] > starting webserver on port 80
+2021-01-01 02:59:55 [info    ] > let's go!
+2021-01-01 02:59:55 [info    ] > connecting to wifi network: melanzane
+2021-01-01 02:59:56 [info    ]   - ip address:  192.168.86.20
+2021-01-01 03:00:15 [info    ] > let's go!
+2021-01-01 03:00:15 [info    ] > connecting to wifi network: melanzane
+2021-01-01 03:00:15 [info    ]   - ip address:  192.168.86.20
+2021-01-01 03:00:15 [info    ] > starting webserver on port 80
+2021-01-01 03:00:46 [info    ] > let's go!
+2021-01-01 03:00:46 [info    ] > connecting to wifi network: melanzane
+2021-01-01 03:00:47 [info    ]   - ip address:  192.168.86.20
+2021-01-01 03:00:47 [info    ] > starting webserver on port 80
+2021-01-01 03:01:44 [info    ] > let's go!
+2021-01-01 03:01:45 [info    ] > connecting to wifi network: melanzane
+2021-01-01 03:01:45 [info    ]   - ip address:  192.168.86.20
+2021-01-01 03:01:45 [info    ] > starting webserver on port 80
+2021-01-01 03:04:26 [info    ] > let's go!
+2021-01-01 03:04:26 [info    ] > connecting to wifi network: melanzane
+2021-01-01 03:04:27 [info    ]   - ip address:  192.168.86.20
+2021-01-01 03:04:27 [info    ] > starting webserver on port 80
+2021-01-01 03:04:40 [info    ] > let's go!
+2021-01-01 03:04:40 [info    ] > connecting to wifi network: melanzane
+2021-01-01 03:04:41 [info    ]   - ip address:  192.168.86.20
+2021-01-01 03:04:51 [info    ] > let's go!
+2021-01-01 03:04:51 [info    ] > connecting to wifi network: melanzane
+2021-01-01 03:04:52 [info    ]   - ip address:  192.168.86.20
+2021-01-01 03:04:52 [info    ] > starting webserver on port 80
+2021-01-01 03:05:08 [info    ] > let's go!
+2021-01-01 03:05:08 [info    ] > connecting to wifi network: melanzane
+2021-01-01 03:05:09 [info    ]   - ip address:  192.168.86.20
+2021-01-01 03:05:09 [info    ] > starting webserver on port 80
+2021-01-01 03:09:44 [info    ] > let's go!
+2021-01-01 03:09:44 [info    ] > connecting to wifi network: melanzane
+2021-01-01 03:09:44 [info    ]   - ip address:  192.168.86.20
+2021-01-01 03:09:44 [info    ] > starting webserver on port 80
+2021-01-01 03:10:01 [info    ] > let's go!
+2021-01-01 03:10:01 [info    ] > connecting to wifi network: melanzane
+2021-01-01 03:10:01 [info    ]   - ip address:  192.168.86.20
+2021-01-01 03:10:01 [info    ] > starting webserver on port 80
+2021-01-01 03:10:42 [info    ] > let's go!
+2021-01-01 03:10:42 [info    ] > connecting to wifi network: melanzane
+2021-01-01 03:10:43 [info    ]   - ip address:  192.168.86.20
+2021-01-01 03:10:43 [info    ] > starting webserver on port 80
+2021-01-01 03:11:39 [info    ] > let's go!
+2021-01-01 03:11:39 [info    ] > connecting to wifi network: melanzane
+2021-01-01 03:11:39 [info    ]   - ip address:  192.168.86.20
+2021-01-01 03:11:40 [info    ] > starting webserver on port 80
+2021-01-01 03:11:52 [info    ] > let's go!
+2021-01-01 03:11:52 [info    ] > connecting to wifi network: melanzane
+2021-01-01 03:11:53 [info    ]   - ip address:  192.168.86.20
+2021-01-01 03:11:53 [info    ] > starting webserver on port 80
+2021-01-01 03:12:48 [info    ] > let's go!
+2021-01-01 03:12:48 [info    ] > connecting to wifi network: melanzane
+2021-01-01 03:12:48 [info    ]   - ip address:  192.168.86.20
+2021-01-01 03:12:48 [info    ] > starting webserver on port 80
+2021-01-01 03:13:09 [info    ] > let's go!
+2021-01-01 03:13:09 [info    ] > connecting to wifi network: melanzane
+2021-01-01 03:13:10 [info    ]   - ip address:  192.168.86.20
+2021-01-01 03:13:10 [info    ] > starting webserver on port 80
+2021-01-01 03:13:26 [info    ] > let's go!
+2021-01-01 03:13:26 [info    ] > connecting to wifi network: melanzane
+2021-01-01 03:13:26 [info    ]   - ip address:  192.168.86.20
+2021-01-01 03:13:26 [info    ] > starting webserver on port 80
+2021-01-01 03:13:32 [info    ] > let's go!
+2021-01-01 03:13:32 [info    ] > connecting to wifi network: melanzane
+2021-01-01 03:13:32 [info    ]   - ip address:  192.168.86.20
+2021-01-01 03:13:32 [info    ] > starting webserver on port 80
+2021-01-01 03:14:10 [info    ] > let's go!
+2021-01-01 03:14:10 [info    ] > connecting to wifi network: melanzane
+2021-01-01 03:14:11 [info    ]   - ip address:  192.168.86.20
+2021-01-01 03:14:11 [info    ] > starting webserver on port 80
+2021-01-01 03:17:28 [info    ] > let's go!
+2021-01-01 03:17:29 [info    ] > connecting to wifi network: melanzane
+2021-01-01 03:17:29 [info    ]   - ip address:  192.168.86.20
+2021-01-01 03:17:29 [info    ] > starting webserver on port 80
+2021-01-01 03:18:10 [info    ] > POST /process/<this>/url
+2021-01-01 03:21:24 [info    ] > let's go!
+2021-01-01 03:21:24 [info    ] > connecting to wifi network: melanzane
+2021-01-01 03:21:25 [info    ]   - ip address:  192.168.86.20
+2021-01-01 03:21:25 [info    ] > starting webserver on port 80
+2021-01-01 03:21:28 [info    ] > POST /process/<this>/url
+2021-01-01 03:21:48 [info    ] > let's go!
+2021-01-01 03:21:48 [info    ] > connecting to wifi network: melanzane
+2021-01-01 03:21:49 [info    ]   - ip address:  192.168.86.20
+2021-01-01 03:21:49 [info    ] > starting webserver on port 80
+2021-01-01 03:21:51 [info    ] > POST /process/<this>/url
+2021-01-01 03:22:04 [info    ] > let's go!
+2021-01-01 03:22:04 [info    ] > connecting to wifi network: melanzane
+2021-01-01 03:22:05 [info    ]   - ip address:  192.168.86.20
+2021-01-01 03:22:05 [info    ] > starting webserver on port 80
+2021-01-01 03:22:06 [info    ] > POST /process/<this>/url
+2021-01-01 03:22:41 [info    ] > let's go!
+2021-01-01 03:22:41 [info    ] > connecting to wifi network: melanzane
+2021-01-01 03:22:41 [info    ]   - ip address:  192.168.86.20
+2021-01-01 03:22:41 [info    ] > starting webserver on port 80
+2021-01-01 03:22:43 [info    ] > POST /process/<this>/url
+2021-01-01 03:22:58 [info    ] > POST /process/<this>/url/<too>
+2021-01-01 03:23:13 [info    ] > let's go!
+2021-01-01 03:23:13 [info    ] > connecting to wifi network: melanzane
+2021-01-01 03:23:14 [info    ]   - ip address:  192.168.86.20
+2021-01-01 03:23:14 [info    ] > starting webserver on port 80
+2021-01-01 03:23:16 [info    ] > POST /process/<this>/url/<too>
+2021-01-01 03:23:21 [info    ] > POST /process/<this>/url
+2021-01-01 03:23:24 [info    ] > POST /process/<this>/url/<too>
+2021-01-01 03:24:10 [info    ] > let's go!
+2021-01-01 03:24:10 [info    ] > connecting to wifi network: melanzane
+2021-01-01 03:24:11 [info    ]   - ip address:  192.168.86.20
+2021-01-01 03:24:11 [info    ] > starting webserver on port 80
+2021-01-01 03:24:12 [info    ] > POST /process/<this>/url/<too>
+2021-01-01 03:26:28 [info    ] > let's go!
+2021-01-01 03:26:28 [info    ] > connecting to wifi network: melanzane
+2021-01-01 03:26:28 [info    ]   - ip address:  192.168.86.20
+2021-01-01 03:26:28 [info    ] > starting webserver on port 80
+2021-01-01 03:26:30 [info    ] > POST /process/<this>/url/<too>
+2021-01-01 03:27:28 [info    ] > let's go!
+2021-01-01 03:27:28 [info    ] > connecting to wifi network: melanzane
+2021-01-01 03:27:29 [info    ]   - ip address:  192.168.86.20
+2021-01-01 03:27:29 [info    ] > starting webserver on port 80
+2021-01-01 03:27:33 [info    ] > POST /process/<this>/url/<too>
+2021-01-01 03:27:47 [info    ] > POST /process/<this>/url/avalue
+2021-01-01 03:31:29 [info    ] > let's go!
+2021-01-01 03:31:29 [info    ] > connecting to wifi network: melanzane
+2021-01-01 03:31:30 [info    ]   - ip address:  192.168.86.20
+2021-01-01 03:31:30 [info    ] > starting webserver on port 80
+2021-01-01 03:31:32 [info    ] > POST /process/<this>/url/avalue
+2021-01-01 03:32:08 [info    ] > let's go!
+2021-01-01 03:32:08 [info    ] > connecting to wifi network: melanzane
+2021-01-01 03:32:09 [info    ]   - ip address:  192.168.86.20
+2021-01-01 03:32:09 [info    ] > starting webserver on port 80
+2021-01-01 03:32:10 [info    ] > POST /process/<this>/url/avalue
+2021-01-01 03:33:08 [info    ] > let's go!
+2021-01-01 03:33:08 [info    ] > connecting to wifi network: melanzane
+2021-01-01 03:33:08 [info    ]   - ip address:  192.168.86.20
+2021-01-01 03:33:21 [info    ] > let's go!
+2021-01-01 03:33:21 [info    ] > connecting to wifi network: melanzane
+2021-01-01 03:33:22 [info    ]   - ip address:  192.168.86.20
+2021-01-01 03:33:34 [info    ] > let's go!
+2021-01-01 03:33:34 [info    ] > connecting to wifi network: melanzane
+2021-01-01 03:33:34 [info    ]   - ip address:  192.168.86.20
+2021-01-01 03:33:51 [info    ] > let's go!
+2021-01-01 03:33:51 [info    ] > connecting to wifi network: melanzane
+2021-01-01 03:33:51 [info    ]   - ip address:  192.168.86.20
+2021-01-01 03:33:59 [info    ] > let's go!
+2021-01-01 03:33:59 [info    ] > connecting to wifi network: melanzane
+2021-01-01 03:34:00 [info    ]   - ip address:  192.168.86.20
+2021-01-01 03:34:00 [info    ] > starting webserver on port 80
+2021-01-01 03:34:03 [info    ] > POST /process/<this>/url/avalue
+2021-01-01 03:34:49 [info    ] > let's go!
+2021-01-01 03:34:49 [info    ] > connecting to wifi network: melanzane
+2021-01-01 03:34:49 [info    ]   - ip address:  192.168.86.20
+2021-01-01 03:34:49 [info    ] > starting webserver on port 80
+2021-01-01 03:35:02 [info    ] > let's go!
+2021-01-01 03:35:02 [info    ] > connecting to wifi network: melanzane
+2021-01-01 03:35:03 [info    ]   - ip address:  192.168.86.20
+2021-01-01 03:35:03 [info    ] > starting webserver on port 80
+2021-01-01 03:35:11 [info    ] > let's go!
+2021-01-01 03:35:11 [info    ] > connecting to wifi network: melanzane
+2021-01-01 03:35:11 [info    ]   - ip address:  192.168.86.20
+2021-01-01 03:35:11 [info    ] > starting webserver on port 80
+2021-01-01 03:35:28 [info    ] > let's go!
+2021-01-01 03:35:28 [info    ] > connecting to wifi network: melanzane
+2021-01-01 03:35:28 [info    ]   - ip address:  192.168.86.20
+2021-01-01 03:35:28 [info    ] > starting webserver on port 80
+2021-01-01 03:35:31 [info    ] > POST /process/<this>/url/avalue
+2021-01-01 03:35:46 [info    ] > let's go!
+2021-01-01 03:35:46 [info    ] > connecting to wifi network: melanzane
+2021-01-01 03:35:47 [info    ]   - ip address:  192.168.86.20
+2021-01-01 03:35:47 [info    ] > starting webserver on port 80
+2021-01-01 03:35:49 [info    ] > POST /process/<this>/url/avalue
+2021-01-01 03:36:05 [info    ] > let's go!
+2021-01-01 03:36:05 [info    ] > connecting to wifi network: melanzane
+2021-01-01 03:36:06 [info    ]   - ip address:  192.168.86.20
+2021-01-01 03:36:06 [info    ] > starting webserver on port 80
+2021-01-01 03:36:08 [info    ] > POST /process/<this>/url/avalue
+2021-01-01 03:36:57 [info    ] > let's go!
+2021-01-01 03:36:57 [info    ] > connecting to wifi network: melanzane
+2021-01-01 03:36:57 [info    ]   - ip address:  192.168.86.20
+2021-01-01 03:36:58 [info    ] > starting webserver on port 80
+2021-01-01 03:36:59 [info    ] > POST /process/<this>/url/avalue
+2021-01-01 03:37:14 [info    ] > let's go!
+2021-01-01 03:37:14 [info    ] > connecting to wifi network: melanzane
+2021-01-01 03:37:15 [info    ]   - ip address:  192.168.86.20
+2021-01-01 03:37:15 [info    ] > starting webserver on port 80
+2021-01-01 03:37:16 [info    ] > POST /process/<this>/url/avalue
+2021-01-01 03:38:07 [info    ] > let's go!
+2021-01-01 03:38:07 [info    ] > connecting to wifi network: melanzane
+2021-01-01 03:38:08 [info    ]   - ip address:  192.168.86.20
+2021-01-01 03:38:08 [info    ] > starting webserver on port 80
+2021-01-01 03:38:38 [info    ] > let's go!
+2021-01-01 03:38:38 [info    ] > connecting to wifi network: melanzane
+2021-01-01 03:38:39 [info    ]   - ip address:  192.168.86.20
+2021-01-01 03:38:39 [info    ] > starting webserver on port 80
+2021-01-01 03:38:42 [info    ] > POST /process/<this>/url/avalue
+2021-01-01 03:39:06 [info    ] > let's go!
+2021-01-01 03:39:06 [info    ] > connecting to wifi network: melanzane
+2021-01-01 03:39:06 [info    ]   - ip address:  192.168.86.20
+2021-01-01 03:39:07 [info    ] > starting webserver on port 80
+2021-01-01 03:39:08 [info    ] > POST /process/<this>/url/avalue
+2021-01-01 03:39:57 [info    ] > importing web framework took 730 ms
+2021-01-01 03:39:57 [info    ] > let's go!
+2021-01-01 03:39:57 [info    ] > connecting to wifi network: melanzane
+2021-01-01 03:39:58 [info    ]   - ip address:  192.168.86.20
+2021-01-01 03:39:58 [info    ] > starting webserver on port 80
+2021-01-01 03:40:36 [info    ] > importing web framework took 699 ms
+2021-01-01 03:40:36 [info    ] > let's go!
+2021-01-01 03:40:36 [info    ] > connecting to wifi network: melanzane
+2021-01-01 03:40:37 [info    ]   - ip address:  192.168.86.20
+2021-01-01 03:40:37 [info    ] > starting webserver on port 80
+2021-01-01 03:40:40 [info    ] > POST /process/<this>/url/avalue
+2021-01-01 03:40:54 [info    ] > importing web framework took 699 ms
+2021-01-01 03:40:54 [info    ] > let's go!
+2021-01-01 03:40:54 [info    ] > connecting to wifi network: melanzane
+2021-01-01 03:40:55 [info    ]   - ip address:  192.168.86.20
+2021-01-01 03:40:55 [info    ] > starting webserver on port 80
+2021-01-01 03:40:56 [info    ] > POST /process/<this>/url/avalue
+2021-01-01 03:48:15 [info    ] > importing web framework took 730 ms
+2021-01-01 03:48:15 [info    ] > let's go!
+2021-01-01 03:48:15 [info    ] > connecting to wifi network: melanzane
+2021-01-01 03:48:16 [info    ]   - ip address:  192.168.86.20
+2021-01-01 03:48:16 [info    ] > starting webserver on port 80
+2021-01-01 03:48:20 [info    ] > POST /process/<this>/url/avalue
+2021-01-01 03:48:35 [info    ] > POST /blargh
+2021-01-01 03:49:09 [info    ] > importing web framework took 721 ms
+2021-01-01 03:49:09 [info    ] > let's go!
+2021-01-01 03:49:10 [info    ] > connecting to wifi network: melanzane
+2021-01-01 03:49:10 [info    ]   - ip address:  192.168.86.20
+2021-01-01 03:49:10 [info    ] > starting webserver on port 80
+2021-01-01 03:49:12 [info    ] > POST /blargh
+2021-01-01 03:49:25 [info    ] > importing web framework took 723 ms
+2021-01-01 03:49:25 [info    ] > let's go!
+2021-01-01 03:49:25 [info    ] > connecting to wifi network: melanzane
+2021-01-01 03:49:26 [info    ]   - ip address:  192.168.86.20
+2021-01-01 03:49:26 [info    ] > starting webserver on port 80
+2021-01-01 03:49:27 [info    ] > POST /blargh
+2021-01-01 03:49:43 [info    ] > importing web framework took 720 ms
+2021-01-01 03:49:43 [info    ] > let's go!
+2021-01-01 03:49:43 [info    ] > connecting to wifi network: melanzane
+2021-01-01 03:49:44 [info    ]   - ip address:  192.168.86.20
+2021-01-01 03:49:44 [info    ] > starting webserver on port 80
+2021-01-01 03:49:46 [info    ] > POST /blargh
+2021-01-01 03:51:07 [info    ] > importing web framework took 723 ms
+2021-01-01 03:51:07 [info    ] > let's go!
+2021-01-01 03:51:07 [info    ] > connecting to wifi network: melanzane
+2021-01-01 03:51:08 [info    ]   - ip address:  192.168.86.20
+2021-01-01 03:51:08 [info    ] > starting webserver on port 80
+2021-01-01 03:51:16 [info    ] > POST /blargh
+2021-01-01 03:51:23 [info    ] > POST /process/this/url
+2021-01-01 03:51:27 [info    ] > POST /process/this/url/jon
+2021-01-01 03:51:32 [info    ] > POST /process/hello/url/jon
+2021-01-01 03:51:40 [info    ] > importing web framework took 716 ms
+2021-01-01 03:51:40 [info    ] > let's go!
+2021-01-01 03:51:40 [info    ] > connecting to wifi network: melanzane
+2021-01-01 03:51:41 [info    ]   - ip address:  192.168.86.20
+2021-01-01 03:51:41 [info    ] > starting webserver on port 80
+2021-01-01 03:51:43 [info    ] > POST /process/hello/url/jon
+2021-01-01 03:56:16 [info    ] > let's go!
+2021-01-01 03:56:16 [info    ] > connecting to wifi network: melanzane
+2021-01-01 03:56:17 [info    ]   - ip address:  192.168.86.20
+2021-01-01 03:56:20 [info    ] > starting webserver on port 80
+2021-01-01 03:56:34 [info    ] > POST /process/hello/url/jon
+2021-01-01 03:56:38 [info    ] > POST /process/this/url/jon
+2021-01-01 03:56:42 [info    ] > POST /process/this/url
+2021-01-01 04:37:00 [info    ] > let's go!
+2021-01-01 04:37:00 [info    ] > connecting to wifi network: melanzane
+2021-01-01 04:37:01 [info    ]   - ip address:  192.168.86.20
+2021-01-01 04:37:05 [info    ] > starting webserver on port 80
+2021-01-01 04:37:08 [info    ] > POST /process/this/url
+2021-01-01 04:38:11 [info    ] > let's go!
+2021-01-01 04:38:12 [info    ] > connecting to wifi network: melanzane
+2021-01-01 04:38:12 [info    ]   - ip address:  192.168.86.20
+2021-01-01 04:38:16 [info    ] > starting webserver on port 80
+2021-01-01 04:38:19 [info    ] > POST /process/this/url
+2021-01-01 04:38:45 [info    ] > let's go!
+2021-01-01 04:38:45 [info    ] > connecting to wifi network: melanzane
+2021-01-01 04:38:45 [info    ]   - ip address:  192.168.86.20
+2021-01-01 04:38:50 [info    ] > starting webserver on port 80
+2021-01-01 04:38:51 [info    ] > POST /process/this/url
+2021-01-01 04:39:29 [info    ] > let's go!
+2021-01-01 04:39:29 [info    ] > connecting to wifi network: melanzane
+2021-01-01 04:39:29 [info    ]   - ip address:  192.168.86.20
+2021-01-01 04:39:34 [info    ] > starting webserver on port 80
+2021-01-01 04:39:35 [info    ] > POST /process/this/url
+2021-01-01 04:40:18 [info    ] > let's go!
+2021-01-01 04:40:18 [info    ] > connecting to wifi network: melanzane
+2021-01-01 04:40:18 [info    ]   - ip address:  192.168.86.20
+2021-01-01 04:40:23 [info    ] > starting webserver on port 80
+2021-01-01 04:40:24 [info    ] > POST /process/this/url
+2021-01-01 04:40:32 [info    ] > let's go!
+2021-01-01 04:40:32 [info    ] > connecting to wifi network: melanzane
+2021-01-01 04:40:33 [info    ]   - ip address:  192.168.86.20
+2021-01-01 04:40:37 [info    ] > starting webserver on port 80
+2021-01-01 04:40:39 [info    ] > POST /process/this/url
+2021-01-01 04:41:44 [info    ] > let's go!
+2021-01-01 04:41:44 [info    ] > connecting to wifi network: melanzane
+2021-01-01 04:41:44 [info    ]   - ip address:  192.168.86.20
+2021-01-01 04:41:49 [info    ] > starting webserver on port 80
+2021-01-01 04:41:50 [info    ] > POST /process/this/url
+2021-01-01 04:43:10 [info    ] > let's go!
+2021-01-01 04:43:10 [info    ] > connecting to wifi network: melanzane
+2021-01-01 04:43:11 [info    ]   - ip address:  192.168.86.20
+2021-01-01 04:43:15 [info    ] > starting webserver on port 80
+2021-01-01 04:43:18 [info    ] > POST /process/this/url
+2021-01-01 04:43:30 [info    ] > let's go!
+2021-01-01 04:43:30 [info    ] > connecting to wifi network: melanzane
+2021-01-01 04:43:31 [info    ]   - ip address:  192.168.86.20
+2021-01-01 04:43:35 [info    ] > starting webserver on port 80
+2021-01-01 04:43:36 [info    ] > POST /process/this/url
+2021-01-01 04:43:57 [info    ] > let's go!
+2021-01-01 04:43:57 [info    ] > connecting to wifi network: melanzane
+2021-01-01 04:43:58 [info    ]   - ip address:  192.168.86.20
+2021-01-01 04:44:02 [info    ] > starting webserver on port 80
+2021-01-01 04:44:14 [info    ] > let's go!
+2021-01-01 04:44:14 [info    ] > connecting to wifi network: melanzane
+2021-01-01 04:44:15 [info    ]   - ip address:  192.168.86.20
+2021-01-01 04:44:19 [info    ] > starting webserver on port 80
+2021-01-01 04:44:20 [info    ] > POST /process/this/url
+2021-01-01 04:47:20 [info    ] > let's go!
+2021-01-01 04:47:20 [info    ] > connecting to wifi network: melanzane
+2021-01-01 04:47:21 [info    ]   - ip address:  192.168.86.20
+2021-01-01 04:47:25 [info    ] > starting webserver on port 80
+2021-01-01 04:47:34 [info    ] > POST /process/this/url
+2021-01-01 04:48:18 [info    ] > let's go!
+2021-01-01 04:48:18 [info    ] > connecting to wifi network: melanzane
+2021-01-01 04:48:19 [info    ]   - ip address:  192.168.86.20
+2021-01-01 04:48:23 [info    ] > starting webserver on port 80
+2021-01-01 04:48:25 [info    ] > POST /process/this/url
+2021-01-01 04:49:10 [info    ] > let's go!
+2021-01-01 04:49:10 [info    ] > connecting to wifi network: melanzane
+2021-01-01 04:49:11 [info    ]   - ip address:  192.168.86.20
+2021-01-01 04:49:15 [info    ] > starting webserver on port 80
+2021-01-01 04:49:16 [info    ] > POST /process/this/url
+2021-01-01 04:49:50 [info    ] > let's go!
+2021-01-01 04:49:50 [info    ] > connecting to wifi network: melanzane
+2021-01-01 04:49:50 [info    ]   - ip address:  192.168.86.20
+2021-01-01 00:00:03 [info    ] > let's go!
+2021-01-01 00:00:03 [info    ] > connecting to wifi network: melanzane
+2021-01-01 00:00:09 [info    ]   - ip address:  192.168.86.20
+2021-01-01 00:00:14 [info    ] > starting webserver on port 80
+2021-01-01 00:00:16 [info    ] > POST /process/this/url
+2021-01-01 00:01:15 [info    ] > let's go!
+2021-01-01 00:01:15 [info    ] > connecting to wifi network: melanzane
+2021-01-01 00:01:15 [info    ]   - ip address:  192.168.86.20
+2021-01-01 00:01:19 [info    ] > starting webserver on port 80
+2021-01-01 00:01:22 [info    ] > POST /process/this/url
+2021-01-01 00:01:45 [info    ] > let's go!
+2021-01-01 00:01:46 [info    ] > connecting to wifi network: melanzane
+2021-01-01 00:01:46 [info    ]   - ip address:  192.168.86.20
+2021-01-01 00:01:50 [info    ] > starting webserver on port 80
+2021-01-01 00:01:51 [info    ] > POST /process/this/url
+2021-01-01 00:02:11 [info    ] > let's go!
+2021-01-01 00:02:11 [info    ] > connecting to wifi network: melanzane
+2021-01-01 00:02:12 [info    ]   - ip address:  192.168.86.20
+2021-01-01 00:02:16 [info    ] > starting webserver on port 80
+2021-01-01 00:02:17 [info    ] > POST /process/this/url
+2021-01-01 00:02:45 [info    ] > let's go!
+2021-01-01 00:02:45 [info    ] > connecting to wifi network: melanzane
+2021-01-01 00:02:46 [info    ]   - ip address:  192.168.86.20
+2021-01-01 00:02:50 [info    ] > starting webserver on port 80
+2021-01-01 00:02:53 [info    ] > POST /process/this/url
+2021-01-01 00:03:19 [info    ] > let's go!
+2021-01-01 00:03:19 [info    ] > connecting to wifi network: melanzane
+2021-01-01 00:03:20 [info    ]   - ip address:  192.168.86.20
+2021-01-01 00:03:24 [info    ] > starting webserver on port 80
+2021-01-01 00:03:25 [info    ] > POST /process/this/url
+2021-01-01 00:09:59 [info    ] > let's go!
+2021-01-01 00:09:59 [info    ] > connecting to wifi network: melanzane
+2021-01-01 00:10:00 [info    ]   - ip address:  192.168.86.20
+2021-01-01 00:10:04 [info    ] > starting webserver on port 80
+2021-01-01 00:10:06 [info    ] > POST /process/this/url
+2021-01-01 00:10:44 [info    ] > let's go!
+2021-01-01 00:10:44 [info    ] > connecting to wifi network: melanzane
+2021-01-01 00:10:44 [info    ]   - ip address:  192.168.86.20
+2021-01-01 00:10:49 [info    ] > starting webserver on port 80
+2021-01-01 00:10:50 [info    ] > POST /process/this/url
+2021-01-01 00:11:19 [info    ] > let's go!
+2021-01-01 00:11:19 [info    ] > connecting to wifi network: melanzane
+2021-01-01 00:11:19 [info    ]   - ip address:  192.168.86.20
+2021-01-01 00:11:24 [info    ] > starting webserver on port 80
+2021-01-01 00:11:25 [info    ] > POST /process/this/url
+2021-01-01 00:11:54 [info    ] > POST /process/this/url
+2021-01-01 00:12:51 [info    ] > let's go!
+2021-01-01 00:12:51 [info    ] > connecting to wifi network: melanzane
+2021-01-01 00:12:52 [info    ]   - ip address:  192.168.86.20
+2021-01-01 00:12:56 [info    ] > starting webserver on port 80
+2021-01-01 00:13:00 [info    ] > HEAD /are/you/a/teapot
+2021-01-01 00:13:23 [info    ] > let's go!
+2021-01-01 00:13:23 [info    ] > connecting to wifi network: melanzane
+2021-01-01 00:13:24 [info    ]   - ip address:  192.168.86.20
+2021-01-01 00:13:28 [info    ] > starting webserver on port 80
+2021-01-01 00:13:29 [info    ] > HEAD /are/you/a/teapot
+2021-01-01 00:13:41 [info    ] > let's go!
+2021-01-01 00:13:41 [info    ] > connecting to wifi network: melanzane
+2021-01-01 00:13:41 [info    ]   - ip address:  192.168.86.20
+2021-01-01 00:13:46 [info    ] > starting webserver on port 80
+2021-01-01 00:13:47 [info    ] > HEAD /are/you/a/teapot
+2021-01-01 00:14:00 [info    ] > let's go!
+2021-01-01 00:14:00 [info    ] > connecting to wifi network: melanzane
+2021-01-01 00:14:00 [info    ]   - ip address:  192.168.86.20
+2021-01-01 00:14:05 [info    ] > starting webserver on port 80
+2021-01-01 00:14:08 [info    ] > HEAD /are/you/a/teapot
+2021-01-01 00:14:25 [info    ] > GET /are/you/a/teapot
+2021-01-01 00:14:37 [info    ] > let's go!
+2021-01-01 00:14:37 [info    ] > connecting to wifi network: melanzane
+2021-01-01 00:14:37 [info    ]   - ip address:  192.168.86.20
+2021-01-01 00:14:42 [info    ] > starting webserver on port 80
+2021-01-01 00:14:44 [info    ] > GET /are/you/a/teapot
+2021-01-01 00:15:16 [info    ] > GET /are/you/a/teapot
+2021-01-01 00:15:46 [info    ] > GET /are/you/a/teapot
+2021-01-01 00:16:22 [info    ] > GET /are/you/a/teapot
+2021-01-01 00:17:26 [info    ] > let's go!
+2021-01-01 00:17:26 [info    ] > connecting to wifi network: melanzane
+2021-01-01 00:17:26 [info    ]   - ip address:  192.168.86.20
+2021-01-01 00:17:38 [info    ] > let's go!
+2021-01-01 00:17:38 [info    ] > connecting to wifi network: melanzane
+2021-01-01 00:17:38 [info    ]   - ip address:  192.168.86.20
+2021-01-01 00:17:43 [info    ] time to import 4437 ms
+2021-01-01 00:17:43 [info    ] > starting webserver on port 80
+2021-01-01 00:18:04 [info    ] > let's go!
+2021-01-01 00:18:04 [info    ] > connecting to wifi network: melanzane
+2021-01-01 00:18:05 [info    ]   - ip address:  192.168.86.20
+2021-01-01 00:18:15 [info    ] > let's go!
+2021-01-01 00:18:15 [info    ] > connecting to wifi network: melanzane
+2021-01-01 00:18:16 [info    ]   - ip address:  192.168.86.20
+2021-01-01 00:18:20 [info    ] time to import 4039 ms
+2021-01-01 00:18:20 [info    ] > starting webserver on port 80
+2021-01-01 00:00:03 [info    ] > let's go!
+2021-01-01 00:00:03 [info    ] > connecting to wifi network: melanzane
+2021-01-01 00:00:09 [info    ]   - ip address:  192.168.86.20
+2021-01-01 00:00:14 [info    ] time to import 4454 ms
+2021-01-01 00:00:14 [info    ] > starting webserver on port 80
+2021-01-01 00:00:15 [info    ] > GET /are/you/a/teapot
+2021-01-01 00:00:53 [info    ] > GET /are/you/a/teapot?name=jon&test=foo
+2021-01-01 00:11:50 [info    ] > let's go!
+2021-01-01 00:11:50 [info    ] > connecting to wifi network: melanzane
+2021-01-01 00:11:51 [info    ]   - ip address:  192.168.86.20
+2021-01-01 00:12:00 [info    ] > let's go!
+2021-01-01 00:12:01 [info    ] > connecting to wifi network: melanzane
+2021-01-01 00:12:01 [info    ]   - ip address:  192.168.86.20
+2021-01-01 00:12:06 [info    ] time to import 4722 ms
+2021-01-01 00:12:06 [info    ] > starting webserver on port 80
+2021-01-01 00:12:23 [info    ] > let's go!
+2021-01-01 00:12:23 [info    ] > connecting to wifi network: melanzane
+2021-01-01 00:12:24 [info    ]   - ip address:  192.168.86.20
+2021-01-01 00:12:28 [info    ] time to import 4745 ms
+2021-01-01 00:12:29 [info    ] > starting webserver on port 80
+2021-01-01 00:12:30 [info    ] > GET /are/you/a/teapot
+2021-01-01 00:12:43 [info    ] > GET /are/you/a/teapo
+2021-01-01 00:12:56 [info    ] > let's go!
+2021-01-01 00:12:56 [info    ] > connecting to wifi network: melanzane
+2021-01-01 00:12:57 [info    ]   - ip address:  192.168.86.20
+2021-01-01 00:13:02 [info    ] time to import 4730 ms
+2021-01-01 00:13:02 [info    ] > starting webserver on port 80
+2021-01-01 00:13:04 [info    ] > GET /are/you/a/teapot
+2021-01-01 00:13:08 [info    ] > GET /are/you/a/teapot
+2021-01-01 00:13:13 [info    ] > GET /are/you/a/teapot
+2021-01-01 00:13:58 [info    ] > let's go!
+2021-01-01 00:13:58 [info    ] > connecting to wifi network: melanzane
+2021-01-01 00:13:58 [info    ]   - ip address:  192.168.86.20
+2021-01-01 00:14:03 [info    ] time to import 4462 ms
+2021-01-01 00:14:03 [info    ] > starting webserver on port 80
+2021-01-01 00:14:05 [info    ] > GET /are/you/a/teapot
+2021-01-01 00:14:35 [info    ] > let's go!
+2021-01-01 00:14:35 [info    ] > connecting to wifi network: melanzane
+2021-01-01 00:14:36 [info    ]   - ip address:  192.168.86.20
+2021-01-01 00:14:40 [info    ] time to import 4484 ms
+2021-01-01 00:14:40 [info    ] > starting webserver on port 80
+2021-01-01 00:14:41 [info    ] > GET /are/you/a/teapot
+2021-01-01 00:15:13 [info    ] > let's go!
+2021-01-01 00:15:13 [info    ] > connecting to wifi network: melanzane
+2021-01-01 00:15:14 [info    ]   - ip address:  192.168.86.20
+2021-01-01 00:15:18 [info    ] time to import 4472 ms
+2021-01-01 00:15:18 [info    ] > starting webserver on port 80
+2021-01-01 00:15:19 [info    ] > GET /are/you/a/teapot
+2021-01-01 00:15:44 [info    ] > let's go!
+2021-01-01 00:15:44 [info    ] > connecting to wifi network: melanzane
+2021-01-01 00:15:45 [info    ]   - ip address:  192.168.86.20
+2021-01-01 00:15:49 [info    ] time to import 4504 ms
+2021-01-01 00:15:49 [info    ] > starting webserver on port 80
+2021-01-01 00:15:52 [info    ] > GET /are/you/a/teapot
+2021-01-01 00:15:58 [info    ] > GET /are/you/a/teapot
+2021-01-01 00:16:03 [info    ] > GET /are/you/a/teapot
+2021-01-01 00:28:27 [info    ] > let's go!
+2021-01-01 00:28:27 [info    ] > connecting to wifi network: melanzane
+2021-01-01 00:28:28 [info    ]   - ip address:  192.168.86.20
+2021-01-01 00:28:33 [info    ] time to import 5012 ms
+2021-01-01 00:28:33 [info    ] > starting webserver on port 80
+2021-01-01 00:28:47 [info    ] > GET /are/you/a/teapot
+2021-01-01 00:32:38 [info    ] > let's go!
+2021-01-01 00:32:38 [info    ] > connecting to wifi network: melanzane
+2021-01-01 00:32:38 [info    ]   - ip address:  192.168.86.20
+2021-01-01 00:32:43 [info    ] time to import 5156 ms
+2021-01-01 00:32:44 [info    ] > starting webserver on port 80
+2021-01-01 00:33:00 [info    ] > let's go!
+2021-01-01 00:33:00 [info    ] > connecting to wifi network: melanzane
+2021-01-01 00:33:01 [info    ]   - ip address:  192.168.86.20
+2021-01-01 00:33:06 [info    ] time to import 5173 ms
+2021-01-01 00:33:06 [info    ] > starting webserver on port 80
+2021-01-01 00:33:22 [info    ] > let's go!
+2021-01-01 00:33:22 [info    ] > connecting to wifi network: melanzane
+2021-01-01 00:33:23 [info    ]   - ip address:  192.168.86.20
+2021-01-01 00:33:28 [info    ] time to import 5177 ms
+2021-01-01 00:33:28 [info    ] > starting webserver on port 80
+2021-01-01 00:34:10 [info    ] > let's go!
+2021-01-01 00:34:10 [info    ] > connecting to wifi network: melanzane
+2021-01-01 00:34:11 [info    ]   - ip address:  192.168.86.20
+2021-01-01 00:34:16 [info    ] time to import 5179 ms
+2021-01-01 00:34:16 [info    ] > starting webserver on port 80
+2021-01-01 00:34:18 [info    ] > GET /are/you/a/teapot
+2021-01-01 00:34:39 [info    ] > let's go!
+2021-01-01 00:34:39 [info    ] > connecting to wifi network: melanzane
+2021-01-01 00:34:40 [info    ]   - ip address:  192.168.86.20
+2021-01-01 00:34:45 [info    ] time to import 5146 ms
+2021-01-01 00:34:45 [info    ] > starting webserver on port 80
+2021-01-01 00:34:47 [info    ] > GET /are/you/a/teapot
+2021-01-01 00:35:44 [info    ] > let's go!
+2021-01-01 00:35:44 [info    ] > connecting to wifi network: melanzane
+2021-01-01 00:35:44 [info    ]   - ip address:  192.168.86.20
+2021-01-01 00:35:50 [info    ] time to import 5206 ms
+2021-01-01 00:35:50 [info    ] > starting webserver on port 80
+2021-01-01 00:36:32 [info    ] > let's go!
+2021-01-01 00:36:32 [info    ] > connecting to wifi network: melanzane
+2021-01-01 00:36:33 [info    ]   - ip address:  192.168.86.20
+2021-01-01 00:36:38 [info    ] time to import 5196 ms
+2021-01-01 00:36:38 [info    ] > starting webserver on port 80
+2021-01-01 00:36:40 [info    ] > GET /are/you/a/teapot
+2021-01-01 00:38:23 [info    ] > let's go!
+2021-01-01 00:38:23 [info    ] > connecting to wifi network: melanzane
+2021-01-01 00:38:24 [info    ]   - ip address:  192.168.86.20
+2021-01-01 00:38:29 [info    ] time to import 4811 ms
+2021-01-01 00:38:29 [info    ] > starting webserver on port 80
+2021-01-01 00:38:30 [info    ] > GET /are/you/a/teapot
+2021-01-01 00:45:05 [info    ] > let's go!
+2021-01-01 00:45:06 [info    ] > connecting to wifi network: melanzane
+2021-01-01 00:45:06 [info    ]   - ip address:  192.168.86.20
+2021-01-01 00:45:12 [info    ] time to import 5714 ms
+2021-01-01 00:45:12 [info    ] > starting webserver on port 80
+2021-01-01 00:45:41 [info    ] > let's go!
+2021-01-01 00:45:41 [info    ] > connecting to wifi network: melanzane
+2021-01-01 00:45:42 [info    ]   - ip address:  192.168.86.20
+2021-01-01 00:45:48 [info    ] time to import 5755 ms
+2021-01-01 00:45:48 [info    ] > starting webserver on port 80
+2021-01-01 00:45:49 [info    ] > GET /hello/jon
+2021-01-01 00:46:31 [info    ] > let's go!
+2021-01-01 00:46:31 [info    ] > connecting to wifi network: melanzane
+2021-01-01 00:46:31 [info    ]   - ip address:  192.168.86.20
+2021-01-01 00:46:37 [info    ] time to import 5715 ms
+2021-01-01 00:46:37 [info    ] > starting webserver on port 80
+2021-01-01 00:46:39 [info    ] > GET /hello/jon
+2021-01-01 00:47:40 [info    ] > let's go!
+2021-01-01 00:47:40 [info    ] > connecting to wifi network: melanzane
+2021-01-01 00:47:41 [info    ]   - ip address:  192.168.86.20
+2021-01-01 00:47:46 [info    ] time to import 5799 ms
+2021-01-01 00:47:46 [info    ] > starting webserver on port 80
+2021-01-01 00:47:47 [info    ] > GET /hello/jon
+2021-01-01 00:48:13 [info    ] > let's go!
+2021-01-01 00:48:13 [info    ] > connecting to wifi network: melanzane
+2021-01-01 00:48:14 [info    ]   - ip address:  192.168.86.20
+2021-01-01 00:48:20 [info    ] time to import 5826 ms
+2021-01-01 00:48:20 [info    ] > starting webserver on port 80
+2021-01-01 00:48:21 [info    ] > GET /hello/jon
+2021-01-01 00:48:52 [info    ] > let's go!
+2021-01-01 00:48:52 [info    ] > connecting to wifi network: melanzane
+2021-01-01 00:48:53 [info    ]   - ip address:  192.168.86.20
+2021-01-01 00:48:59 [info    ] time to import 5790 ms
+2021-01-01 00:48:59 [info    ] > starting webserver on port 80
+2021-01-01 00:49:00 [info    ] > GET /hello/jon
+2021-01-01 00:49:40 [info    ] > let's go!
+2021-01-01 00:49:40 [info    ] > connecting to wifi network: melanzane
+2021-01-01 00:49:41 [info    ]   - ip address:  192.168.86.20
+2021-01-01 00:49:47 [info    ] time to import 5836 ms
+2021-01-01 00:49:47 [info    ] > starting webserver on port 80
+2021-01-01 00:49:48 [info    ] > GET /hello/jon
+2021-01-01 00:49:48 [debug   ]   - parsed template: test.tpl  ( 40 ms)
+2021-01-01 00:51:15 [info    ] > let's go!
+2021-01-01 00:51:15 [info    ] > connecting to wifi network: melanzane
+2021-01-01 00:51:16 [info    ]   - ip address:  192.168.86.20
+2021-01-01 00:51:22 [info    ] time to import 5843 ms
+2021-01-01 00:51:22 [info    ] > starting webserver on port 80
+2021-01-01 00:51:25 [info    ] > GET /hello/jon
+2021-01-01 00:51:25 [debug   ] > parsed template: test.tpl (took 39 ms)
+2021-01-01 01:09:04 [info    ] > let's go!
+2021-01-01 01:09:04 [info    ] > connecting to wifi network: melanzane
+2021-01-01 01:09:05 [info    ]   - ip address:  192.168.86.20
+2021-01-01 01:09:11 [info    ] time to import 6015 ms
+2021-01-01 01:09:11 [info    ] > starting webserver on port 80
+2021-01-01 01:09:17 [info    ] > let's go!
+2021-01-01 01:09:17 [info    ] > connecting to wifi network: melanzane
+2021-01-01 01:09:17 [info    ]   - ip address:  192.168.86.20
+2021-01-01 01:09:23 [info    ] time to import 5868 ms
+2021-01-01 01:09:23 [info    ] > starting webserver on port 80
+2021-01-01 01:12:35 [info    ] > let's go!
+2021-01-01 01:12:51 [info    ] > let's go!
+2021-01-01 01:12:51 [debug   ] > connecting to wifi network: melanzane
+2021-01-01 01:13:01 [info    ] > let's go!
+2021-01-01 01:13:01 [debug   ] > connecting to wifi network: melanzane
+2021-01-01 01:13:10 [info    ] > let's go!
+2021-01-01 01:13:10 [debug   ] > connecting to wifi network: melanzane
+2021-01-01 01:13:11 [debug   ]   - ip address:  192.168.86.20
+2021-01-01 01:13:11 [info    ] > starting webserver on port 80
+2021-01-01 01:13:19 [info    ] > GET /hello/jon
+2021-01-01 01:13:19 [debug   ] > parsed template: test.tpl (took 39 ms)
