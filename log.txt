@@ -1137,3 +1137,8 @@ linuxize@example.com
 2021-01-01 02:14:44 [info    ] > GET /random
 2021-01-01 02:14:46 [info    ] > GET /random
 2021-01-01 02:14:48 [info    ] > GET /random
+2021-01-01 02:53:42 [info    ] > let's go!
+2021-01-01 02:53:43 [debug   ] > connecting to wifi network: melanzane
+2021-01-01 02:53:43 [debug   ]   - ip address:  192.168.86.20
+2021-01-01 02:53:43 [info    ] > starting webserver on port 80
+2021-01-01 02:53:45 [info    ] > GET /random

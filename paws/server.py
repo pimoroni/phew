@@ -48,9 +48,8 @@ data: {str(self.data)}"""
 
 
 class Response:
-  def __init__(self, body, status=200, content_type="text/html", headers={}):
+  def __init__(self, body, status=200, headers={}):
     self.status = status
-    self.content_type = content_type
     self.headers = headers
     self.body = body
 
