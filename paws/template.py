@@ -1,4 +1,4 @@
-from paws import logging
+from . import logging
 
 async def render_template(template, **kwargs):
   import time

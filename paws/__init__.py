@@ -1,5 +1,5 @@
-# paws: picow agile web server
-from paws import logging
+# paws: pico's agile web server
+from . import logging
 
 # helper method to quickly get connected to wifi
 def connect_to_wifi(ssid, password, timeout_seconds=30):
