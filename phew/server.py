@@ -1,9 +1,16 @@
 import uasyncio, os
 from . import logging
-from enviro.helpers import file_exists
 
 _routes = []
 catchall_handler = None
+
+
+def file_exists(filename):
+  try:
+    return (os.stat(filename)[0] & 0x4000) == 0
+  except OSError:
+    return False
+
 
 def urldecode(text):
   text.replace("+", " ")

@@ -10,10 +10,8 @@
 
 import sys, network, time
 
-from paws import server, logging, connect_to_wifi
-from paws.template import render_template
-
-logging.info("> let's go!")
+from phew import server, logging, connect_to_wifi
+from phew.template import render_template
 
 import secrets
 connect_to_wifi(secrets.WIFI_SSID, secrets.WIFI_PASSWORD)

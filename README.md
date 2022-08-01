@@ -1,4 +1,4 @@
-# paws (pico's agile web server)
+# **phew!** the Pico (or Python) HTTP Endpoint Wrangler
 
 > :warning: **Heads up! This is a very new project and should be considered, at best,
 alpha stage.**
@@ -7,10 +7,10 @@ A small webserver and templating library specifically designed for MicroPython
 on the Pico W. It aims to provide a complete toolkit for easily creating high
 quality web based interfaces for your projects.
 
-**paws** is ideal for creating web based provisioning interfaces for connected projects
+**phew!** is ideal for creating web based provisioning interfaces for connected projects
 using the [Raspberry Pi Pico W](https://shop.pimoroni.com/products/raspberry-pi-pico-w).
 
-- [What **paws** does](#what-paws-does)
+- [What **phew!** does](#what-phew-does)
 - [Basic example](#basic-example)
 - [Function reference](#function-reference)
   - [server](#server)
@@ -28,7 +28,7 @@ using the [Raspberry Pi Pico W](https://shop.pimoroni.com/products/raspberry-pi-
       - [Conditional display](#conditional-display)
       - [Includes](#includes)
 
-## What **paws** does:
+## What **phew!** does:
 
 - a basic web server
 - optimised for speed (at `import` and during execution)
@@ -42,7 +42,7 @@ using the [Raspberry Pi Pico W](https://shop.pimoroni.com/products/raspberry-pi-
 - string, byte, or generator based responses
 - `connect_to_wifi` convenience method
 
-Where possible **paws** tries to minimise the amount of code and setup that you,
+Where possible **phew!** tries to minimise the amount of code and setup that you,
 the developer, has to do in favour of picking sane defaults and hiding away bits
 of minutiae that rarely needs to be tweaked.
 
@@ -52,7 +52,7 @@ An example web server that returns a random number between 1 and 100 (or optiona
 the range specified by the callee) when requested:
 
 ```python
-from paws import server, connect_to_wifi
+from phew import server, connect_to_wifi
 
 connect_to_wifi("<ssid>", "<password>")
 
@@ -70,9 +70,11 @@ def catchall(request):
 server.run()
 ```
 
-**paws** is designed specifically with performance and minimal resource use in mind.
+**phew** is designed specifically with performance and minimal resource use in mind.
 Generally this means it will prioritise doing as little work as possible including 
 assuming the correctness of incoming requests.
+
+---
 
 ## Function reference
   
@@ -225,7 +227,7 @@ A web server isn't much use without something to serve. While it's straightforwa
 to serve the contents of a file or some generated JSON things get more complicated
 when we want to present a dynamically generated web page to the user.
 
-**paws** provides a templating engine which allows you to write normal HTML with 
+**phew!** provides a templating engine which allows you to write normal HTML with 
 fragments of Python code embedded to output variable values, parse input, or dynamically
 load assets.
 
@@ -247,7 +249,7 @@ of your handler methods.
 
 #### Template expressions
 
-Templates are not much use if you can't inject dynamic data into them. With **paws**
+Templates are not much use if you can't inject dynamic data into them. With **phew!**
 you can embed Python expressions with `{{<expression here>}}` which will be evaluated 
 during parsing.
 

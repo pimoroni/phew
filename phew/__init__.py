@@ -1,4 +1,4 @@
-# paws: pico's agile web server
+# phew! the Pico (or Python) HTTP Endpoint Wrangler
 from . import logging
 
 # helper method to quickly get connected to wifi
