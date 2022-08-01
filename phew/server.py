@@ -1,4 +1,4 @@
-import uasyncio, os
+import uasyncio, os, time
 from . import logging
 
 _routes = []
@@ -156,7 +156,7 @@ methods: {str(self.methods)}
 async def _parse_headers(reader):
   headers = {}
   while True:
-    header_line = yield from reader.readline()
+    header_line = await reader.readline()
     if header_line == b"\r\n": # crlf denotes body start
       break
     name, value = header_line.decode().strip().split(": ", 1)
@@ -176,7 +176,7 @@ def _match_route(request):
 async def _parse_form_data(reader, headers):
   boundary = headers["content-type"].split("boundary=")[1]
   # discard first boundary line
-  dummy = yield from reader.readline()
+  dummy = await reader.readline()
 
   form = {}
   while True:
@@ -188,7 +188,7 @@ async def _parse_form_data(reader, headers):
     # get the field value
     value = ""
     while True:
-      line = yield from reader.readline()
+      line = await reader.readline()
       line = line.decode().strip()
       # if we hit a boundary then save the value and move to next field
       if line == "--" + boundary:
@@ -206,7 +206,7 @@ async def _parse_form_data(reader, headers):
 async def _parse_json_body(reader, headers):
   import json
   content_length_bytes = int(headers["content-length"])
-  body = yield from reader.readexactly(content_length_bytes)
+  body = await reader.readexactly(content_length_bytes)
   return json.loads(body.decode())
 
 
@@ -228,15 +228,19 @@ status_message_map = {
 
 # handle an incoming request to the web server
 async def _handle_request(reader, writer):
-  request_line = yield from reader.readline()
+  response = None
+
+  request_start_time = time.ticks_ms()
+
+  request_line = await reader.readline()
   try:
     method, uri, protocol = request_line.decode().split()
   except Exception as e:
-    logging.error(e.message, e.args)
-  request = Request(method, uri, protocol)
-  logging.info(">", request.method, request.path)
-  request.headers = await _parse_headers(reader)
+    logging.error(e)
+    return
 
+  request = Request(method, uri, protocol)
+  request.headers = await _parse_headers(reader)
   if "content-length" in request.headers and "content-type" in request.headers:
     if request.headers["content-type"].startswith("multipart/form-data"):
       request.form = await _parse_form_data(reader, request.headers)
@@ -246,14 +250,12 @@ async def _handle_request(reader, writer):
       form_data = await reader.read(int(request.headers["content-length"]))
       request.form = _parse_query_string(form_data.decode()) 
 
-  response = None
-
   route = _match_route(request)
   if route:
     response = route.call_handler(request)
   elif catchall_handler:
     response = catchall_handler(request)
-  
+
   # if shorthand body generator only notation used then convert to tuple
   if type(response).__name__ == "generator":
     response = (response,)
@@ -285,7 +287,7 @@ async def _handle_request(reader, writer):
 
   import gc
   gc.collect()
-  
+ 
   if isinstance(response, FileResponse):
     # file
     with open(response.file, "rb") as f:
@@ -311,6 +313,9 @@ async def _handle_request(reader, writer):
   
   writer.close()
   await writer.wait_closed()
+
+  processing_time = time.ticks_ms() - request_start_time
+  logging.info(f"> {request.method} {request.path} ({response.status} {status_message}) [{processing_time}ms]")
 
 
 # adds a new route to the routing table
