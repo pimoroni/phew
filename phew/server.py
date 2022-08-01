@@ -348,7 +348,7 @@ def serve_file(file):
 
 
 def run(host = "0.0.0.0", port = 80):
-  logging.info("> starting webserver on port {}".format(port))
+  logging.info("> starting web server on port {}".format(port))
 
   loop = uasyncio.get_event_loop()
   loop.create_task(uasyncio.start_server(_handle_request, host, port))
