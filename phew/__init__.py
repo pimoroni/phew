@@ -1,3 +1,9 @@
+# highly recommended to set a lowish garbage collection threshold 
+# to minimise memory fragmentation as we sometimes want to 
+# allocate relatively large blocks of ram.
+import gc
+gc.threshold(50000)
+
 # phew! the Pico (or Python) HTTP Endpoint Wrangler
 from . import logging
 
