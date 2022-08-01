@@ -23,11 +23,10 @@ def urldecode(text):
       result += text[token_caret:]
       break
     result += text[token_caret:start]
-    code = (int(text[start + 1]) * 16) + int(text[start + 2])
+    code = int(text[start + 1:start + 3], 16)
     result += chr(code)
     token_caret = start + 3
   return result
-
 
 def _parse_query_string(query_string):
   result = {}
@@ -284,9 +283,6 @@ async def _handle_request(reader, writer):
 
   # blank line to denote end of headers
   writer.write("\r\n".encode("ascii"))
-
-  import gc
-  gc.collect()
  
   if isinstance(response, FileResponse):
     # file
@@ -309,7 +305,7 @@ async def _handle_request(reader, writer):
   
   writer.close()
   await writer.wait_closed()
-
+  
   processing_time = time.ticks_ms() - request_start_time
   logging.info(f"> {request.method} {request.path} ({response.status} {status_message}) [{processing_time}ms]")
 
