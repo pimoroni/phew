@@ -297,15 +297,11 @@ async def _handle_request(reader, writer):
           break
         writer.write(chunk)
         await writer.drain()
-        del chunk
-        gc.collect()
   elif type(response.body).__name__ == "generator":
     # generator
     for chunk in response.body:
       writer.write(chunk)
       await writer.drain()
-      del chunk
-      gc.collect()
   else:
     # string/bytes
     writer.write(response.body)
