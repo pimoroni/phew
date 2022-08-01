@@ -13,7 +13,7 @@ using the [Raspberry Pi Pico W](https://shop.pimoroni.com/products/raspberry-pi-
 - [What **phew!** does](#what-phew-does)
 - [Basic example](#basic-example)
 - [Function reference](#function-reference)
-  - [server](#server)
+  - [server module](#server_module)
     - [add_route](#add_route)
     - [set_catchall](#set_catchall)
     - [run](#run)
@@ -27,6 +27,8 @@ using the [Raspberry Pi Pico W](https://shop.pimoroni.com/products/raspberry-pi-
       - [Variables](#variables)
       - [Conditional display](#conditional-display)
       - [Includes](#includes)
+  - [dns module](#dns_module)
+    - [run_catchall](#run_catchall)
 
 ## What **phew!** does:
 
@@ -78,7 +80,7 @@ assuming the correctness of incoming requests.
 
 ## Function reference
   
-### server
+### server module
 
 The `server` module provides all functionality for running a web server with 
 route handlers.
@@ -314,3 +316,17 @@ Hello there {{name}}!
 ```
 
 :warning: Note: you need to explicitly pass through template parameters into the included template - they are not available by default.
+
+### dns module
+
+To make implementing device provisioning interfaces (via captive portal) simple **phew!** provides a catchall DNS server.
+
+If you put the Pico W into access point mode and then run the catchall DNS server it will route all DNS requests back to the local device so that they can be handled.
+
+#### run_catchall
+
+```python
+dns.run_catchall(ip_address)
+```
+
+Pass in the IP address of your device once in access point mode.
