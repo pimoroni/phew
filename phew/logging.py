@@ -1,4 +1,4 @@
-import machine, os, time, network
+import machine, os, time, network, gc
 
 def datetime_string():
   dt = machine.RTC().datetime()
@@ -6,7 +6,7 @@ def datetime_string():
 
 def log(level, text):
   datetime = datetime_string()
-  log_entry = "{0} [{1:8}] {2}".format(datetime, level, text)
+  log_entry = "{0} [{1:8} /{2:>8}] {3}".format(datetime, level, gc.mem_free(), text)
   print(log_entry)
   with open("log.txt", "a") as logfile:
     logfile.write(log_entry + '\n')
