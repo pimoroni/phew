@@ -31,7 +31,7 @@ def urldecode(text):
 def _parse_query_string(query_string):
   result = {}
   for parameter in query_string.split("&"):
-    key, value = parameter.split("=")
+    key, value = parameter.split("=", 1)
     key = urldecode(key)
     value = urldecode(value)
     result[key] = value
