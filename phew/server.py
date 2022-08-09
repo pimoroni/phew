@@ -13,7 +13,7 @@ def file_exists(filename):
 
 
 def urldecode(text):
-  text.replace("+", " ")
+  text = text.replace("+", " ")
   result = ""
   token_caret = 0
   # decode any % encoded characters
