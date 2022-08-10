@@ -21,7 +21,7 @@ def truncate(target):
   # calculate how many bytes we're aiming to discard
   discard = size - target
 
-  if discard < 0:
+  if discard <= 0:
     return
 
   with open(_log_file, "rb") as infile:
