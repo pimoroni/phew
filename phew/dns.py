@@ -20,13 +20,13 @@ async def _handler(socket, ip_address):
     except Exception as e:
       logging.error(e)
 
-def run_catchall(ip_address, port = 53):
+def run_catchall(ip_address, port=53):
   logging.info("> starting catch all dns server on port {}".format(port))
 
   _socket = usocket.socket(usocket.AF_INET, usocket.SOCK_DGRAM)
   _socket.setblocking(False)
   _socket.setsockopt(usocket.SOL_SOCKET, usocket.SO_REUSEADDR, 1)
   _socket.bind(usocket.getaddrinfo(ip_address, port, 0, usocket.SOCK_DGRAM)[0][-1])
-  
+
   loop = uasyncio.get_event_loop()
   loop.create_task(_handler(_socket, ip_address))
