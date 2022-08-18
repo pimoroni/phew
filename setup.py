@@ -2,7 +2,7 @@ from setuptools import setup
 
 setup(
     name="micropython-phew",
-    version="0.0.1-post1",
+    version="0.0.2",
     description="A small webserver and templating library specifically designed for MicroPython on the Pico W.",
     long_description=open("README.md").read(),
     long_description_content_type="text/markdown",

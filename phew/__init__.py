@@ -1,5 +1,7 @@
-# highly recommended to set a lowish garbage collection threshold 
-# to minimise memory fragmentation as we sometimes want to 
+__version__ = "0.0.2"
+
+# highly recommended to set a lowish garbage collection threshold
+# to minimise memory fragmentation as we sometimes want to
 # allocate relatively large blocks of ram.
 import gc
 gc.threshold(50000)
