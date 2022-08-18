@@ -8,12 +8,11 @@
 #
 # with your wifi details instead of <ssid> and <password>.
 
-import sys, network, time
-
-from phew import server, logging, connect_to_wifi
+from phew import server, connect_to_wifi
 from phew.template import render_template
 
 import secrets
+
 connect_to_wifi(secrets.WIFI_SSID, secrets.WIFI_PASSWORD)
 
 # basic response with status code and content type
@@ -39,7 +38,7 @@ def teapot(request):
 # custom response object
 @server.route("/response", methods=["GET"])
 def response_object(request):
-  return Response("test body", status=302, content_type="text/html", headers={"Cache-Control": "max-age=3600"})
+  return server.Response("test body", status=302, content_type="text/html", headers={"Cache-Control": "max-age=3600"})
 
 # query string example
 @server.route("/random", methods=["GET"])

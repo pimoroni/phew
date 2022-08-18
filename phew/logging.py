@@ -65,7 +65,7 @@ def info(*items):
 
 def warn(*items):
   log("warning", " ".join(map(str, items)))
-  
+
 def error(*items):
   log("error", " ".join(map(str, items)))
 

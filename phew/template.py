@@ -5,7 +5,7 @@ async def render_template(template, **kwargs):
   start_time = time.ticks_ms()
 
   with open(template, "rb") as f:
-    # read the whole template file, we could work on single lines but 
+    # read the whole template file, we could work on single lines but
     # the performance is much worse - so long as our templates are
     # just a handful of kB it's ok to do this
     data = f.read()
@@ -26,7 +26,7 @@ async def render_template(template, **kwargs):
       expression = data[start + 2:end]
 
       # output the bit before the tag
-      yield data[token_caret:start] 
+      yield data[token_caret:start]
 
       # merge locals with the supplied named arguments and
       # the response object
