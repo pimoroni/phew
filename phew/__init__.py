@@ -18,20 +18,22 @@ except:
   logging.debug("> detected remotely mounted filesystem")
   remote_mount = True
 
+wlan = None
+
 # helper method to quickly get connected to wifi
 def connect_to_wifi(ssid, password, timeout_seconds=30):
+  global wlan
   import network, time
 
-  wlan = network.WLAN(network.STA_IF)
+  disable_wifi()
 
-  wlan.active(True)
-  wlan.disconnect()
-    
+  wlan = network.WLAN(network.STA_IF)
+  wlan.active(True)    
   wlan.connect(ssid, password)
 
   start = time.ticks_ms()
   while not wlan.isconnected() and (time.ticks_ms() - start) < (timeout_seconds * 1000):
-    machine.idle()
+    time.sleep(0.25)
 
   if wlan.status() != 3:
     return None
@@ -40,19 +42,25 @@ def connect_to_wifi(ssid, password, timeout_seconds=30):
 
 # helper method to put the pico into access point mode
 def access_point(ssid, password = None):
+  global wlan
   import network
 
+  disable_wifi()
+
   # start up network in access point mode  
-  ap = network.WLAN(network.AP_IF)
-  if ap.isconnected():
-    ap.disconnect()
-  ap.active(False)
-
-  ap.config(essid=ssid)
+  wlan = network.WLAN(network.AP_IF)
+  wlan.config(essid=ssid)
   if password:
-    ap.config(password=password)
+    wlan.config(password=password)
   else:    
-    ap.config(security=0) # disable password
-  ap.active(True)
+    wlan.config(security=0) # disable password
+  wlan.active(True)
 
-  return ap
+  return wlan
+
+def disable_wifi():
+  global wlan
+  if wlan:
+    wlan.disconnect()
+    wlan.active(False)
+    wlan = None
