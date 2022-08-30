@@ -37,7 +37,15 @@ async def render_template(template, **kwargs):
 
       # parse the expression
       try:
-        result = eval(expression, globals(), params)
+        if expression.decode("utf-8") in params:
+          result = params[expression.decode("utf-8")]
+          result = result.replace("&", "&amp;")
+          result = result.replace('"', "&quot;")
+          result = result.replace("'", "&apos;")
+          result = result.replace(">", "&gt;")
+          result = result.replace("<", "&lt;")
+        else:
+          result = eval(expression, globals(), params)
 
         if type(result).__name__ == "generator":
           # if expression returned a generator then iterate it fully
