@@ -62,7 +62,7 @@ def truncate(file, target_size):
 
 def log(level, text):
   datetime = datetime_string()
-  log_entry = "{0} [{1:8} /{2:>8}] {3}".format(datetime, level, gc.mem_free(), text)
+  log_entry = "{0} [{1:8} /{2:>4}kB] {3}".format(datetime, level, round(gc.mem_free() / 1024), text)
   print(log_entry)
   with open(log_file, "a") as logfile:
     logfile.write(log_entry + '\n')

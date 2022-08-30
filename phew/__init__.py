@@ -3,7 +3,7 @@ __version__ = "0.0.2"
 # highly recommended to set a lowish garbage collection threshold
 # to minimise memory fragmentation as we sometimes want to
 # allocate relatively large blocks of ram.
-import gc, os
+import gc, os, machine
 gc.threshold(50000)
 
 # phew! the Pico (or Python) HTTP Endpoint Wrangler
@@ -22,16 +22,16 @@ except:
 def connect_to_wifi(ssid, password, timeout_seconds=30):
   import network, time
 
-  rp2.country("GB")
   wlan = network.WLAN(network.STA_IF)
+
   wlan.active(True)
+  wlan.disconnect()
+    
   wlan.connect(ssid, password)
 
   start = time.ticks_ms()
-  while (time.ticks_ms() - start) < (timeout_seconds * 1000):
-    if wlan.status() < 0 or wlan.status() >= 3:
-      break
-    time.sleep(0.1)
+  while not wlan.isconnected() and (time.ticks_ms() - start) < (timeout_seconds * 1000):
+    machine.idle()
 
   if wlan.status() != 3:
     return None
@@ -40,10 +40,9 @@ def connect_to_wifi(ssid, password, timeout_seconds=30):
 
 # helper method to put the pico into access point mode
 def access_point(ssid, password = None):
-  import rp2, network
+  import network
 
-  # start up network in access point mode
-  rp2.country("GB")
+  # start up network in access point mode  
   ap = network.WLAN(network.AP_IF)
   if ap.isconnected():
     ap.disconnect()
