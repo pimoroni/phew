@@ -18,21 +18,36 @@ except:
   logging.debug("> detected remotely mounted filesystem")
   remote_mount = True
 
-wlan = None
+def is_connected_to_wifi():
+  import network, time
+  wlan = network.WLAN(network.STA_IF)
+  return wlan.isconnected()
 
 # helper method to quickly get connected to wifi
 def connect_to_wifi(ssid, password, timeout_seconds=30):
-  global wlan
   import network, time
 
-  disable_wifi()
+  statuses = {
+    network.STAT_IDLE: "idle",
+    network.STAT_CONNECTING: "connecting",
+    network.STAT_WRONG_PASSWORD: "wrong password",
+    network.STAT_NO_AP_FOUND: "access point not found",
+    network.STAT_CONNECT_FAIL: "connection failed",
+    network.STAT_GOT_IP: "got ip address"
+  }
 
   wlan = network.WLAN(network.STA_IF)
   wlan.active(True)    
   wlan.connect(ssid, password)
-
   start = time.ticks_ms()
+  status = wlan.status()
+
+  logging.debug(f"  - {statuses[status]}")
   while not wlan.isconnected() and (time.ticks_ms() - start) < (timeout_seconds * 1000):
+    new_status = wlan.status()
+    if status != new_status:
+      logging.debug(f"  - {statuses[status]}")
+      status = new_status
     time.sleep(0.25)
 
   if wlan.status() != 3:
@@ -42,10 +57,7 @@ def connect_to_wifi(ssid, password, timeout_seconds=30):
 
 # helper method to put the pico into access point mode
 def access_point(ssid, password = None):
-  global wlan
   import network
-
-  disable_wifi()
 
   # start up network in access point mode  
   wlan = network.WLAN(network.AP_IF)
@@ -57,10 +69,3 @@ def access_point(ssid, password = None):
   wlan.active(True)
 
   return wlan
-
-def disable_wifi():
-  global wlan
-  if wlan:
-    wlan.disconnect()
-    wlan.active(False)
-    wlan = None
