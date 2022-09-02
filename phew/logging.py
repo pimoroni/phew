@@ -18,6 +18,10 @@ def file_size(file):
   except OSError:
     return None
 
+def set_truncate_thresholds(truncate_at, truncate_to):
+  _log_truncate_at = truncate_at
+  _log_truncate_to = truncate_to
+
 # truncates the log file down to a target size while maintaining
 # clean line breaks
 def truncate(file, target_size):
