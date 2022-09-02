@@ -15,7 +15,6 @@ remote_mount = False
 try:
   os.statvfs(".") # causes exception if remotely mounted (mpremote/pyboard.py)
 except:
-  logging.debug("> detected remotely mounted filesystem")
   remote_mount = True
 
 def is_connected_to_wifi():
