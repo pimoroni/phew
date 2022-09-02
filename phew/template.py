@@ -23,7 +23,7 @@ async def render_template(template, **kwargs):
         yield data[token_caret:]
         break
 
-      expression = data[start + 2:end]
+      expression = data[start + 2:end].strip()
 
       # output the bit before the tag
       yield data[token_caret:start]
