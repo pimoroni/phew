@@ -123,21 +123,16 @@ class Route:
     compare_parts = request.path.split("/")
     if len(compare_parts) != len(self.path_parts):
       return False
-    for i, compare in enumerate(compare_parts):
-      part = self.path_parts[i]
-      is_parameter = len(part) > 0 and part[0] == "<"
-      if not is_parameter and part != compare:
+    for part, compare in zip(self.path_parts, compare_parts):
+      if not part.startswith("<") and part != compare:
         return False
     return True
 
   # call the route handler passing any named parameters in the path
   def call_handler(self, request):
     parameters = {}
-    compare_parts = request.path.split("/")
-    for i, compare in enumerate(compare_parts):
-      part = self.path_parts[i]
-      is_parameter = len(part) > 0 and part[0] == "<"
-      if is_parameter:
+    for part, compare in zip(self.path_parts, request.path.split("/")):
+      if part.startswith("<"):
         name = part[1:-1]
         parameters[name] = compare
 
