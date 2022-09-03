@@ -53,10 +53,11 @@ class Request:
       self.query = _parse_query_string(self.query_string)
 
   def __str__(self):
-    return f"""request: {self.method} {self.path} {self.protocol}
-headers: {str(self.headers)}
-form: {str(self.form)}
-data: {str(self.data)}"""
+    return f"""\
+request: {self.method} {self.path} {self.protocol}
+headers: {self.headers}
+form: {self.form}
+data: {self.data}"""
 
 
 class Response:
@@ -69,9 +70,10 @@ class Response:
     self.headers[name] = value
 
   def __str__(self):
-    return f"""status: {self.status}
-headers: {str(self.headers)}
-body: {str(self.body)}"""
+    return f"""\
+status: {self.status}
+headers: {self.headers}
+body: {self.body}"""
 
 
 content_type_map = {
@@ -142,8 +144,9 @@ class Route:
     return self.handler(request, **parameters)
         
   def __str__(self):
-    return f"""path: {self.path}
-methods: {str(self.methods)}
+    return f"""\
+path: {self.path}
+methods: {self.methods}
 """
 
   def __repr__(self):
