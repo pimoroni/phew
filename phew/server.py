@@ -53,10 +53,11 @@ class Request:
       self.query = _parse_query_string(self.query_string)
 
   def __str__(self):
-    return f"""request: {self.method} {self.path} {self.protocol}
-headers: {str(self.headers)}
-form: {str(self.form)}
-data: {str(self.data)}"""
+    return f"""\
+request: {self.method} {self.path} {self.protocol}
+headers: {self.headers}
+form: {self.form}
+data: {self.data}"""
 
 
 class Response:
@@ -69,9 +70,10 @@ class Response:
     self.headers[name] = value
 
   def __str__(self):
-    return f"""status: {self.status}
-headers: {str(self.headers)}
-body: {str(self.body)}"""
+    return f"""\
+status: {self.status}
+headers: {self.headers}
+body: {self.body}"""
 
 
 content_type_map = {
@@ -121,33 +123,29 @@ class Route:
     compare_parts = request.path.split("/")
     if len(compare_parts) != len(self.path_parts):
       return False
-    for i, compare in enumerate(compare_parts):
-      part = self.path_parts[i]
-      is_parameter = len(part) > 0 and part[0] == "<"
-      if not is_parameter and part != compare:
+    for part, compare in zip(self.path_parts, compare_parts):
+      if not part.startswith("<") and part != compare:
         return False
     return True
 
   # call the route handler passing any named parameters in the path
   def call_handler(self, request):
     parameters = {}
-    compare_parts = request.path.split("/")
-    for i, compare in enumerate(compare_parts):
-      part = self.path_parts[i]
-      is_parameter = len(part) > 0 and part[0] == "<"
-      if is_parameter:
+    for part, compare in zip(self.path_parts, request.path.split("/")):
+      if part.startswith("<"):
         name = part[1:-1]
         parameters[name] = compare
 
     return self.handler(request, **parameters)
         
   def __str__(self):
-    return f"""path: {self.path}
-methods: {str(self.methods)}
+    return f"""\
+path: {self.path}
+methods: {self.methods}
 """
 
   def __repr__(self):
-    return f"<Route object {self.path} ({", ".join(self.methods)})>"
+    return f"<Route object {self.path} ({', '.join(self.methods)})>"
 
 
 # parses the headers for a http request (or the headers attached to
