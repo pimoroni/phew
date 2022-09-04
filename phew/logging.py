@@ -1,4 +1,4 @@
-import machine, os, time, network, gc
+import machine, os, gc
 
 log_file = "log.txt"
 
