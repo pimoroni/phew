@@ -10,25 +10,39 @@ quality web based interfaces for your projects.
 **phew!** is ideal for creating web based provisioning interfaces for connected projects
 using the [Raspberry Pi Pico W](https://shop.pimoroni.com/products/raspberry-pi-pico-w).
 
-- [What **phew!** does](#what-phew-does)
-- [Basic example](#basic-example)
-- [Function reference](#function-reference)
-  - [server module](#server_module)
-    - [add_route](#add_route)
-    - [set_catchall](#set_catchall)
-    - [run](#run)
-  - [Types](#types)
-    - [Request type](#request)
-    - [Response type](#response)
-      - [Shorthand](#shorthand)
-  - [Templates](#templates)
-    - [render_template](#render_template)
-    - [Template expressions](#template-expressions)
-      - [Variables](#variables)
-      - [Conditional display](#conditional-display)
-      - [Includes](#includes)
-  - [dns module](#dns_module)
-    - [run_catchall](#run_catchall)
+- [**phew!** the Pico (or Python) HTTP Endpoint Wrangler](#phew-the-pico-or-python-http-endpoint-wrangler)
+  - [What **phew!** does:](#what-phew-does)
+  - [Basic example](#basic-example)
+  - [Function reference](#function-reference)
+    - [server module](#server-module)
+      - [add_route](#add_route)
+      - [set_catchall](#set_catchall)
+      - [run](#run)
+    - [Types](#types)
+      - [Request](#request)
+      - [Response](#response)
+        - [Shorthand](#shorthand)
+    - [Templates](#templates)
+      - [render_template](#render_template)
+      - [Template expressions](#template-expressions)
+        - [Variables](#variables)
+        - [Conditional display](#conditional-display)
+        - [Includes](#includes)
+    - [logging module](#logging-module)
+      - [log(level, text)](#loglevel-text)
+      - [debug(*items)](#debugitems)
+      - [info(*items)](#infoitems)
+      - [warn(*items)](#warnitems)
+      - [error(*items)](#erroritems)
+      - [set_truncate_thresholds(truncate_at, truncate_to)](#set_truncate_thresholdstruncate_at-truncate_to)
+    - [dns module](#dns-module)
+      - [run_catchall](#run_catchall)
+    - [ntp module](#ntp-module)
+      - [fetch](#fetch)
+    - [Helper functions](#helper-functions)
+      - [connect_to_wifi](#connect_to_wifi)
+      - [access_point](#access_point)
+      - [is_connected_to_wifi](#is_connected_to_wifi)
 
 ## What **phew!** does:
 
@@ -42,7 +56,7 @@ using the [Raspberry Pi Pico W](https://shop.pimoroni.com/products/raspberry-pi-
 - catchall handler for unrouted requests
 - `multipart/form-data`, `x-www-form-urlencoded`, and JSON `POST` bodies
 - string, byte, or generator based responses
-- `connect_to_wifi` convenience method
+- `connect_to_wifi` and `access_point` convenience methods
 
 Where possible **phew!** tries to minimise the amount of code and setup that you,
 the developer, has to do in favour of picking sane defaults and hiding away bits
@@ -317,6 +331,76 @@ Hello there {{name}}!
 
 :warning: Note: you need to explicitly pass through template parameters into the included template - they are not available by default.
 
+### logging module
+
+#### log(level, text)
+
+Add a new entry into the log file.
+
+```python
+log("info", "> i'd like to take a minute, just sit right there")
+log("error", "> the license plate said 'Fresh' and it had dice in the mirror")
+```
+
+The entry will automatically have the current date and time, the `level` value, and the amount of free memory in kB prepended:
+
+```
+2022-09-04 15:29:20 [debug    / 110kB] > performing startup
+2022-09-04 15:30:42 [info     / 113kB]   - wake reason: rtc_alarm
+2022-09-04 15:30:42 [debug    / 112kB]   - turn on activity led
+2022-09-04 15:30:43 [info     / 102kB] > running pump 1 for 0.4 second
+2022-09-04 15:30:46 [info     / 110kB] > 5 cache files need uploading
+2022-09-04 15:30:46 [info     / 107kB] > connecting to wifi network 'yourssid'
+2022-09-04 15:30:48 [debug    / 100kB]   - connecting
+2022-09-04 15:30:51 [info     /  87kB]   - ip address:  192.168.x.x
+2022-09-04 15:30:57 [info     /  79kB]   - uploaded 2022-09-04T15:19:03Z.json 2022-09-04 15:31:01 [info     /  82kB]   - uploaded 2022-09-04T15:28:17Z.json 2022-09-04 15:31:06 [info     /  88kB]   - uploaded 2022-09-04T15:30:43Z.json 2022-09-04 15:31:11 [info     /  95kB]   - uploaded 2022-09-04T15:29:00Z.json 2022-09-04 15:31:16 [info     / 100kB]   - uploaded 2022-09-04T15:29:21Z.json 2022-09-04 15:31:16 [info     /  98kB] > going to sleep
+```
+
+#### debug(*items)
+
+Shorthand method for writing debug messages to the log.
+
+```python
+warn("> this is a story")
+```
+
+#### info(*items)
+
+Shorthand method for writing information to the log.
+
+```python
+num = 123
+info("> all about how", num, time.time())
+```
+
+#### warn(*items)
+
+Shorthand method for writing warnings to the log.
+
+```python
+warn("> my life got flipped")
+```
+
+#### error(*items)
+
+Shorthand method for writing errors to the log.
+
+```python
+warn("> turned upside down")
+```
+
+#### set_truncate_thresholds(truncate_at, truncate_to)
+
+Will automatically truncate the log file to `truncate_to` bytes long when it reaches `truncate_at` bytes in length.
+
+```python
+# automatically truncate when we're closed to the 
+# filesystem block size to keep to a single block
+set_truncate_thresholds(3.5 * 1024, 2 * 1.024)
+```
+
+Truncation always happens on the nearest line ending boundary so the truncated file may not exactly match the size specified.
+
 ### dns module
 
 To make implementing device provisioning interfaces (via captive portal) simple **phew!** provides a catchall DNS server.
@@ -330,3 +414,47 @@ dns.run_catchall(ip_address)
 ```
 
 Pass in the IP address of your device once in access point mode.
+
+### ntp module
+
+It's often important to synchronise readings with the correct time. This module makes fetching the time from ntp.pool.org simple and can optionally synchronise the internal clock.
+
+#### fetch
+
+```python
+timestamp = ntp.fetch(synch_with_rtc=True, timeout=10)
+```
+
+Returns a tuple with the current date and time - the return value is the same as that returned by `time.gmtime()` from the standard library.
+
+```python
+(year, month, day, hour, minute, second, weekday, yearday)
+```
+
+### Helper functions
+
+#### connect_to_wifi
+
+```python
+connect_to_wifi(ssid, password, timeout=30)
+```
+
+Connects to the network specified by `ssid` with the provided password. 
+
+Returns the device IP address on success or `None` on failure.
+
+#### access_point
+
+```python
+access_point(ssid, password=None)
+```
+
+Create an access point with the specified SSID. Optionally password protected if provided.
+
+#### is_connected_to_wifi
+
+```python
+result = is_connected_to_wifi()
+```
+
+Returns `True` if there is an active WiFi connection.
