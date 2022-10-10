@@ -4,7 +4,7 @@
 # following two lines to it:
 #
 #	WIFI_SSID = "<ssid>"
-#	WIFI_PASSWORD "<password>"
+#	WIFI_PASSWORD = "<password>"
 #
 # with your wifi details instead of <ssid> and <password>.
 
