@@ -93,7 +93,7 @@ assuming the correctness of incoming requests.
 ---
 
 ## Function reference
-  
+
 ### server module
 
 The `server` module provides all functionality for running a web server with 
@@ -307,7 +307,7 @@ or
 </div>
 ```
 
-While a bit unweildy this methods works. An alternative would be to select the appropriate
+While a bit unwieldy this methods works. An alternative would be to select the appropriate
 value in your handler and simply pass it into the template as a parameter however that
 would mean having some of your copy embedded into your Python code rather than all of it
 in one place in the template file.
