@@ -50,7 +50,7 @@ def connect_to_wifi(ssid, password, timeout_seconds=30):
     time.sleep(0.25)
 
   if wlan.status() == network.STAT_GOT_IP:
-    print("IP SERVER ADDRESS: "+ wlan.ifconfig()[0]
+    print("IP SERVER ADDRESS: "+ wlan.ifconfig()[0])
     return wlan.ifconfig()[0]
   return None
 
