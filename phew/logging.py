@@ -2,12 +2,14 @@ import machine, os, gc
 
 log_file = "log.txt"
 
-LOG_INFO = 0b0001
-LOG_WARNING = 0b0010
-LOG_ERROR = 0b0100
-LOG_DEBUG = 0b1000
+LOG_INFO = 0b00001
+LOG_WARNING = 0b00010
+LOG_ERROR = 0b00100
+LOG_DEBUG = 0b01000
+LOG_EXCEPTION = 0b10000
+LOG_ALL = LOG_INFO | LOG_WARNING | LOG_ERROR | LOG_DEBUG | LOG_EXCEPTION
 
-_logging_types = LOG_INFO | LOG_WARNING | LOG_ERROR | LOG_DEBUG
+_logging_types = LOG_ALL
 
 # the log file will be truncated if it exceeds _log_truncate_at bytes in
 # size. the defaults values are designed to limit the log to at most
@@ -31,9 +33,13 @@ def set_truncate_thresholds(truncate_at, truncate_to):
   _log_truncate_at = truncate_at
   _log_truncate_to = truncate_to
 
-def set_logging_types(types):
+def enable_logging_types(types):
   global _logging_types
-  _logging_types = types
+  _logging_types = _logging_types | types
+
+def disable_logging_types(types):
+  global _logging_types
+  _logging_types = _logging_types & ~types
 
 # truncates the log file down to a target size while maintaining
 # clean line breaks
@@ -99,3 +105,7 @@ def error(*items):
 def debug(*items):
   if _logging_types & LOG_DEBUG:
     log("debug", " ".join(map(str, items)))
+
+def exception(*items):
+  if _logging_types & LOG_EXCEPTION:
+    log("exception", " ".join(map(str, items)))
