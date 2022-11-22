@@ -1,16 +1,36 @@
 import uasyncio, os, time
 from . import logging
+import sys
+import io
 
 _routes = []
 catchall_handler = None
+_error_handler = None
+_default_error_message = """
+<!DOCTYPE HTML>
+<HTML>
+<HEAD>
+<TITLE>Error</TITLE>
+</HEAD>
+<BODY>
+<h1>Internal Server Error</h1>
+<p>Please check log for detail.</p>
+</BODY>
+</HTML>
+"""
 
+# convert exception to string
+def convert_exc2str(e):
+  __ = io.StringIO()
+  sys.print_exception(e, __)
+  __.seek(0)
+  return __.read()
 
 def file_exists(filename):
   try:
     return (os.stat(filename)[0] & 0x4000) == 0
   except OSError:
     return False
-
 
 def urldecode(text):
   text = text.replace("+", " ")
@@ -137,7 +157,7 @@ class Route:
         parameters[name] = compare
 
     return self.handler(request, **parameters)
-        
+
   def __str__(self):
     return f"""\
 path: {self.path}
@@ -208,7 +228,7 @@ async def _parse_json_body(reader, headers):
 
 
 status_message_map = {
-  200: "OK", 201: "Created", 202: "Accepted", 
+  200: "OK", 201: "Created", 202: "Accepted",
   203: "Non-Authoritative Information", 204: "No Content",
   205: "Reset Content", 206: "Partial Content", 300: "Multiple Choices",
   301: "Moved Permanently", 302: "Found", 303: "See Other",
@@ -217,11 +237,10 @@ status_message_map = {
   400: "Bad Request", 401: "Unauthorized", 403: "Forbidden",
   404: "Not Found", 405: "Method Not Allowed", 406: "Not Acceptable",
   408: "Request Timeout", 409: "Conflict", 410: "Gone",
-  414: "URI Too Long", 415: "Unsupported Media Type", 
+  414: "URI Too Long", 415: "Unsupported Media Type",
   416: "Range Not Satisfiable", 418: "I'm a teapot",
   500: "Internal Server Error", 501: "Not Implemented"
 }
-
 
 # handle an incoming request to the web server
 async def _handle_request(reader, writer):
@@ -245,13 +264,23 @@ async def _handle_request(reader, writer):
       request.data = await _parse_json_body(reader, request.headers)
     if request.headers["content-type"].startswith("application/x-www-form-urlencoded"):
       form_data = await reader.read(int(request.headers["content-length"]))
-      request.form = _parse_query_string(form_data.decode()) 
+      request.form = _parse_query_string(form_data.decode())
 
   route = _match_route(request)
-  if route:
-    response = route.call_handler(request)
-  elif catchall_handler:
-    response = catchall_handler(request)
+
+  try:
+    if route:
+      response = route.call_handler(request)
+    elif catchall_handler:
+      response = catchall_handler(request)
+
+  except Exception as e:
+    error_msg = convert_exc2str(e)
+    logging.error(error_msg)
+    if _error_handler is None:
+      response = Response(_default_error_message, status = 500)
+    else:
+      response = _error_handler(e, error_msg)
 
   # if shorthand body generator only notation used then convert to tuple
   if type(response).__name__ == "generator":
@@ -270,7 +299,7 @@ async def _handle_request(reader, writer):
     response.add_header("Content-Type", content_type)
     if hasattr(body, '__len__'):
       response.add_header("Content-Length", len(body))
-  
+
   # write status line
   status_message = status_message_map.get(response.status, "Unknown")
   writer.write(f"HTTP/1.1 {response.status} {status_message}\r\n".encode("ascii"))
@@ -281,7 +310,7 @@ async def _handle_request(reader, writer):
 
   # blank line to denote end of headers
   writer.write("\r\n".encode("ascii"))
- 
+
   if isinstance(response, FileResponse):
     # file
     with open(response.file, "rb") as f:
@@ -300,10 +329,10 @@ async def _handle_request(reader, writer):
     # string/bytes
     writer.write(response.body)
     await writer.drain()
-  
+
   writer.close()
   await writer.wait_closed()
-  
+
   processing_time = time.ticks_ms() - request_start_time
   logging.info(f"> {request.method} {request.path} ({response.status} {status_message}) [{processing_time}ms]")
 
@@ -335,7 +364,15 @@ def catchall():
     set_callback(f)
     return f
   return _catchall
-  
+
+def errorhandler():
+  def _wrap(f):
+    global _error_handler
+    _error_handler = f
+    return f
+  return _wrap
+
+
 
 def redirect(url, status = 301):
   return Response("", status, {"Location": url})
