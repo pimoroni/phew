@@ -54,7 +54,7 @@ async def render_template(template, **kwargs):
             yield chunk
         else:
           # yield the result of the expression
-          if result:
+          if result is not None:
             yield str(result)
       except:
         pass
