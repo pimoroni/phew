@@ -2,6 +2,15 @@ import machine, os, gc
 
 log_file = "log.txt"
 
+LOG_INFO = 0b00001
+LOG_WARNING = 0b00010
+LOG_ERROR = 0b00100
+LOG_DEBUG = 0b01000
+LOG_EXCEPTION = 0b10000
+LOG_ALL = LOG_INFO | LOG_WARNING | LOG_ERROR | LOG_DEBUG | LOG_EXCEPTION
+
+_logging_types = LOG_ALL
+
 # the log file will be truncated if it exceeds _log_truncate_at bytes in
 # size. the defaults values are designed to limit the log to at most
 # three blocks on the Pico
@@ -19,8 +28,18 @@ def file_size(file):
     return None
 
 def set_truncate_thresholds(truncate_at, truncate_to):
+  global _log_truncate_at
+  global _log_truncate_to
   _log_truncate_at = truncate_at
   _log_truncate_to = truncate_to
+
+def enable_logging_types(types):
+  global _logging_types
+  _logging_types = _logging_types | types
+
+def disable_logging_types(types):
+  global _logging_types
+  _logging_types = _logging_types & ~types
 
 # truncates the log file down to a target size while maintaining
 # clean line breaks
@@ -72,13 +91,21 @@ def log(level, text):
     truncate(log_file, _log_truncate_to)
 
 def info(*items):
-  log("info", " ".join(map(str, items)))
+  if _logging_types & LOG_INFO:
+    log("info", " ".join(map(str, items)))
 
 def warn(*items):
-  log("warning", " ".join(map(str, items)))
+  if _logging_types & LOG_WARNING:
+    log("warning", " ".join(map(str, items)))
 
 def error(*items):
-  log("error", " ".join(map(str, items)))
+  if _logging_types & LOG_ERROR:
+    log("error", " ".join(map(str, items)))
 
 def debug(*items):
-  log("debug", " ".join(map(str, items)))
+  if _logging_types & LOG_DEBUG:
+    log("debug", " ".join(map(str, items)))
+
+def exception(*items):
+  if _logging_types & LOG_EXCEPTION:
+    log("exception", " ".join(map(str, items)))
