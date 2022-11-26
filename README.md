@@ -183,7 +183,7 @@ Handler functions provided to `add_route` and `set_catchall` will recieve a
 At the time your route handler is being called the request has been fully parsed and you can access any properties that are relevant to the request (e.g. the `form` dictionary for a `multipart/form-data` request) any irrelevant properties will be set to `None`.
 
 ```python
-@server.add_route("/login", ["POST"])
+@server.route("/login", ["POST"])
 def login_form(request):
   username = request.form.get("username", None)
   password = request.form.get("password", None)
@@ -215,7 +215,7 @@ of shorthand forms to avoid writing the boilerplate needed.
 |body|`"this is the response body"`|string or generator|the content to be returned|
 
 ```python
-@server.add_route("/greeting/<name>", ["GET"])
+@server.route("/greeting/<name>", ["GET"])
 def user_details(request):
   return Response(f"Hello, {name}", status=200, {"Content-Type": "text/html"})
 ```
@@ -232,7 +232,7 @@ one and three values:
 For example:
 
 ```python
-@server.add_route("/greeting/<name>", ["GET"])
+@server.route("/greeting/<name>", ["GET"])
 def user_details(request, name):
   return f"Hello, {name}", 200
 ```
