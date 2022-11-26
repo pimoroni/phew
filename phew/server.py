@@ -267,7 +267,7 @@ async def _handle_request(reader, writer):
       request.form = _parse_query_string(form_data.decode())
 
   route = _match_route(request)
-
+  global _error_handler
   try:
     if route:
       response = route.call_handler(request)
@@ -276,11 +276,20 @@ async def _handle_request(reader, writer):
 
   except Exception as e:
     error_msg = convert_exc2str(e)
-    logging.error(error_msg)
-    if _error_handler is None:
-      response = Response(_default_error_message, status = 500)
-    else:
-      response = _error_handler(e, error_msg)
+    try:
+
+      if _error_handler is not None:
+        response = _error_handler(e, error_msg)
+
+    except Exception as ee:
+      # replacing error message with new one
+      error_msg = convert_exc2str(ee)
+
+    finally:
+      if response is None:
+        response = Response(_default_error_message, status = 500)
+
+      logging.error(error_msg)
 
   # if shorthand body generator only notation used then convert to tuple
   if type(response).__name__ == "generator":
