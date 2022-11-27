@@ -12,6 +12,7 @@ using the [Raspberry Pi Pico W](https://shop.pimoroni.com/products/raspberry-pi-
 
 - [**phew!** the Pico (or Python) HTTP Endpoint Wrangler](#phew-the-pico-or-python-http-endpoint-wrangler)
   - [What **phew!** does:](#what-phew-does)
+  - [How to use](#How-to-use)
   - [Basic example](#basic-example)
   - [Function reference](#function-reference)
     - [server module](#server-module)
@@ -61,6 +62,10 @@ using the [Raspberry Pi Pico W](https://shop.pimoroni.com/products/raspberry-pi-
 Where possible **phew!** tries to minimise the amount of code and setup that you,
 the developer, has to do in favour of picking sane defaults and hiding away bits
 of minutiae that rarely needs to be tweaked.
+
+## How to use
+
+**phew!** can be installed using [pip](https://pypi.org/project/micropython-phew/) from the command line or from your favourite IDE. In Thonny this can be achieved by clicking `Tools` -> `Manage packages` and searching for `micropython-phew`.
 
 ## Basic example
 
