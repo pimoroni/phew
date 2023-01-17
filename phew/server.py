@@ -3,6 +3,7 @@ from . import logging
 
 _routes = []
 catchall_handler = None
+loop = uasyncio.get_event_loop()
 
 
 def file_exists(filename):
@@ -347,7 +348,11 @@ def serve_file(file):
 
 def run(host = "0.0.0.0", port = 80):
   logging.info("> starting web server on port {}".format(port))
-
-  loop = uasyncio.get_event_loop()
   loop.create_task(uasyncio.start_server(_handle_request, host, port))
   loop.run_forever()
+
+def stop():
+  loop.stop()
+
+def close():
+  loop.close()
