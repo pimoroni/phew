@@ -1,0 +1,13 @@
+{
+  "urls": [
+    ["phew/__init__.py", "github:pimoroni/phew/phew/__init__.py"],
+    ["phew/dns.py", "github:pimoroni/phew/phew/dns.py"],
+    ["phew/logging.py", "github:pimoroni/phew/phew/logging.py"],
+    ["phew/ntp.py", "github:pimoroni/phew/phew/ntp.py"],
+    ["phew/server.py", "github:pimoroni/phew/phew/server.py"],
+    ["phew/template.py", "github:pimoroni/phew/phew/template.py"]
+  ],
+  "deps": [
+  ],
+  "version": "0.0.3"
+}
