@@ -6,7 +6,7 @@ def fetch(synch_with_rtc=True, timeout=10):
   timestamp = None
   try:
     query = bytearray(48)
-    query[0] = 0x1b
+    query[0] = 0x23
     address = usocket.getaddrinfo(ntp_host, 123)[0][-1]
     socket = usocket.socket(usocket.AF_INET, usocket.SOCK_DGRAM)
     socket.settimeout(timeout)
