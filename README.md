@@ -139,7 +139,7 @@ server.set_catchall(my_catchall)
 Or, alternatively, using a decorator:
 
 ```python
-@server.set_catchall()
+@server.catchall()
 def my_catchall(request):
   return "No matching route", 404
 ```
