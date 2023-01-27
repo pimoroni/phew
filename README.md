@@ -15,34 +15,32 @@ using the [Raspberry Pi Pico W](https://shop.pimoroni.com/products/raspberry-pi-
   - [Basic example](#basic-example)
   - [Function reference](#function-reference)
     - [server module](#server-module)
-      - [add_route](#add_route)
-      - [set_catchall](#set_catchall)
+      - [add\_route](#add_route)
+      - [set\_catchall](#set_catchall)
       - [run](#run)
     - [Types](#types)
       - [Request](#request)
       - [Response](#response)
         - [Shorthand](#shorthand)
     - [Templates](#templates)
-      - [render_template](#render_template)
+      - [render\_template](#render_template)
       - [Template expressions](#template-expressions)
         - [Variables](#variables)
         - [Conditional display](#conditional-display)
         - [Includes](#includes)
     - [logging module](#logging-module)
       - [log(level, text)](#loglevel-text)
-      - [debug(*items)](#debugitems)
-      - [info(*items)](#infoitems)
-      - [warn(*items)](#warnitems)
-      - [error(*items)](#erroritems)
-      - [set_truncate_thresholds(truncate_at, truncate_to)](#set_truncate_thresholdstruncate_at-truncate_to)
+      - [debug(\*items)](#debugitems)
+      - [info(\*items)](#infoitems)
+      - [warn(\*items)](#warnitems)
+      - [error(\*items)](#erroritems)
+      - [set\_truncate\_thresholds(truncate\_at, truncate\_to)](#set_truncate_thresholdstruncate_at-truncate_to)
     - [dns module](#dns-module)
-      - [run_catchall](#run_catchall)
-    - [ntp module](#ntp-module)
-      - [fetch](#fetch)
+      - [run\_catchall](#run_catchall)
     - [Helper functions](#helper-functions)
-      - [connect_to_wifi](#connect_to_wifi)
-      - [access_point](#access_point)
-      - [is_connected_to_wifi](#is_connected_to_wifi)
+      - [connect\_to\_wifi](#connect_to_wifi)
+      - [access\_point](#access_point)
+      - [is\_connected\_to\_wifi](#is_connected_to_wifi)
 
 ## What **phew!** does:
 
@@ -414,22 +412,6 @@ dns.run_catchall(ip_address)
 ```
 
 Pass in the IP address of your device once in access point mode.
-
-### ntp module
-
-It's often important to synchronise readings with the correct time. This module makes fetching the time from ntp.pool.org simple and can optionally synchronise the internal clock.
-
-#### fetch
-
-```python
-timestamp = ntp.fetch(synch_with_rtc=True, timeout=10)
-```
-
-Returns a tuple with the current date and time - the return value is the same as that returned by `time.gmtime()` from the standard library.
-
-```python
-(year, month, day, hour, minute, second, weekday, yearday)
-```
 
 ### Helper functions
 
