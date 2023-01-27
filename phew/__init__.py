@@ -17,6 +17,13 @@ try:
 except:
   remote_mount = True
 
+def get_ip_address():
+  import network
+  try:
+    return network.WLAN(network.STA_IF).ifconfig()[0]
+  except:
+    return None
+
 def is_connected_to_wifi():
   import network, time
   wlan = network.WLAN(network.STA_IF)
