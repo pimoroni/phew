@@ -41,6 +41,7 @@ using the [Raspberry Pi Pico W](https://shop.pimoroni.com/products/raspberry-pi-
       - [connect\_to\_wifi](#connect_to_wifi)
       - [access\_point](#access_point)
       - [is\_connected\_to\_wifi](#is_connected_to_wifi)
+      - [get\_ip\_address](#get_ip_address)
 
 ## What **phew!** does:
 
@@ -440,3 +441,11 @@ result = is_connected_to_wifi()
 ```
 
 Returns `True` if there is an active WiFi connection.
+
+#### get_ip_address
+
+```python
+get_ip_address()
+```
+
+Returns the current IP address if connected to a network or acting as an access point or `None` otherwise.
