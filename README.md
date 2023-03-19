@@ -1,8 +1,5 @@
 # **phew!** the Pico (or Python) HTTP Endpoint Wrangler
 
-> :warning: **Heads up! This is a very new project and should be considered, at best,
-alpha stage.**
-
 A small webserver and templating library specifically designed for MicroPython
 on the Pico W. It aims to provide a complete toolkit for easily creating high
 quality web based interfaces for your projects.
