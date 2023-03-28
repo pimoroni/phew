@@ -9,7 +9,7 @@ using the [Raspberry Pi Pico W](https://shop.pimoroni.com/products/raspberry-pi-
 
 - [**phew!** the Pico (or Python) HTTP Endpoint Wrangler](#phew-the-pico-or-python-http-endpoint-wrangler)
   - [What **phew!** does:](#what-phew-does)
-  - [How to use](#How-to-use)
+  - [How to use](#how-to-use)
   - [Basic example](#basic-example)
   - [Function reference](#function-reference)
     - [server module](#server-module)
@@ -40,6 +40,7 @@ using the [Raspberry Pi Pico W](https://shop.pimoroni.com/products/raspberry-pi-
       - [access\_point](#access_point)
       - [is\_connected\_to\_wifi](#is_connected_to_wifi)
       - [get\_ip\_address](#get_ip_address)
+  - [Other Resources](#other-resources)
 
 ## What **phew!** does:
 
@@ -451,3 +452,11 @@ get_ip_address()
 ```
 
 Returns the current IP address if connected to a network or acting as an access point or `None` otherwise.
+
+## Other Resources
+
+Here are some Phew! community projects and guides that you might find useful. Note that code at the links below has not been tested by us and we're not able to offer support with it.
+
+- :link: [Hacking Big Mouth Billy Bass](https://www.youtube.com/watch?v=dOEjfBplueM)
+- :link: [How to set up a Phew! Access Point](https://www.kevsrobots.com/blog/phew-access-point.html)
+- :link: [Wireless Networking Setup Example for Raspberry Pi Pico W](https://github.com/simonprickett/phewap)
