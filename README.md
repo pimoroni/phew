@@ -314,6 +314,18 @@ It's also possible to perform more complicated transformations using any built i
   <div id="name">{{"/".join(name.split(" "))}}</div>
 ```
 
+##### Lists
+
+It is possible to perform operations on lists using str.join and list comprehension as in the following table example.
+
+```html
+<table>
+{{"".join([f"<tr><td>item</td></tr>\r\n" for item in mylist])}}
+</table>
+```
+
+
+
 ##### Conditional display
 
 If you want to show a value only if some other condition is met then you can use the
