@@ -1,9 +1,7 @@
 import uasyncio, os, time
 from . import logging
 
-_routes = []
-catchall_handler = None
-loop = uasyncio.get_event_loop()
+
 
 
 def file_exists(filename):
@@ -162,13 +160,6 @@ async def _parse_headers(reader):
   return headers
 
 
-# returns the route matching the supplied path or None
-def _match_route(request):
-  for route in _routes:
-    if route.matches(request):
-      return route
-  return None
-
 
 # if the content type is multipart/form-data then parse the fields
 async def _parse_form_data(reader, headers):
@@ -224,135 +215,192 @@ status_message_map = {
 }
 
 
-# handle an incoming request to the web server
-async def _handle_request(reader, writer):
-  response = None
+class Phew:
 
-  request_start_time = time.ticks_ms()
+  def __init__(self):
+    self._routes = []
+    self.catchall_handler = None
+    self.loop = uasyncio.get_event_loop()
 
-  request_line = await reader.readline()
-  try:
-    method, uri, protocol = request_line.decode().split()
-  except Exception as e:
-    logging.error(e)
-    return
+  # handle an incoming request to the web server
+  async def _handle_request(self, reader, writer):
+    response = None
 
-  request = Request(method, uri, protocol)
-  request.headers = await _parse_headers(reader)
-  if "content-length" in request.headers and "content-type" in request.headers:
-    if request.headers["content-type"].startswith("multipart/form-data"):
-      request.form = await _parse_form_data(reader, request.headers)
-    if request.headers["content-type"].startswith("application/json"):
-      request.data = await _parse_json_body(reader, request.headers)
-    if request.headers["content-type"].startswith("application/x-www-form-urlencoded"):
-      form_data = await reader.read(int(request.headers["content-length"]))
-      request.form = _parse_query_string(form_data.decode()) 
+    request_start_time = time.ticks_ms()
 
-  route = _match_route(request)
-  if route:
-    response = route.call_handler(request)
-  elif catchall_handler:
-    response = catchall_handler(request)
+    request_line = await reader.readline()
+    try:
+      method, uri, protocol = request_line.decode().split()
+    except Exception as e:
+      logging.error(e)
+      return
 
-  # if shorthand body generator only notation used then convert to tuple
-  if type(response).__name__ == "generator":
-    response = (response,)
+    request = Request(method, uri, protocol)
+    request.headers = await _parse_headers(reader)
+    if "content-length" in request.headers and "content-type" in request.headers:
+      if request.headers["content-type"].startswith("multipart/form-data"):
+        request.form = await _parse_form_data(reader, request.headers)
+      if request.headers["content-type"].startswith("application/json"):
+        request.data = await _parse_json_body(reader, request.headers)
+      if request.headers["content-type"].startswith("application/x-www-form-urlencoded"):
+        form_data = await reader.read(int(request.headers["content-length"]))
+        request.form = _parse_query_string(form_data.decode())
 
-  # if shorthand body text only notation used then convert to tuple
-  if isinstance(response, str):
-    response = (response,)
+    route = self._match_route(request)
+    if route:
+      response = route.call_handler(request)
+    elif self.catchall_handler:
+      response = self.catchall_handler(request)
 
-  # if shorthand tuple notation used then build full response object
-  if isinstance(response, tuple):
-    body = response[0]
-    status = response[1] if len(response) >= 2 else 200
-    content_type = response[2] if len(response) >= 3 else "text/html"
-    response = Response(body, status=status)
-    response.add_header("Content-Type", content_type)
-    if hasattr(body, '__len__'):
-      response.add_header("Content-Length", len(body))
-  
-  # write status line
-  status_message = status_message_map.get(response.status, "Unknown")
-  writer.write(f"HTTP/1.1 {response.status} {status_message}\r\n".encode("ascii"))
+    # if shorthand body generator only notation used then convert to tuple
+    if type(response).__name__ == "generator":
+      response = (response,)
 
-  # write headers
-  for key, value in response.headers.items():
-    writer.write(f"{key}: {value}\r\n".encode("ascii"))
+    # if shorthand body text only notation used then convert to tuple
+    if isinstance(response, str):
+      response = (response,)
 
-  # blank line to denote end of headers
-  writer.write("\r\n".encode("ascii"))
- 
-  if isinstance(response, FileResponse):
-    # file
-    with open(response.file, "rb") as f:
-      while True:
-        chunk = f.read(1024)
-        if not chunk:
-          break
+    # if shorthand tuple notation used then build full response object
+    if isinstance(response, tuple):
+      body = response[0]
+      status = response[1] if len(response) >= 2 else 200
+      content_type = response[2] if len(response) >= 3 else "text/html"
+      response = Response(body, status=status)
+      response.add_header("Content-Type", content_type)
+      if hasattr(body, '__len__'):
+        response.add_header("Content-Length", len(body))
+
+    # write status line
+    status_message = status_message_map.get(response.status, "Unknown")
+    writer.write(f"HTTP/1.1 {response.status} {status_message}\r\n".encode("ascii"))
+
+    # write headers
+    for key, value in response.headers.items():
+      writer.write(f"{key}: {value}\r\n".encode("ascii"))
+
+    # blank line to denote end of headers
+    writer.write("\r\n".encode("ascii"))
+
+    if isinstance(response, FileResponse):
+      # file
+      with open(response.file, "rb") as f:
+        while True:
+          chunk = f.read(1024)
+          if not chunk:
+            break
+          writer.write(chunk)
+          await writer.drain()
+    elif type(response.body).__name__ == "generator":
+      # generator
+      for chunk in response.body:
         writer.write(chunk)
         await writer.drain()
-  elif type(response.body).__name__ == "generator":
-    # generator
-    for chunk in response.body:
-      writer.write(chunk)
+    else:
+      # string/bytes
+      writer.write(response.body)
       await writer.drain()
-  else:
-    # string/bytes
-    writer.write(response.body)
-    await writer.drain()
-  
-  writer.close()
-  await writer.wait_closed()
-  
-  processing_time = time.ticks_ms() - request_start_time
-  logging.info(f"> {request.method} {request.path} ({response.status} {status_message}) [{processing_time}ms]")
+
+    writer.close()
+    await writer.wait_closed()
+
+    processing_time = time.ticks_ms() - request_start_time
+    logging.info(f"> {request.method} {request.path} ({response.status} {status_message}) [{processing_time}ms]")
 
 
-# adds a new route to the routing table
-def add_route(path, handler, methods=["GET"]):
-  global _routes
-  _routes.append(Route(path, handler, methods))
-  # descending complexity order so most complex routes matched first
-  _routes = sorted(_routes, key=lambda route: len(route.path_parts), reverse=True)
+  # adds a new route to the routing table
+  def add_route(self, path, handler, methods=["GET"]):
+    self._routes.append(Route(path, handler, methods))
+    # descending complexity order so most complex routes matched first
+    self._routes = sorted(self._routes, key=lambda route: len(route.path_parts), reverse=True)
+
+
+  def set_callback(self, handler):
+    self.catchall_handler = handler
+
+
+  # decorator shorthand for adding a route
+  def route(self, path, methods=["GET"]):
+    def _route(f):
+      self.add_route(path, f, methods=methods)
+      return f
+    return _route
+
+
+  # decorator for adding catchall route
+  def catchall(self):
+    def _catchall(f):
+      self.set_callback(f)
+      return f
+    return _catchall
+
+  def redirect(self, url, status = 301):
+    return Response("", status, {"Location": url})
+
+  def serve_file(self, file):
+    return FileResponse(file)
+
+  # returns the route matching the supplied path or None
+  def _match_route(self, request):
+    for route in self._routes:
+      if route.matches(request):
+        return route
+    return None
+
+  def run_as_task(self, loop, host = "0.0.0.0", port = 80):
+    loop.create_task(uasyncio.start_server(self._handle_request, host, port))
+
+  def run(self, host = "0.0.0.0", port = 80):
+    logging.info("> starting web server on port {}".format(port))
+    self.loop.create_task(uasyncio.start_server(self._handle_request, host, port))
+    self.loop.run_forever()
+
+  def stop(self):
+    self.loop.stop()
+
+  def close(self):
+    self.loop.close()
+
+
+# Compatibility methods
+default_phew_app = None
+
+
+def default_phew():
+  global default_phew_app
+  if not default_phew_app:
+    default_phew_app = Phew()
+  return default_phew_app
 
 
 def set_callback(handler):
-  global catchall_handler
-  catchall_handler = handler
+  default_phew().set_callback(handler)
 
 
 # decorator shorthand for adding a route
 def route(path, methods=["GET"]):
-  def _route(f):
-    add_route(path, f, methods=methods)
-    return f
-  return _route
+  return default_phew().route(path, methods)
 
 
 # decorator for adding catchall route
 def catchall():
-  def _catchall(f):
-    set_callback(f)
-    return f
-  return _catchall
-  
+  return default_phew().catchall()
 
-def redirect(url, status = 301):
-  return Response("", status, {"Location": url})
+
+def redirect(url, status=301):
+  return default_phew().redirect(url, status)
 
 
 def serve_file(file):
-  return FileResponse(file)
+  return default_phew().serve_file(file)
 
 
-def run(host = "0.0.0.0", port = 80):
-  logging.info("> starting web server on port {}".format(port))
-  loop.create_task(uasyncio.start_server(_handle_request, host, port))
-  loop.run_forever()
+def run(host="0.0.0.0", port=80):
+  default_phew().run(host, port)
+
 
 def stop():
-  loop.stop()
+  default_phew().stop()
+
 
 def close():
-  loop.close()
+  default_phew().close()

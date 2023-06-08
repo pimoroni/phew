@@ -11,6 +11,7 @@ using the [Raspberry Pi Pico W](https://shop.pimoroni.com/products/raspberry-pi-
   - [What **phew!** does:](#what-phew-does)
   - [How to use](#how-to-use)
   - [Basic example](#basic-example)
+  - [Running multiple web applications](#running-multiple-web-applications)
   - [Function reference](#function-reference)
     - [server module](#server-module)
       - [add\_route](#add_route)
@@ -74,23 +75,52 @@ from phew import server, connect_to_wifi
 
 connect_to_wifi("<ssid>", "<password>")
 
-@server.route("/random", methods=["GET"])
+phew_app = server.Phew()
+
+@phew_app.route("/random", methods=["GET"])
 def random_number(request):
   import random
   min = int(request.query.get("min", 0))
   max = int(request.query.get("max", 100))
   return str(random.randint(min, max))
 
-@server.catchall()
+@phew_app.catchall()
 def catchall(request):
   return "Not found", 404
 
-server.run()
+phew_app.run()
 ```
 
 **phew** is designed specifically with performance and minimal resource use in mind.
 Generally this means it will prioritise doing as little work as possible including 
 assuming the correctness of incoming requests.
+
+---
+
+## Running multiple web applications
+
+A device may require multiple web apps.  For instance, a setup web app for the access point
+and a configuration web app for normal operation.  Phew supports the creation of many apps
+with registration of routes per app. To create a new app, just create another ```server.Phew```
+instance.
+
+For concurrent execute of apps, each must be configured to connect to a different port and be
+run in the same uasyncio loop as tasks.
+
+```python
+import uasyncio
+from phew import server
+
+phew_app1 = server.Phew()
+phew_app2 = server.Phew()
+
+# route methods declared here for both apps
+
+loop = uasyncio.get_event_loop()
+phew_app1.run_as_task(loop, host="0.0.0.0", port=80)
+phew_app2.run_as_task(loop, host="0.0.0.0", port=8080)
+loop.run_forever()
+```
 
 ---
 
@@ -114,13 +144,13 @@ that contains details about the request.
 def my_handler(request):
   return "I got it!", 200
 
-server.add_route("/testpath", my_handler, methods=["GET"])
+phew_app.add_route("/testpath", my_handler, methods=["GET"])
 ```
 
 Or, alternatively, using a decorator:
 
 ```python
-@server.route("/testpath", methods=["GET"])
+@phew_app.route("/testpath", methods=["GET"])
 def my_handler(request):
   return "I got it!", 200
 ```
@@ -128,7 +158,7 @@ def my_handler(request):
 #### set_catchall
 
 ```python
-server.set_catchall(handler)
+phew_app.set_catchall(handler)
 ```
 
 Provide a catchall method for requests that didn't match a route.
@@ -137,13 +167,13 @@ Provide a catchall method for requests that didn't match a route.
 def my_catchall(request):
   return "No matching route", 404
 
-server.set_catchall(my_catchall)
+phew_app.set_catchall(my_catchall)
 ```
 
 Or, alternatively, using a decorator:
 
 ```python
-@server.catchall()
+@phew_app.catchall()
 def my_catchall(request):
   return "No matching route", 404
 ```
@@ -151,13 +181,13 @@ def my_catchall(request):
 #### run
 
 ```python
-server.run(host="0.0.0.0", port=80)
+phew_app.run(host="0.0.0.0", port=80)
 ```
 
 Starts up the web server and begins handling incoming requests. 
 
 ```python
-server.run()
+phew_app.run()
 ```
 
 ### Types 
@@ -185,7 +215,7 @@ Handler functions provided to `add_route` and `set_catchall` will recieve a
 At the time your route handler is being called the request has been fully parsed and you can access any properties that are relevant to the request (e.g. the `form` dictionary for a `multipart/form-data` request) any irrelevant properties will be set to `None`.
 
 ```python
-@server.route("/login", ["POST"])
+@phew_app.route("/login", ["POST"])
 def login_form(request):
   username = request.form.get("username", None)
   password = request.form.get("password", None)
@@ -217,7 +247,7 @@ of shorthand forms to avoid writing the boilerplate needed.
 |body|`"this is the response body"`|string or generator|the content to be returned|
 
 ```python
-@server.route("/greeting/<name>", ["GET"])
+@phew_app.route("/greeting/<name>", ["GET"])
 def user_details(request):
   return Response(f"Hello, {name}", status=200, {"Content-Type": "text/html"})
 ```
@@ -234,7 +264,7 @@ one and three values:
 For example:
 
 ```python
-@server.route("/greeting/<name>", ["GET"])
+@phew_app.route("/greeting/<name>", ["GET"])
 def user_details(request, name):
   return f"Hello, {name}", 200
 ```
