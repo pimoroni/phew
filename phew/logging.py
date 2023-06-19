@@ -74,6 +74,8 @@ def truncate(file, target_size):
         if not chunk: 
           break
         outfile.write(chunk)
+      outfile.close()
+    infile.close()
 
   # delete the old file and replace with the new
   os.remove(file)
@@ -86,6 +88,7 @@ def log(level, text):
   print(log_entry)
   with open(log_file, "a") as logfile:
     logfile.write(log_entry + '\n')
+    logfile.close()
 
   if _log_truncate_at and file_size(log_file) > _log_truncate_at:
     truncate(log_file, _log_truncate_to)
