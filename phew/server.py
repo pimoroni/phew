@@ -245,7 +245,14 @@ async def _handle_request(reader, writer):
     if request.headers["content-type"].startswith("application/json"):
       request.data = await _parse_json_body(reader, request.headers)
     if request.headers["content-type"].startswith("application/x-www-form-urlencoded"):
-      form_data = await reader.read(int(request.headers["content-length"]))
+      form_data = b""
+      content_length = int(request.headers["content-length"])
+      while content_length > 0:
+        data = await reader.read(content_length)
+        if len(data) == 0:
+          break
+        content_length -= len(data)
+        form_data += data
       request.form = _parse_query_string(form_data.decode()) 
 
   route = _match_route(request)
