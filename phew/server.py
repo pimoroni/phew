@@ -85,6 +85,10 @@ content_type_map = {
   "css": "text/css",
   "js": "text/javascript",
   "csv": "text/csv",
+  "txt": "text/plain",
+  "bin": "application/octet-stream",
+  "xml": "application/xml",
+  "gif": "image/gif",
 }
 
 
