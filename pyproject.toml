@@ -1,0 +1,7 @@
+# SPDX-FileCopyrightText: 2023 Charles Crighton <code@crighton.net.nz>
+#
+# SPDX-License-Identifier: MIT
+
+[build-system]
+requires = ["setuptools", "minify-html", "python-minifier"]
+build-backend = "setuptools.build_meta"
