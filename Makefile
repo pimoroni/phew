@@ -22,6 +22,7 @@ help:  ## Display this help
 	fgrep -h "##" $(MAKEFILE_LIST) | fgrep -v fgrep | sed -e 's/\:.*##/:/' | sed -e 's/##//'
 
 dist:  ## Package phew python distribution
+	rm -rf dist
 	python -m build
 
 publish-testpypi:  ## Publish distribution file to TestPyPI

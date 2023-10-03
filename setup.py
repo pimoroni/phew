@@ -84,7 +84,7 @@ class SdistAndMinify(sdist):
 
 
 setup(
-    name="ccrighton-phew",
+    name="micropython-ccrighton-phew",
     version="0.0.4",
     description="A small webserver and templating library specifically designed for MicroPython on the Pico W.",
     long_description=open("README.md").read(),
