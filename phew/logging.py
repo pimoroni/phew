@@ -9,7 +9,7 @@ LOG_DEBUG = 0b01000
 LOG_EXCEPTION = 0b10000
 LOG_ALL = LOG_INFO | LOG_WARNING | LOG_ERROR | LOG_DEBUG | LOG_EXCEPTION
 
-_logging_types = LOG_ALL
+_logging_types = LOG_INFO | LOG_WARNING | LOG_ERROR | LOG_EXCEPTION
 
 # the log file will be truncated if it exceeds _log_truncate_at bytes in
 # size. the defaults values are designed to limit the log to at most
