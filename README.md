@@ -363,7 +363,7 @@ The entry will automatically have the current date and time, the `level` value, 
 Shorthand method for writing debug messages to the log.
 
 ```python
-warn("> this is a story")
+debug("> this is a story")
 ```
 
 #### info(*items)
@@ -388,7 +388,7 @@ warn("> my life got flipped")
 Shorthand method for writing errors to the log.
 
 ```python
-warn("> turned upside down")
+error("> turned upside down")
 ```
 
 #### set_truncate_thresholds(truncate_at, truncate_to)
