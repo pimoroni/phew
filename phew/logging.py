@@ -62,8 +62,8 @@ def truncate(file, target_size):
 
       # try to find a line break nearby to split first chunk on
       break_position = max(
-        chunk.find (b"\n", -discard), # search forward
-        chunk.rfind(b"\n", -discard) # search backwards
+        chunk.find (b"\n", -discard),   # search forward
+        chunk.rfind(b"\n", 0, -discard) # search backwards
       )
       if break_position != -1: # if we found a line break..
         outfile.write(chunk[break_position + 1:])
