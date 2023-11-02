@@ -422,7 +422,7 @@ Pass in the IP address of your device once in access point mode.
 #### connect_to_wifi
 
 ```python
-connect_to_wifi(ssid, password, timeout=30)
+connect_to_wifi(ssid, password, timeout_seconds=30)
 ```
 
 Connects to the network specified by `ssid` with the provided password. 
