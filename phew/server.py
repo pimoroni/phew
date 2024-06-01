@@ -357,12 +357,12 @@ class Phew:
         return route
     return None
 
-  def run_as_task(self, loop, host = "0.0.0.0", port = 80):
-    loop.create_task(uasyncio.start_server(self._handle_request, host, port))
+  def run_as_task(self, loop, host = "0.0.0.0", port = 80, ssl=None):
+    loop.create_task(uasyncio.start_server(self._handle_request, host, port, ssl=ssl))
 
-  def run(self, host = "0.0.0.0", port = 80):
+  def run(self, host = "0.0.0.0", port = 80, ssl=None):
     logging.info("> starting web server on port {}".format(port))
-    self.loop.create_task(uasyncio.start_server(self._handle_request, host, port))
+    self.loop.create_task(uasyncio.start_server(self._handle_request, host, port, ssl=ssl))
     self.loop.run_forever()
 
   def stop(self):
