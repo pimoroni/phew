@@ -63,7 +63,7 @@ def login(request):
           return server.Response("OK", status=302,
                               headers={"Content-Type": "text/html",
                                        "Set-Cookie": f"sessionid={session.session_id}; Max-Age={session.max_age}; Secure; HttpOnly",
-                                       "Location": "/basic"})
+                                       "Location": "/"})
 
   return render_template("login.html", error="Login failure")
 
@@ -72,7 +72,11 @@ def logout(request):
     phew_app.remove_session(request)
     return render_template("logout.html")
 
-
+# basic response with status code and content type
+@phew_app.route("/", methods=["GET"])
+@phew_app.login_required()
+def index(request):
+    return render_template("index.html", text="Hello World")
 
 # login catchall handler.  Redirect to /login
 @phew_app.login_catchall()
@@ -81,36 +85,23 @@ def redirect_to_login(request):
 
 
 # basic response with status code and content type
-@phew_app.route("/basic", methods=["GET", "POST"])
+@phew_app.route("/basic", methods=["GET"])
 @phew_app.login_required()
 def basic(request):
-  return "Gosh, a request", 200, "text/html"
+  return render_template("index.html", text="Gosh, a request")
 
 # basic response with status code and content type
-@phew_app.route("/status-code", methods=["GET", "POST"])
+@phew_app.route("/status-code", methods=["GET"])
 @phew_app.login_required()
 def status_code(request):
-  return "Here, have a status code", 200, "text/html"
+  return render_template("index.html", text="Here, have a status code 200")
 
 # url parameter and template render
 @phew_app.route("/hello/<name>", methods=["GET"])
 @phew_app.login_required()
 def hello(request, name):
-  return render_template("example.html", name=name)
+  return render_template("index.html", text=name)
 
-# response with custom status code
-@phew_app.route("/are/you/a/teapot", methods=["GET"])
-@phew_app.login_required()
-def teapot(request):
-  return "Yes", 418
-
-# custom response object
-@phew_app.route("/response", methods=["GET"])
-@phew_app.login_required()
-def response_object(request):
-  return server.Response("test body", status=302,
-                         headers={"Content-Type": "text/html",
-                                  "Cache-Control": "max-age=3600"})
 
 # query string example
 @phew_app.route("/random", methods=["GET"])
@@ -119,12 +110,20 @@ def random_number(request):
   import random
   min = int(request.query.get("min", 0))
   max = int(request.query.get("max", 100))
-  return str(random.randint(min, max))
+  return render_template("index.html", text=str(random.randint(min, max)))
+
+@phew_app.route("/favicon.ico", methods=["GET"])
+def status_code(request):
+  return server.serve_file("/developer_board.svg")
+
 
 # catchall example
 @phew_app.catchall()
+@phew_app.login_required()
 def catchall(request):
-  return "Not found", 404
+  return render_template("404.html", text=f"{request.path} not found")
+
+
 
 # set up TLS
 ctx = ssl.SSLContext(ssl.PROTOCOL_TLS_SERVER)
