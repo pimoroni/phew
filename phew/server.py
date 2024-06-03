@@ -278,7 +278,11 @@ class Phew:
     elif route:
       response = route.call_handler(request)
     elif self.catchall_handler:
-      response = self.catchall_handler(request)
+      if self.is_login_required(self.catchall_handler) and not self.active_session(request):
+        # handle the case that the catchall handler is annotated with @login_required()
+        response = self._login_catchall(request)
+      else:
+        response = self.catchall_handler(request)
 
     # if shorthand body generator only notation used then convert to tuple
     if type(response).__name__ == "generator":
