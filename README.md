@@ -12,15 +12,25 @@ using the [Raspberry Pi Pico W](https://shop.pimoroni.com/products/raspberry-pi-
   - [How to use](#how-to-use)
   - [Basic example](#basic-example)
   - [Running multiple web applications](#running-multiple-web-applications)
+  - [Transport Layer Security (TLS)](#transport-layer-security-tls)
+    - [Generating a Key and Certificate](#generating-a-key-and-cert)
+  - [Sessions](#sessions)
+    - [Session Authentication](#session-authentication)
   - [Function reference](#function-reference)
     - [server module](#server-module)
       - [add\_route](#add_route)
       - [set\_catchall](#set_catchall)
       - [run](#run)
+    - [Session interface](#session-interface)
+      - [create_session](#create_session)
+      - [remove_session](#remove_session)
+      - [login_required](#login_required)
+      - [login_catchall](#login_catchall)
     - [Types](#types)
       - [Request](#request)
       - [Response](#response)
         - [Shorthand](#shorthand)
+      - [Session](#session)
     - [Templates](#templates)
       - [render\_template](#render_template)
       - [Template expressions](#template-expressions)
@@ -92,7 +102,7 @@ phew_app.run()
 ```
 
 **phew** is designed specifically with performance and minimal resource use in mind.
-Generally this means it will prioritise doing as little work as possible including 
+Generally this means it will prioritise doing as little work as possible including
 assuming the correctness of incoming requests.
 
 ---
@@ -122,13 +132,112 @@ phew_app2.run_as_task(loop, host="0.0.0.0", port=8080)
 loop.run_forever()
 ```
 
+## Transport Layer Security (TLS)
+
+Phew supports Transport Layer Security (TLS) by exposing the capabilities of
+asynicio.
+
+TLS is enabled by providing an ```ssl.SSLContext``` to either ```Phew.run```
+or ```Phew.run_as_task```.
+
+TLS setup introduces about a 5 second delay on a request.  This time depends on
+the key algorithm used.
+
+```python
+import ssl
+
+# set up TLS
+ctx = ssl.SSLContext(ssl.PROTOCOL_TLS_SERVER)
+ctx.load_cert_chain("cert.der", "key.der")
+
+# start the webserver
+phew_app.run(host='0.0.0.0', port=443, ssl=ctx)
+```
+
+See [auth example app](https://github.com/ccrighton/phew/tree/main/examples/auth)
+for a working implementation.
+
+Configuration options for the ```ssl.SSLContext``` are documented at [Micropython SSL/TLS module](https://docs.micropython.org/en/latest/library/ssl.html).
+
+### Generating a key and cert
+
+Generate the key.
+```commandline
+openssl ecparam -name prime256v1 -genkey -noout -out key.der -outform DER
+```
+
+Generate the self-signed certificate.
+```commandline
+openssl req -new -x509 -key key.der -out cert.der -outform DER -days 365 -node
+```
+
+List the certificate details:
+```commandline
+openssl x509 -in cert.der  -text
+```
+
+Copy the key and cert files to the device.
+```commandline
+mpremote cp cert.der key.der :
+```
+
+## Sessions
+
+Phew provides a simple session api to support authenticated session establishment. ```Phew.create_session()``` is
+called to set up a new session.  The session returned contains the session id and max age values to be used in the
+cookie exchange.
+
+The following code creates the response to set the session cookie.  This needs to be run only if the client has provided
+valid credentials.  For instance the client may do a POST request of a username and password as form data.
+
+```python
+session = phew_app.create_session()
+return server.Response("OK", status=302,
+                    headers={"Content-Type": "text/html",
+                             "Set-Cookie": f"sessionid={session.session_id}; Max-Age={session.max_age}; Secure; HttpOnly",
+                             "Location": "/"})
+```
+
+To ensure that the session id is sent only on TLS sessions, please ensure that the ```Secure``` parameter is set in the
+```Set-Cookie``` header.
+
+Once the session is established, all route handlers that have the ```login_required()``` annotation will check that
+the request contains a cookie with the valid session id set.
+
+```python
+@phew_app.route("/", methods=["GET"])
+@phew_app.login_required()
+def index(request):
+    return render_template("index.html", text="Hello World")
+```
+
+Add the ```login_required()``` annotation to all route handlers that need authentication.  However, do not add it to
+the login route handler as this will prevent the establishment of a session.
+
+```Phew.remove_session(request)``` is called to end the session.  For example, a logout route handler will call it to
+log the session out.
+
+```python
+@phew_app.route("/logout", methods=["GET"])
+def logout(request):
+    phew_app.remove_session(request)
+    return render_template("logout.html")
+```
+
+### Session Authentication
+
+The method used for session authentication is within the control of the application using the Phew library.
+
+In the example provided a login form is used that provides username and password in form data.
+
+
 ---
 
 ## Function reference
 
 ### server module
 
-The `server` module provides all functionality for running a web server with 
+The `server` module provides all functionality for running a web server with
 route handlers.
 
 #### add_route
@@ -184,13 +293,50 @@ def my_catchall(request):
 phew_app.run(host="0.0.0.0", port=80)
 ```
 
-Starts up the web server and begins handling incoming requests. 
+Starts up the web server and begins handling incoming requests.
 
 ```python
 phew_app.run()
 ```
 
-### Types 
+### Session interface
+
+#### create_session
+
+Create a new session that provides the parameters needed for cookie based session establishment.
+```python
+session = phew_app.create_session()
+```
+
+#### remove_session
+
+Remove an existing session, resulting in that session no longer being active so the user is logged out.
+```python
+phew_app.remove_session(request)
+```
+
+#### login_required
+
+A decorator for a route handler that redirects and requests to decorated routes to the login handler.
+
+```python
+@phew_app.route("/hello", methods=["GET"])
+@phew_app.login_required()
+def hello(request, name):
+  return render_template("index.html")
+```
+
+#### login_catchall
+
+Decorator that sets the handler for the login page.  DO NOT decorate with ```login_required```.
+
+```python
+@phew_app.login_catchall()
+def redirect_to_login(request):
+    return server.redirect("/login", status=302)
+```
+
+### Types
 
 #### Request
 
@@ -198,7 +344,7 @@ The `Request` object contains all of the information that was parsed out of the
 incoming request including form data, query string parameters, HTTP method, path,
 and more.
 
-Handler functions provided to `add_route` and `set_catchall` will recieve a 
+Handler functions provided to `add_route` and `set_catchall` will recieve a
 `Request` object as their first parameter.
 
 |member|example|type|description|
@@ -221,8 +367,8 @@ def login_form(request):
   password = request.form.get("password", None)
 
   # check the user credentials with your own code
-  # for example: 
-  # 
+  # for example:
+  #
   # logged_in = authenticate_user(username, password)
 
   if not logged_in:
@@ -269,13 +415,30 @@ def user_details(request, name):
   return f"Hello, {name}", 200
 ```
 
+#### Session
+
+The `Session` object contains the attributes of a session.  It is returned by the `create_session` function.
+
+| member     | example      | type | description                             |
+|------------|--------------|------|-----------------------------------------|
+| session_id | `2500282791` | int  | session identifier                      |
+| max_age    | `86400`      | int  | seconds from session creation to expiry |
+| expires    | `1609563847` | int  | seconds from epoch to session expiry    |
+
+The `Session` object provides a convenience function for checking expiry:
+
+```python
+Session.expired()
+```
+Return boolean.
+
 ### Templates
 
-A web server isn't much use without something to serve. While it's straightforward 
+A web server isn't much use without something to serve. While it's straightforward
 to serve the contents of a file or some generated JSON things get more complicated
 when we want to present a dynamically generated web page to the user.
 
-**phew!** provides a templating engine which allows you to write normal HTML with 
+**phew!** provides a templating engine which allows you to write normal HTML with
 fragments of Python code embedded to output variable values, parse input, or dynamically
 load assets.
 
@@ -285,7 +448,7 @@ load assets.
 render_template(template, param1="foo", param2="bar", ...):
 ```
 
-The `render_template` method takes a path to a template file on the filesystem and 
+The `render_template` method takes a path to a template file on the filesystem and
 a list of named paramaters which will be passed into the template when parsing.
 
 The method is a generator which yields the parsing result in chunks, minimising the
@@ -298,19 +461,19 @@ of your handler methods.
 #### Template expressions
 
 Templates are not much use if you can't inject dynamic data into them. With **phew!**
-you can embed Python expressions with `{{<expression here>}}` which will be evaluated 
+you can embed Python expressions with `{{<expression here>}}` which will be evaluated
 during parsing.
 
 ##### Variables
 
-In the simplest form you can embed a simple value by just enclosing it in double curly braces. 
+In the simplest form you can embed a simple value by just enclosing it in double curly braces.
 It's also possible to perform more complicated transformations using any built in Python method.
 
 ```html
   <div id="name">{{name}}</div>
 
   <div id="name">{{name.upper()}}</div>
-  
+
   <div id="name">{{"/".join(name.split(" "))}}</div>
 ```
 
@@ -438,7 +601,7 @@ warn("> turned upside down")
 Will automatically truncate the log file to `truncate_to` bytes long when it reaches `truncate_at` bytes in length.
 
 ```python
-# automatically truncate when we're closed to the 
+# automatically truncate when we're closed to the
 # filesystem block size to keep to a single block
 set_truncate_thresholds(3.5 * 1024, 2 * 1.024)
 ```
@@ -467,7 +630,7 @@ Pass in the IP address of your device once in access point mode.
 connect_to_wifi(ssid, password, timeout=30)
 ```
 
-Connects to the network specified by `ssid` with the provided password. 
+Connects to the network specified by `ssid` with the provided password.
 
 Returns the device IP address on success or `None` on failure.
 
