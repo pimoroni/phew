@@ -1,9 +1,8 @@
+import gc
 import random
 
 import uasyncio, os, time
 from . import logging
-
-
 
 
 def file_exists(filename):
@@ -243,6 +242,10 @@ class Phew:
 
   # handle an incoming request to the web server
   async def _handle_request(self, reader, writer):
+
+    # Do a GC collect before handling the request
+    gc.collect()
+
     response = None
 
     request_start_time = time.ticks_ms()
