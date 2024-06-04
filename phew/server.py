@@ -1,3 +1,4 @@
+import binascii
 import gc
 import random
 
@@ -221,8 +222,16 @@ status_message_map = {
 
 class Session:
 
+  '''
+  Session class used to store all the attributes of a session.
+  '''
+
   def __init__(self, max_age=86400):
-    self.session_id = str(random.getrandbits(32))
+    # create a 128 bit session id encoded in hex
+    n = []
+    for i in range(4):
+      n.append(random.getrandbits(32).to_bytes(4,'big'))
+    self.session_id = binascii.hexlify(bytearray().join(n)).decode()
     self.expires = time.time() + max_age
     self.max_age = max_age
 

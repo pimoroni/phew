@@ -39,8 +39,13 @@ def login(request):
 
 @phew_app.route("/logout", methods=["GET"])
 def logout(request):
-    phew_app.remove_session(request)
-    return render_template("logout.html")
+    if phew_app.active_session(request):
+        phew_app.remove_session(request)
+        return server.Response(render_template("logout.html"), status=200,
+                               headers={"Content-Type": "text/html",
+                                        "Set-Cookie": f"sessionid=deleted; expires=Thu, 01 Jan 1970 00:00:00 GMT"})
+    else:
+        return render_template("logout.html")
 
 # basic response with status code and content type
 @phew_app.route("/", methods=["GET"])

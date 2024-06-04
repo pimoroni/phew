@@ -419,11 +419,11 @@ def user_details(request, name):
 
 The `Session` object contains the attributes of a session.  It is returned by the `create_session` function.
 
-| member     | example      | type | description                             |
-|------------|--------------|------|-----------------------------------------|
-| session_id | `2500282791` | int  | session identifier                      |
-| max_age    | `86400`      | int  | seconds from session creation to expiry |
-| expires    | `1609563847` | int  | seconds from epoch to session expiry    |
+| member     | example                            | type | description                             |
+|------------|------------------------------------|------|-----------------------------------------|
+| session_id | `5146c4a8b8a3c83e54b5c06ce009988c` | str  | 128 bit hex encoded session identifier  |
+| max_age    | `86400`                            | int  | seconds from session creation to expiry |
+| expires    | `1609563847`                       | int  | seconds from epoch to session expiry    |
 
 The `Session` object provides a convenience function for checking expiry:
 
