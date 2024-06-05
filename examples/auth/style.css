@@ -1,0 +1,59 @@
+@media (prefers-color-scheme: dark) {
+  body {
+	color: #eee;
+	background: #121212;
+  }
+  a {
+	color: #809fff;
+  }
+  textarea {
+      color: forestgreen;
+      background: #121212;
+  }
+  label {
+      color: black;
+  }
+}
+html{font-family: Helvetica; display:inline-block; margin: 0px auto; text-align: center;}
+p{font-size: 1.0rem;}
+.button{border:0;border-radius:0.3rem;background:#1fa3ec;color:#ffffff;line-height:2.4rem;padding: 4px 8px;
+font-size:1.2rem;-webkit-transition-duration:0.4s;transition-duration:0.4s;cursor:pointer;}
+.button:hover{background:#0e70a4;}
+.b2{background-color: #2E8B57;}
+.b2:hover{background:#008000;}
+.b3{background-color: #FF0000;}
+.b3:hover{background:#B22222;}
+.center { margin-left: auto; margin-right: auto;}
+div.table { display: table; text-align: left;}
+div.mqttform { display: table-row; }
+label, input.mqttform { display: table-cell; margin-bottom: 10px; vertical-align: top; text-align: left;}
+label { padding-right: 10px; padding-bottom: 5px; padding-top: 5px}
+logtext { center; font-family: 'Courier New', monospace; }
+#configtable { center; margin-left: auto; margin-right: auto; text-align: left;}
+#configtable td, # configtable th { text-align: left; }
+.cell-highlight { font-weight: bold; }
+.line {
+  width: 300px;
+  height: 0;
+  border: 1px solid #C4C4C4;
+  margin: 3px;
+  display:inline-block;
+}
+
+.container {
+    width: 500px;
+    margin: 0 auto;
+    background-color: #fff;
+    border-radius: 5px;
+    box-shadow: 0px 0px 5px #666;
+    padding: 20px;
+    margin-top: 50px;
+}
+
+input[type="text"], input[type="password"] {
+    padding: 10px;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+    width: 100%;
+    box-sizing: border-box;
+}

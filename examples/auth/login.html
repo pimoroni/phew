@@ -1,49 +1,6 @@
 <!DOCTYPE html>
 <head>
-<style>
-  body {
-    background-color: #f3f3f3;
-    font-family: Arial, sans-serif;
-}
-
-.container {
-    width: 500px;
-    margin: 0 auto;
-    background-color: #fff;
-    border-radius: 5px;
-    box-shadow: 0px 0px 5px #666;
-    padding: 20px;
-    margin-top: 50px;
-}
-
-h2 {
-    text-align: center;
-    margin-bottom: 20px;
-    color: #444;
-}
-
-label, input[type="submit"] {
-    display: block;
-    margin-bottom: 10px;
-}
-
-input[type="text"], input[type="password"] {
-    padding: 10px;
-    border-radius: 5px;
-    border: 1px solid #ccc;
-    width: 100%;
-    box-sizing: border-box;
-}
-
-input[type="submit"] {
-    background-color: #4CAF50;
-    color: #fff;
-    border: none;
-    padding: 10px 20px;
-    border-radius: 5px;
-    cursor: pointer;
-}
-</style>
+    <style>{{render_template("/style.css")}}</style>
 </head>
 <body>
 <form action="/login" method="post">
@@ -54,8 +11,8 @@ input[type="submit"] {
 
     <label for="password"><b>Password</b></label>
     <input type="password" placeholder="Enter Password" name="password" required>
-
-    <button type="submit">Login</button>
+    <p/>
+    <button class="button" type="submit">Login</button>
   </div>
 
 </form>

@@ -1,16 +1,15 @@
 <!DOCTYPE html>
-<head>
-</head>
-<body>
-SSL and Session Authentication Example.
-<p/>
-{{text}}
-<p/>
-<a href="/">Home</a>
-<p/>
-<a href="/basic">Basic</a>
-<p/>
-<a href="/random">Random</a>
-<p/>
-<a href="/logout">Logout</a>
-</body>
+    <head>
+        <style>{{render_template("/style.css")}}</style>
+    </head>
+    <body> <h1>SSL and Session Authentication Example</h1>
+        <p>{{text}}</p>
+        <div class="line"></div>
+        <table class="center">
+        <p><button class="button" onclick="window.location.href='/';">Home</button></p>
+        <p><button class="button" onclick="window.location.href='/basic';">Basic</button></p>
+        <p><button class="button" onclick="window.location.href='/random';">Random</button></p>
+        <p><button class="button" onclick="window.location.href='/logout';">Logout</button></p>
+        </table>
+    </body>
+</html>
