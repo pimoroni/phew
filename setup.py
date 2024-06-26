@@ -85,12 +85,13 @@ class SdistAndMinify(sdist):
 
 setup(
     name="micropython-ccrighton-phew",
-    version="0.0.4",
+    version="0.0.5",
     description="A small webserver and templating library specifically designed for MicroPython on the Pico W.",
     long_description=open("README.md").read(),
     long_description_content_type="text/markdown",
     project_urls={
-        "GitHub": "https://github.com/ccrighton/phew"
+        "GitHub": "https://github.com/ccrighton/phew",
+        "Change Log": "https://github.com/ccrighton/phew/blob/main/changelog.md"
     },
     author="Jonathan Williamson - Pimoroni",
     maintainer="Charlie Crighton",
