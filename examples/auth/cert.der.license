@@ -1,7 +1,3 @@
-<!--
 SPDX-FileCopyrightText: 2024 Charles Crighton <code@crighton.net.nz>
 
 SPDX-License-Identifier: MIT
--->
-
-Hello again {{name}}!

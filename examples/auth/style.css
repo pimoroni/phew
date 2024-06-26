@@ -1,3 +1,10 @@
+/*
+ * SPDX-FileCopyrightText: 2024 2024 Charles Crighton <code@crighton.net.nz>
+ * SPDX-FileCopyrightText: 2024 Charles Crighton <code@crighton.net.nz>
+ *
+ * SPDX-License-Identifier: MIT
+ */
+
 @media (prefers-color-scheme: dark) {
   body {
 	color: #eee;

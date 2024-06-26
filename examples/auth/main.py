@@ -1,3 +1,8 @@
+# SPDX-FileCopyrightText: 2024 Charles Crighton <code@crighton.net.nz>
+# SPDX-FileCopyrightText: 2022 Pimoroni
+#
+# SPDX-License-Identifier: MIT
+
 # example script to show how uri routing and parameters work
 #
 # create a file called secrets.py alongside this one and add the
