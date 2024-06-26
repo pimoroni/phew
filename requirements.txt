@@ -1,0 +1,16 @@
+# SPDX-FileCopyrightText: 2023 Charles Crighton <code@crighton.net.nz>
+#
+# SPDX-License-Identifier: MIT
+
+build
+esptool
+keyring
+minify-html
+mpremote
+pipkin
+pre-commit
+pypi_json
+python_minifier
+reuse
+setuptools
+twine
