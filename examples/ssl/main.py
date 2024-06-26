@@ -45,7 +45,9 @@ cert = binascii.unhexlify(
 )
 
 
-connect_to_wifi(secrets.WIFI_SSID, secrets.WIFI_PASSWORD)
+ipaddress = connect_to_wifi(secrets.WIFI_SSID, secrets.WIFI_PASSWORD)
+
+print(f"Connected to wifi on {ipaddress}")
 
 phew_app = server.Phew()
 

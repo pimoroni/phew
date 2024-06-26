@@ -15,7 +15,9 @@ from phew.template import render_template
 
 import secrets
 
-connect_to_wifi(secrets.WIFI_SSID, secrets.WIFI_PASSWORD)
+ipaddress = connect_to_wifi(secrets.WIFI_SSID, secrets.WIFI_PASSWORD)
+
+print(f"Connected to wifi on {ipaddress}")
 
 phew_app = server.Phew()
 
@@ -30,7 +32,7 @@ def login(request):
       # TODO: username and password handling
       if username == "admin" and password == "admin":
           session = phew_app.create_session()
-          return server.Response("OK", status=302,
+          return server.Response("", status=302,
                               headers={"Content-Type": "text/html",
                                        "Set-Cookie": f"sessionid={session.session_id}; Max-Age={session.max_age}; Secure; HttpOnly",
                                        "Location": "/"})
