@@ -1,7 +1,9 @@
+import binascii
+import gc
+import random
+
 import uasyncio, os, time
 from . import logging
-
-
 
 
 def file_exists(filename):
@@ -218,16 +220,41 @@ status_message_map = {
   500: "Internal Server Error", 501: "Not Implemented"
 }
 
+class Session:
+
+  '''
+  Session class used to store all the attributes of a session.
+  '''
+
+  def __init__(self, max_age=86400):
+    # create a 128 bit session id encoded in hex
+    n = []
+    for i in range(4):
+      n.append(random.getrandbits(32).to_bytes(4,'big'))
+    self.session_id = binascii.hexlify(bytearray().join(n)).decode()
+    self.expires = time.time() + max_age
+    self.max_age = max_age
+
+  def expired(self):
+    return self.expires < time.time()
+
 
 class Phew:
 
   def __init__(self):
     self._routes = []
+    self._login_required = set()
     self.catchall_handler = None
+    self._login_catchall = None
     self.loop = uasyncio.get_event_loop()
+    self.sessions = []
 
   # handle an incoming request to the web server
   async def _handle_request(self, reader, writer):
+
+    # Do a GC collect before handling the request
+    gc.collect()
+
     response = None
 
     request_start_time = time.ticks_ms()
@@ -258,10 +285,16 @@ class Phew:
         request.form = _parse_query_string(form_data.decode())
 
     route = self._match_route(request)
-    if route:
+    if route and self._login_catchall and self.is_login_required(route.handler) and not self.active_session(request):
+      response = self._login_catchall(request)
+    elif route:
       response = route.call_handler(request)
     elif self.catchall_handler:
-      response = self.catchall_handler(request)
+      if self.is_login_required(self.catchall_handler) and not self.active_session(request):
+        # handle the case that the catchall handler is annotated with @login_required()
+        response = self._login_catchall(request)
+      else:
+        response = self.catchall_handler(request)
 
     # if shorthand body generator only notation used then convert to tuple
     if type(response).__name__ == "generator":
@@ -337,6 +370,35 @@ class Phew:
     return _route
 
 
+  # add the handler to the _login_required list
+  def add_login_required(self, handler):
+    self._login_required.add(handler)
+
+
+  def is_login_required(self, handler):
+    return handler in self._login_required
+
+
+  # decorator indicating that authentication is required for a handler
+  def login_required(self):
+    def _login_required(f):
+      self.add_login_required(f)
+      return f
+    return _login_required
+
+
+  def set_login_catchall(self, handler):
+    self._login_catchall = handler
+
+
+  # decorator for adding login_handler route
+  def login_catchall(self):
+    def _login_catchall(f):
+      self.set_login_catchall(f)
+      return f
+    return _login_catchall
+
+
   # decorator for adding catchall route
   def catchall(self):
     def _catchall(f):
@@ -357,12 +419,12 @@ class Phew:
         return route
     return None
 
-  def run_as_task(self, loop, host = "0.0.0.0", port = 80):
-    loop.create_task(uasyncio.start_server(self._handle_request, host, port))
+  def run_as_task(self, loop, host = "0.0.0.0", port = 80, ssl=None):
+    loop.create_task(uasyncio.start_server(self._handle_request, host, port, ssl=ssl))
 
-  def run(self, host = "0.0.0.0", port = 80):
+  def run(self, host = "0.0.0.0", port = 80, ssl=None):
     logging.info("> starting web server on port {}".format(port))
-    self.loop.create_task(uasyncio.start_server(self._handle_request, host, port))
+    self.loop.create_task(uasyncio.start_server(self._handle_request, host, port, ssl=ssl))
     self.loop.run_forever()
 
   def stop(self):
@@ -371,6 +433,33 @@ class Phew:
   def close(self):
     self.loop.close()
 
+  def create_session(self, max_age=86400):
+    session = Session(max_age=max_age)
+    self.sessions.append(session)
+    return session
+
+  def get_session(self, request):
+    session = None
+    name = None
+    value = None
+    if "cookie" in request.headers:
+      cookie = request.headers["cookie"]
+      if cookie:
+        name, value = cookie.split("=")
+      if name == "sessionid":
+        # find session
+        for s in self.sessions:
+          if s.session_id == value:
+            session = s
+    return session
+  def remove_session(self, request):
+    session = self.get_session(request)
+    if session is not None:
+      self.sessions.remove(session)
+
+  def active_session(self, request):
+    session = self.get_session(request)
+    return session is not None and not session.expired()
 
 # Compatibility methods
 default_phew_app = None
