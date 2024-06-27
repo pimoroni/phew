@@ -1,0 +1,114 @@
+2021-01-01 00:02:20 [info     / 130kB] > GET / (200 OK) [693ms]
+2021-01-01 00:02:21 [debug    / 113kB] > parsed template: /style.css (took 13 ms)
+2021-01-01 00:02:22 [debug    / 110kB] > parsed template: index.html (took 97 ms)
+2021-01-01 00:02:24 [info     / 130kB] > GET /basic (200 OK) [1418ms]
+2021-01-01 00:02:28 [debug    / 113kB] > parsed template: /style.css (took 14 ms)
+2021-01-01 00:02:29 [debug    / 110kB] > parsed template: index.html (took 111 ms)
+2021-01-01 00:02:30 [info     / 130kB] > GET / (200 OK) [344ms]
+2021-01-01 00:09:23 [debug    / 113kB] > parsed template: /style.css (took 13 ms)
+2021-01-01 00:09:24 [debug    / 110kB] > parsed template: index.html (took 107 ms)
+2021-01-01 00:09:25 [info     / 130kB] > GET / (200 OK) [1130ms]
+2021-01-01 00:09:29 [debug    / 113kB] > parsed template: /style.css (took 13 ms)
+2021-01-01 00:09:29 [debug    / 110kB] > parsed template: index.html (took 109 ms)
+2021-01-01 00:09:29 [info     / 130kB] > GET /basic (200 OK) [579ms]
+2021-01-01 00:09:32 [debug    / 113kB] > parsed template: /style.css (took 12 ms)
+2021-01-01 00:09:32 [debug    / 109kB] > parsed template: index.html (took 100 ms)
+2021-01-01 00:09:32 [info     / 130kB] > GET /random (200 OK) [1165ms]
+2021-01-01 00:09:35 [debug    / 112kB] > parsed template: /style.css (took 13 ms)
+2021-01-01 00:09:35 [debug    / 109kB] > parsed template: index.html (took 106 ms)
+2021-01-01 00:09:35 [info     / 129kB] > GET /random (200 OK) [573ms]
+2021-01-01 00:09:37 [debug    / 113kB] > parsed template: /style.css (took 14 ms)
+2021-01-01 00:09:37 [debug    / 109kB] > parsed template: index.html (took 116 ms)
+2021-01-01 00:09:37 [info     / 130kB] > GET /random (200 OK) [1098ms]
+2021-01-01 00:09:38 [debug    / 112kB] > parsed template: /style.css (took 14 ms)
+2021-01-01 00:09:38 [debug    / 109kB] > parsed template: index.html (took 114 ms)
+2021-01-01 00:09:38 [info     / 129kB] > GET /random (200 OK) [601ms]
+2021-01-01 00:09:40 [debug    / 113kB] > parsed template: /style.css (took 13 ms)
+2021-01-01 00:09:40 [debug    / 109kB] > parsed template: index.html (took 124 ms)
+2021-01-01 00:09:40 [info     / 130kB] > GET /random (200 OK) [1172ms]
+2021-01-01 00:00:02 [debug    / 153kB]   - connecting
+2021-01-01 00:00:05 [debug    / 152kB]   - connecting
+2021-01-01 00:00:07 [info     / 150kB] > starting web server on port 443
+2021-01-01 00:00:02 [debug    / 153kB]   - connecting
+2021-01-01 00:00:05 [debug    / 152kB]   - connecting
+2021-01-01 00:00:08 [info     / 150kB] > starting web server on port 443
+2021-01-01 00:27:30 [debug    / 160kB]   - got ip address
+2021-01-01 00:27:30 [info     / 145kB] > starting web server on port 443
+2021-01-01 00:27:50 [info     / 149kB] > GET / (302 Found) [1137ms]
+2021-01-01 00:27:51 [debug    / 118kB] > parsed template: /style.css (took 13 ms)
+2021-01-01 00:27:51 [debug    / 115kB] > parsed template: login.html (took 122 ms)
+2021-01-01 00:27:51 [info     / 136kB] > GET /login (200 OK) [424ms]
+2021-01-01 00:27:59 [info     / 145kB] > POST /login (302 Found) [948ms]
+2021-01-01 00:27:59 [debug    / 117kB] > parsed template: /style.css (took 14 ms)
+2021-01-01 00:27:59 [debug    / 114kB] > parsed template: index.html (took 121 ms)
+2021-01-01 00:28:00 [info     / 134kB] > GET / (200 OK) [388ms]
+2021-01-01 00:28:01 [info     / 145kB] > GET /favicon.ico (200 OK) [834ms]
+2021-01-01 00:28:05 [debug    / 117kB] > parsed template: /style.css (took 15 ms)
+2021-01-01 00:28:05 [debug    / 114kB] > parsed template: index.html (took 129 ms)
+2021-01-01 00:28:05 [info     / 134kB] > GET / (200 OK) [595ms]
+2021-01-01 00:28:08 [debug    / 117kB] > parsed template: /style.css (took 15 ms)
+2021-01-01 00:28:08 [debug    / 114kB] > parsed template: index.html (took 131 ms)
+2021-01-01 00:28:08 [info     / 134kB] > GET /basic (200 OK) [1296ms]
+2021-01-01 00:28:11 [debug    / 117kB] > parsed template: /style.css (took 12 ms)
+2021-01-01 00:28:11 [debug    / 114kB] > parsed template: index.html (took 124 ms)
+2021-01-01 00:28:11 [info     / 134kB] > GET /random (200 OK) [566ms]
+2021-01-01 00:28:15 [debug    / 117kB] > parsed template: /style.css (took 13 ms)
+2021-01-01 00:28:15 [debug    / 115kB] > parsed template: logout.html (took 102 ms)
+2021-01-01 00:28:15 [info     / 135kB] > GET /logout (200 OK) [1327ms]
+2021-01-01 00:28:17 [info     / 148kB] > GET / (302 Found) [116ms]
+2021-01-01 00:28:18 [debug    / 118kB] > parsed template: /style.css (took 13 ms)
+2021-01-01 00:28:18 [debug    / 115kB] > parsed template: login.html (took 110 ms)
+2021-01-01 00:28:18 [info     / 135kB] > GET /login (200 OK) [1128ms]
+2021-01-01 00:28:24 [info     / 145kB] > POST /login (302 Found) [377ms]
+2021-01-01 00:28:25 [debug    / 117kB] > parsed template: /style.css (took 15 ms)
+2021-01-01 00:28:25 [debug    / 114kB] > parsed template: index.html (took 112 ms)
+2021-01-01 00:28:25 [info     / 135kB] > GET / (200 OK) [1049ms]
+2021-01-01 00:28:26 [info     / 145kB] > GET /favicon.ico (200 OK) [148ms]
+2021-01-01 00:28:29 [debug    / 117kB] > parsed template: /style.css (took 12 ms)
+2021-01-01 00:28:29 [debug    / 114kB] > parsed template: index.html (took 109 ms)
+2021-01-01 00:28:29 [info     / 135kB] > GET / (200 OK) [1032ms]
+2021-01-01 00:28:46 [debug    / 117kB] > parsed template: /style.css (took 13 ms)
+2021-01-01 00:28:46 [debug    / 115kB] > parsed template: logout.html (took 107 ms)
+2021-01-01 00:28:46 [info     / 135kB] > GET /logout (200 OK) [601ms]
+2021-01-01 00:29:15 [info     / 148kB] > GET / (302 Found) [926ms]
+2021-01-01 00:29:15 [debug    / 118kB] > parsed template: /style.css (took 14 ms)
+2021-01-01 00:29:16 [debug    / 114kB] > parsed template: login.html (took 122 ms)
+2021-01-01 00:29:16 [info     / 135kB] > GET /login (200 OK) [341ms]
+2021-01-01 00:29:24 [info     / 145kB] > POST /login (302 Found) [947ms]
+2021-01-01 00:29:25 [debug    / 117kB] > parsed template: /style.css (took 15 ms)
+2021-01-01 00:29:25 [debug    / 114kB] > parsed template: index.html (took 134 ms)
+2021-01-01 00:29:25 [info     / 134kB] > GET / (200 OK) [648ms]
+2021-01-01 00:29:27 [info     / 122kB] > GET /favicon.ico (200 OK) [1138ms]
+2021-01-01 00:31:03 [debug    / 116kB] > parsed template: /style.css (took 14 ms)
+2021-01-01 00:31:04 [debug    / 113kB] > parsed template: index.html (took 118 ms)
+2021-01-01 00:31:04 [info     / 134kB] > GET / (200 OK) [322ms]
+2021-01-01 00:31:10 [debug    / 117kB] > parsed template: /style.css (took 13 ms)
+2021-01-01 00:31:10 [debug    / 114kB] > parsed template: index.html (took 116 ms)
+2021-01-01 00:31:10 [info     / 134kB] > GET / (200 OK) [1008ms]
+2021-01-01 00:31:13 [debug    / 116kB] > parsed template: /style.css (took 14 ms)
+2021-01-01 00:31:13 [debug    / 113kB] > parsed template: index.html (took 123 ms)
+2021-01-01 00:31:13 [info     / 134kB] > GET /basic (200 OK) [340ms]
+2021-01-01 00:31:16 [debug    / 116kB] > parsed template: /style.css (took 14 ms)
+2021-01-01 00:31:16 [debug    / 113kB] > parsed template: index.html (took 124 ms)
+2021-01-01 00:31:16 [info     / 133kB] > GET /random (200 OK) [1102ms]
+2021-01-01 00:31:18 [debug    / 116kB] > parsed template: /style.css (took 13 ms)
+2021-01-01 00:31:19 [debug    / 100kB] > parsed template: logout.html (took 247 ms)
+2021-01-01 00:31:19 [info     / 120kB] > GET /logout (200 OK) [496ms]
+2021-01-01 00:31:26 [info     / 147kB] > GET / (302 Found) [840ms]
+2021-01-01 00:31:26 [debug    / 117kB] > parsed template: /style.css (took 13 ms)
+2021-01-01 00:31:27 [debug    / 114kB] > parsed template: login.html (took 133 ms)
+2021-01-01 00:31:27 [info     / 134kB] > GET /login (200 OK) [445ms]
+2021-01-01 00:31:31 [info     / 147kB] > GET /random (302 Found) [815ms]
+2021-01-01 00:31:32 [debug    / 117kB] > parsed template: /style.css (took 15 ms)
+2021-01-01 00:31:32 [debug    / 114kB] > parsed template: login.html (took 134 ms)
+2021-01-01 00:31:32 [info     / 134kB] > GET /login (200 OK) [562ms]
+2021-01-01 00:45:49 [info     / 145kB] > POST /login (302 Found) [850ms]
+2021-01-01 00:45:50 [debug    / 117kB] > parsed template: /style.css (took 13 ms)
+2021-01-01 00:45:50 [debug    / 114kB] > parsed template: index.html (took 121 ms)
+2021-01-01 00:45:50 [info     / 134kB] > GET / (200 OK) [1134ms]
+2021-01-01 00:45:52 [info     / 144kB] > GET /favicon.ico (200 OK) [840ms]
+2021-01-01 00:46:16 [debug    / 117kB] > parsed template: /style.css (took 13 ms)
+2021-01-01 00:46:16 [debug    / 114kB] > parsed template: logout.html (took 103 ms)
+2021-01-01 00:46:16 [info     / 135kB] > GET /logout (200 OK) [990ms]
+2021-01-01 01:07:37 [debug    / 157kB]   - got ip address
+2021-01-01 01:07:37 [info     / 142kB] > starting web server on port 443
