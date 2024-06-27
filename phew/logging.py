@@ -57,16 +57,18 @@ def truncate(file, target_size):
       # skip a bunch of the input file until we've discarded
       # at least enough
       while discard > 0:
-        chunk = infile.read(1024)
-        discard -= len(chunk)
+        discard_chunk = infile.read(min(discard, 1024))
+        discard -= len(discard_chunk)
 
-      # try to find a line break nearby to split first chunk on
-      break_position = max(
-        chunk.find (b"\n", -discard), # search forward
-        chunk.rfind(b"\n", -discard) # search backwards
-      )
-      if break_position != -1: # if we found a line break..
-        outfile.write(chunk[break_position + 1:])
+      chunk = infile.read(1024)
+
+      if discard_chunk[-1] == b"\n"[0]:
+        outfile.write(chunk)
+      else:
+        # Find the first newline and write from there
+        break_position = chunk.find (b"\n")
+        if break_position != -1:
+          outfile.write(chunk[break_position + 1:])
 
       # now copy the rest of the file
       while True:
