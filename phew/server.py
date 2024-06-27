@@ -17,7 +17,7 @@ def file_exists(filename):
 
 def urldecode(text):
   text = text.replace("+", " ")
-  result = bytearray() 
+  result = bytearray()
   token_caret = 0
   # decode any % encoded characters
   while True:
@@ -29,7 +29,7 @@ def urldecode(text):
     code = int(text[start + 1:start + 3], 16)
     result.append(code)
     token_caret = start + 3
-  return result.decode() 
+  return result.decode()
 
 def _parse_query_string(query_string):
   result = {}
