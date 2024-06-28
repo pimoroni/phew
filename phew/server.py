@@ -16,20 +16,40 @@ def file_exists(filename):
 
 
 def urldecode(text):
+  ''' Decode url encoding. Handles non hex characters after % and replaces invalid encoding with
+      standard unicode replacement character 0xFFFD (? in diamond)'''
   text = text.replace("+", " ")
-  result = bytearray()
+  result = []
   token_caret = 0
   # decode any % encoded characters
   while True:
     start = text.find("%", token_caret)
     if start == -1:
-      result += text[token_caret:].encode()
+      result += text[token_caret:]
       break
-    result += text[token_caret:start].encode()
-    code = int(text[start + 1:start + 3], 16)
-    result.append(code)
-    token_caret = start + 3
-  return result.decode()
+    result += text[token_caret:start]
+    unicode = bytearray()
+    while len(text) > start and text[start] == "%":
+      try:
+        code = int(text[start + 1:start + 3], 16)
+        unicode.append(code)
+      except:
+        try:
+          result += unicode.decode()
+        except:
+          # Replacement unicode character for error on decoding
+          result += chr(int("0xFFFD", 16))
+        # not a unicode encoding so just use the string
+        result += text[start:start + 3]
+        unicode = bytearray()
+      token_caret = start + 3
+      start = start + 3
+    try:
+      result += unicode.decode()
+    except:
+      # Replacement unicode character for error on decoding
+      result += chr(int("0xFFFD", 16))
+  return "".join(result)
 
 def _parse_query_string(query_string):
   result = {}
