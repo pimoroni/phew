@@ -86,6 +86,10 @@ def log(level, text):
   datetime = datetime_string()
   log_entry = "{0} [{1:8} /{2:>4}kB] {3}".format(datetime, level, round(gc.mem_free() / 1024), text)
   print(log_entry)
+
+  if not log_file:
+    return
+
   with open(log_file, "a") as logfile:
     logfile.write(log_entry + "\n")
 
