@@ -1,7 +1,8 @@
 from . import logging
+import sys
+import time
 
 async def render_template(template, **kwargs):
-  import time
   start_time = time.ticks_ms()
 
   with open(template, "rb") as f:
@@ -56,8 +57,10 @@ async def render_template(template, **kwargs):
           # yield the result of the expression
           if result is not None:
             yield str(result)
-      except:
-        pass
+      except Exception as e:
+        print(template)
+        print(expression)
+        sys.print_exception(e)
 
       # discard the parsed bit
       token_caret = end + 2
