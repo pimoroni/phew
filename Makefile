@@ -7,29 +7,23 @@
 SHELL := /bin/bash
 .ONESHELL:
 .DEFAULT_GOAL:=help
-.PHONY: help dist dist-build install-local
+.PHONY: help dist install-local check test
 .SILENT: help
 
-UID := $(shell id -u)
-PWD := $(shell pwd)
-
-PORT ?= /dev/ttyUSB0
-VENV ?= ~/.virtualenvs/phew
-
 help:  ## Display this help
-	$(info Phew build and flash targets)
+	$(info Phew build and install targets)
 	$(info )
 	fgrep -h "##" $(MAKEFILE_LIST) | fgrep -v fgrep | sed -e 's/\:.*##/:/' | sed -e 's/##//'
 
-dist:  ## Package phew python distribution
+dist:  ## Build the minified sdist and wheel
 	rm -rf dist
 	python -m build
 
-publish-testpypi:  ## Publish distribution file to TestPyPI
-	python3 -m twine upload --repository testpypi dist/*
+install-local: dist  ## Install the built package onto an attached device
+	pipkin install --no-index --find-links dist --force-reinstall micropython-phew
 
-publish-pypi:  ## Publish distribution file to PyPI
-	python3 -m twine upload --repository pypi dist/*
+check:  ## Lint and spell check
+	source ci/python.sh && qa_phew_check && qa_examples_check && qa_tests_check && qa_spelling_check
 
-install-local: ## Install package from local dist
-	pipkin install --no-index --find-links dist --force-reinstall  micropython-phew
+test:  ## Run the test suite
+	source ci/python.sh && qa_test

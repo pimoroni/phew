@@ -131,3 +131,4 @@ dmypy.json
 # never save credentials file
 secrets.py
 log.txt
+phew/_version.py

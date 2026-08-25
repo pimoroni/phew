@@ -1,7 +1,59 @@
-# SPDX-FileCopyrightText: 2023 Charles Crighton <code@crighton.net.nz>
-#
-# SPDX-License-Identifier: MIT
-
 [build-system]
-requires = ["setuptools", "minify-html", "python-minifier"]
-build-backend = "setuptools.build_meta"
+requires = ["hatchling", "hatch-vcs", "python-minifier"]
+build-backend = "hatchling.build"
+
+[project]
+name = "micropython-phew"
+description = "A small webserver and templating library specifically designed for MicroPython on the Pico W."
+readme = "README.md"
+license = "MIT"
+license-files = ["LICENSE"]
+authors = [
+    {name = "Jonathan Williamson"},
+]
+maintainers = [
+    {name = "Phil Howard", email = "phil@pimoroni.com"},
+]
+keywords = [
+    "hardware",
+    "micropython",
+    "pico",
+    "webserver",
+]
+classifiers = [
+    "Intended Audience :: Developers",
+    "License :: OSI Approved :: MIT License",
+    "Operating System :: OS Independent",
+    "Programming Language :: Python :: Implementation :: MicroPython",
+    "Topic :: Software Development :: Embedded Systems",
+]
+dynamic = ["version"]
+
+[project.urls]
+GitHub = "https://github.com/pimoroni/phew"
+Changelog = "https://github.com/pimoroni/phew/blob/main/CHANGELOG.md"
+
+# Normalises into either:
+#   micropython_phew-X.Y.Z             (on a vX.Y.Z tag)
+#   micropython_phew-X.Y.Z.postN+gHASH (N commits past vX.Y.Z)
+[tool.hatch.version]
+source = "vcs"
+raw-options = { version_scheme = "post-release" }
+
+[tool.hatch.build.hooks.vcs]
+version-file = "phew/_version.py"
+
+[tool.hatch.build]
+packages = ["phew"]
+
+[tool.hatch.build.targets.sdist]
+# hatch_build.py has to ride along, the wheel is built from the sdist
+only-include = ["phew", "hatch_build.py", "README.md", "CHANGELOG.md", "LICENSE", "pyproject.toml"]
+
+# Minify the package on the way into the sdist and wheel. Source in the repo
+# stays readable; what lands on the device does not have to be.
+[tool.hatch.build.targets.sdist.hooks.custom]
+path = "hatch_build.py"
+
+[tool.hatch.build.targets.wheel.hooks.custom]
+path = "hatch_build.py"

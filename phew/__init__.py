@@ -1,4 +1,9 @@
-__version__ = "0.0.5"
+# written by hatch-vcs at build time; absent when running straight from a checkout
+try:
+  from ._version import __version__
+except ImportError:
+  __version__ = "0.0.0+unknown"
+
 
 # highly recommended to set a lowish garbage collection threshold
 # to minimise memory fragmentation as we sometimes want to
