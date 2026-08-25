@@ -1,0 +1,25 @@
+<!--
+SPDX-FileCopyrightText: 2024 Charles Crighton <code@crighton.net.nz>
+
+SPDX-License-Identifier: MIT
+-->
+
+<!DOCTYPE html>
+<head>
+    <style>{{render_template("/style.css")}}</style>
+</head>
+<body>
+<form action="/login" method="post">
+  <div class="container">
+    <p>{{error if error else ""}}</p>
+    <label for="username"><b>Username</b></label>
+    <input type="text" placeholder="Enter Username" name="username" required>
+
+    <label for="password"><b>Password</b></label>
+    <input type="password" placeholder="Enter Password" name="password" required>
+    <p/>
+    <button class="button" type="submit">Login</button>
+  </div>
+
+</form>
+</body>
