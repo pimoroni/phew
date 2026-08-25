@@ -1,0 +1,22 @@
+name: Codespell
+
+on:
+  push:
+  pull_request:
+
+jobs:
+  codespell:
+    name: Codespell
+    runs-on: ubuntu-24.04
+    steps:
+    - uses: actions/checkout@v7
+
+    - uses: actions/setup-python@v7
+      with:
+        python-version: '3.13'
+
+    - name: Install codespell
+      run: python -m pip install codespell
+
+    - name: Check spelling
+      run: codespell

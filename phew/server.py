@@ -1,4 +1,6 @@
-import uasyncio, os, time
+import uasyncio
+import os
+import time
 from . import logging
 
 _routes = []
@@ -62,9 +64,9 @@ data: {self.data}"""
 
 
 class Response:
-  def __init__(self, body, status=200, headers={}):
+  def __init__(self, body, status=200, headers=None):
     self.status = status
-    self.headers = headers
+    self.headers = headers if headers is not None else {}
     self.body = body
 
   def add_header(self, name, value):
@@ -91,9 +93,9 @@ content_type_map = {
 
 
 class FileResponse(Response):
-  def __init__(self, file, status=200, headers={}):
+  def __init__(self, file, status=200, headers=None):
     self.status = 404
-    self.headers = headers
+    self.headers = headers if headers is not None else {}
     self.file = file
 
     try:
@@ -103,15 +105,16 @@ class FileResponse(Response):
         # auto set content type
         extension = self.file.split(".")[-1].lower()
         if extension in content_type_map:
-          headers["Content-Type"] = content_type_map[extension]
+          self.headers["Content-Type"] = content_type_map[extension]
 
-        headers["Content-Length"] = os.stat(self.file)[6]
+        self.headers["Content-Length"] = os.stat(self.file)[6]
     except OSError:
-      return False
+      pass
 
 
 class Route:
-  def __init__(self, path, handler, methods=["GET"]):
+  def __init__(self, path, handler, methods=None):
+    methods = methods if methods is not None else ["GET"]
     self.path = path
     self.methods = methods
     self.handler = handler
@@ -138,7 +141,7 @@ class Route:
         parameters[name] = compare
 
     return self.handler(request, **parameters)
-        
+
   def __str__(self):
     return f"""\
 path: {self.path}
@@ -174,7 +177,7 @@ def _match_route(request):
 async def _parse_form_data(reader, headers):
   boundary = headers["content-type"].split("boundary=")[1]
   # discard first boundary line
-  dummy = await reader.readline()
+  await reader.readline()
 
   form = {}
   while True:
@@ -182,7 +185,7 @@ async def _parse_form_data(reader, headers):
     field_headers = await _parse_headers(reader)
     if len(field_headers) == 0:
       break
-    name = field_headers["content-disposition"].split("name=\"")[1][:-1]
+    name = field_headers["content-disposition"].split('name="')[1][:-1]
     # get the field value
     value = ""
     while True:
@@ -209,7 +212,7 @@ async def _parse_json_body(reader, headers):
 
 
 status_message_map = {
-  200: "OK", 201: "Created", 202: "Accepted", 
+  200: "OK", 201: "Created", 202: "Accepted",
   203: "Non-Authoritative Information", 204: "No Content",
   205: "Reset Content", 206: "Partial Content", 300: "Multiple Choices",
   301: "Moved Permanently", 302: "Found", 303: "See Other",
@@ -218,7 +221,7 @@ status_message_map = {
   400: "Bad Request", 401: "Unauthorized", 403: "Forbidden",
   404: "Not Found", 405: "Method Not Allowed", 406: "Not Acceptable",
   408: "Request Timeout", 409: "Conflict", 410: "Gone",
-  414: "URI Too Long", 415: "Unsupported Media Type", 
+  414: "URI Too Long", 415: "Unsupported Media Type",
   416: "Range Not Satisfiable", 418: "I'm a teapot",
   500: "Internal Server Error", 501: "Not Implemented"
 }
@@ -233,7 +236,7 @@ async def _handle_request(reader, writer):
   request_line = await reader.readline()
   try:
     method, uri, protocol = request_line.decode().split()
-  except Exception as e:
+  except Exception as e:  # noqa: BLE001
     logging.error(e)
     return
 
@@ -253,7 +256,7 @@ async def _handle_request(reader, writer):
           break
         content_length -= len(data)
         form_data += data
-      request.form = _parse_query_string(form_data.decode()) 
+      request.form = _parse_query_string(form_data.decode())
 
   route = _match_route(request)
   if route:
@@ -276,9 +279,9 @@ async def _handle_request(reader, writer):
     content_type = response[2] if len(response) >= 3 else "text/html"
     response = Response(body, status=status)
     response.add_header("Content-Type", content_type)
-    if hasattr(body, '__len__'):
+    if hasattr(body, "__len__"):
       response.add_header("Content-Length", len(body))
-  
+
   # write status line
   status_message = status_message_map.get(response.status, "Unknown")
   writer.write(f"HTTP/1.1 {response.status} {status_message}\r\n".encode("ascii"))
@@ -289,7 +292,7 @@ async def _handle_request(reader, writer):
 
   # blank line to denote end of headers
   writer.write("\r\n".encode("ascii"))
- 
+
   if isinstance(response, FileResponse):
     # file
     with open(response.file, "rb") as f:
@@ -308,17 +311,18 @@ async def _handle_request(reader, writer):
     # string/bytes
     writer.write(response.body)
     await writer.drain()
-  
+
   writer.close()
   await writer.wait_closed()
-  
+
   processing_time = time.ticks_ms() - request_start_time
   logging.info(f"> {request.method} {request.path} ({response.status} {status_message}) [{processing_time}ms]")
 
 
 # adds a new route to the routing table
-def add_route(path, handler, methods=["GET"]):
+def add_route(path, handler, methods=None):
   global _routes
+  methods = methods if methods is not None else ["GET"]
   _routes.append(Route(path, handler, methods))
   # descending complexity order so most complex routes matched first
   _routes = sorted(_routes, key=lambda route: len(route.path_parts), reverse=True)
@@ -330,7 +334,8 @@ def set_callback(handler):
 
 
 # decorator shorthand for adding a route
-def route(path, methods=["GET"]):
+def route(path, methods=None):
+  methods = methods if methods is not None else ["GET"]
   def _route(f):
     add_route(path, f, methods=methods)
     return f
@@ -343,7 +348,7 @@ def catchall():
     set_callback(f)
     return f
   return _catchall
-  
+
 
 def redirect(url, status = 301):
   return Response("", status, {"Location": url})
