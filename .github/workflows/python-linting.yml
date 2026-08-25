@@ -1,0 +1,28 @@
+name: Python Linting
+
+on:
+  push:
+  pull_request:
+
+jobs:
+  lint:
+    name: Python Linting
+    runs-on: ubuntu-24.04
+    steps:
+    - uses: actions/checkout@v7
+
+    - name: Install Python
+      uses: actions/setup-python@v7
+      with:
+        python-version: '3.13'
+
+    - name: Install Python Deps
+      run: source ci/python.sh && qa_prepare_all
+
+    - name: Lint phew
+      shell: bash
+      run: source ci/python.sh && qa_phew_check
+
+    - name: Lint examples
+      shell: bash
+      run: source ci/python.sh && qa_examples_check

@@ -1,10 +1,11 @@
-import uasyncio, usocket
+import uasyncio
+import usocket
 from . import logging
 
 async def _handler(socket, ip_address):
   while True:
     try:
-      yield uasyncio.core._io_queue.queue_read(socket)
+      yield uasyncio.core._io_queue.queue_read(socket)  # noqa: SLF001
       request, client = socket.recvfrom(256)
       response = request[:2] # request id
       response += b"\x81\x80" # response flags
@@ -17,7 +18,7 @@ async def _handler(socket, ip_address):
       response += b"\x00\x04" # response length (4 bytes = 1 ipv4 address)
       response += bytes(map(int, ip_address.split("."))) # ip address parts
       socket.sendto(response, client)
-    except Exception as e:
+    except Exception as e:  # noqa: BLE001
       logging.error(e)
 
 def run_catchall(ip_address, port=53):

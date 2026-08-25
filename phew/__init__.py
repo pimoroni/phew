@@ -3,7 +3,8 @@ __version__ = "0.0.2"
 # highly recommended to set a lowish garbage collection threshold
 # to minimise memory fragmentation as we sometimes want to
 # allocate relatively large blocks of ram.
-import gc, os, machine
+import gc
+import os
 gc.threshold(50000)
 
 # phew! the Pico (or Python) HTTP Endpoint Wrangler
@@ -14,24 +15,25 @@ from . import logging
 remote_mount = False
 try:
   os.statvfs(".") # causes exception if remotely mounted (mpremote/pyboard.py)
-except:
+except Exception:  # noqa: BLE001
   remote_mount = True
 
 def get_ip_address():
   import network
   try:
     return network.WLAN(network.STA_IF).ifconfig()[0]
-  except:
+  except Exception:  # noqa: BLE001
     return None
 
 def is_connected_to_wifi():
-  import network, time
+  import network
   wlan = network.WLAN(network.STA_IF)
   return wlan.isconnected()
 
 # helper method to quickly get connected to wifi
 def connect_to_wifi(ssid, password, timeout_seconds=30):
-  import network, time
+  import network
+  import time
 
   statuses = {
     network.STAT_IDLE: "idle",
@@ -43,7 +45,7 @@ def connect_to_wifi(ssid, password, timeout_seconds=30):
   }
 
   wlan = network.WLAN(network.STA_IF)
-  wlan.active(True)    
+  wlan.active(True)
   wlan.connect(ssid, password)
   start = time.ticks_ms()
   status = wlan.status()
@@ -65,12 +67,12 @@ def connect_to_wifi(ssid, password, timeout_seconds=30):
 def access_point(ssid, password = None):
   import network
 
-  # start up network in access point mode  
+  # start up network in access point mode
   wlan = network.WLAN(network.AP_IF)
   wlan.config(essid=ssid)
   if password:
     wlan.config(password=password)
-  else:    
+  else:
     wlan.config(security=0) # disable password
   wlan.active(True)
 

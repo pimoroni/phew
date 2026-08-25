@@ -1,4 +1,6 @@
-import machine, os, gc
+import machine
+import os
+import gc
 
 log_file = "log.txt"
 
@@ -71,7 +73,7 @@ def truncate(file, target_size):
       # now copy the rest of the file
       while True:
         chunk = infile.read(1024)
-        if not chunk: 
+        if not chunk:
           break
         outfile.write(chunk)
 
@@ -85,7 +87,7 @@ def log(level, text):
   log_entry = "{0} [{1:8} /{2:>4}kB] {3}".format(datetime, level, round(gc.mem_free() / 1024), text)
   print(log_entry)
   with open(log_file, "a") as logfile:
-    logfile.write(log_entry + '\n')
+    logfile.write(log_entry + "\n")
 
   if _log_truncate_at and file_size(log_file) > _log_truncate_at:
     truncate(log_file, _log_truncate_to)

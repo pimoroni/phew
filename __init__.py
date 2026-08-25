@@ -3,3 +3,16 @@ from .phew import server, logging, dns, connect_to_wifi, is_connected_to_wifi, a
 
 from .phew.server import redirect, serve_file
 from .phew.template import render_template
+
+__all__ = [
+  "access_point",
+  "connect_to_wifi",
+  "dns",
+  "is_connected_to_wifi",
+  "logging",
+  "redirect",
+  "remote_mount",
+  "render_template",
+  "serve_file",
+  "server",
+]

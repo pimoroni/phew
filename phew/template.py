@@ -56,7 +56,7 @@ async def render_template(template, **kwargs):
           # yield the result of the expression
           if result is not None:
             yield str(result)
-      except:
+      except Exception:  # noqa: BLE001
         pass
 
       # discard the parsed bit

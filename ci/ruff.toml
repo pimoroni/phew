@@ -1,0 +1,40 @@
+# Include:
+# F = Pyflakes
+# Q = Quotes
+# E/W = pycodestyle (Whitespace, Line lengths etc)
+# B - flake8-bugbear = Unused loop variables, sloppy code
+# BLE - flake8-blind-except
+# C4  - flake8-comprehensions
+# ISC - flake8-implicit-str-concat = Implicit string concat, eg: `"hello" "world"` on one line
+# ICN - flake8-import-conventions = Import conventions
+# PIE - flake8-pie = Misc silliness, catches range with a 0 start argument
+# RSE - flake8-raise
+# RET - flake8-return = Enforces straight-forward code around return statements
+# SLF - flake8-self
+
+lint.select = [
+    "F",
+    "Q",
+    "W",
+    "E",
+    "B",
+    "BLE",
+    "C4",
+    "ISC",
+    "ICN",
+    "PIE",
+    "RSE",
+    "RET",
+    "SLF"
+]
+
+# Ignore:
+# E501 - "line too long". How narrow is your screen!?
+# E402 - "module level import not at top of file". Needs must!
+# B905 - "zip() without an explicit strict=". MicroPython's zip has no strict.
+
+lint.ignore = [
+    "E501",
+    "E402",
+    "B905"
+]
