@@ -1,11 +1,11 @@
-import uasyncio
-import usocket
+import asyncio
+import socket
 from . import logging
 
 async def _handler(socket, ip_address):
   while True:
     try:
-      yield uasyncio.core._io_queue.queue_read(socket)  # noqa: SLF001
+      yield asyncio.core._io_queue.queue_read(socket)  # noqa: SLF001
       request, client = socket.recvfrom(256)
       response = request[:2] # request id
       response += b"\x81\x80" # response flags
@@ -24,10 +24,10 @@ async def _handler(socket, ip_address):
 def run_catchall(ip_address, port=53):
   logging.info("> starting catch all dns server on port {}".format(port))
 
-  _socket = usocket.socket(usocket.AF_INET, usocket.SOCK_DGRAM)
+  _socket = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
   _socket.setblocking(False)
-  _socket.setsockopt(usocket.SOL_SOCKET, usocket.SO_REUSEADDR, 1)
-  _socket.bind(usocket.getaddrinfo(ip_address, port, 0, usocket.SOCK_DGRAM)[0][-1])
+  _socket.setsockopt(socket.SOL_SOCKET, socket.SO_REUSEADDR, 1)
+  _socket.bind(socket.getaddrinfo(ip_address, port, 0, socket.SOCK_DGRAM)[0][-1])
 
-  loop = uasyncio.get_event_loop()
+  loop = asyncio.get_event_loop()
   loop.create_task(_handler(_socket, ip_address))
