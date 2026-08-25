@@ -168,7 +168,7 @@ The `Request` object contains all of the information that was parsed out of the
 incoming request including form data, query string parameters, HTTP method, path,
 and more.
 
-Handler functions provided to `add_route` and `set_catchall` will recieve a 
+Handler functions provided to `add_route` and `set_catchall` will receive a 
 `Request` object as their first parameter.
 
 |member|example|type|description|
@@ -256,7 +256,7 @@ render_template(template, param1="foo", param2="bar", ...):
 ```
 
 The `render_template` method takes a path to a template file on the filesystem and 
-a list of named paramaters which will be passed into the template when parsing.
+a list of named parameters which will be passed into the template when parsing.
 
 The method is a generator which yields the parsing result in chunks, minimising the
 amount of memory used to hold the results as they can be streamed directly out rather

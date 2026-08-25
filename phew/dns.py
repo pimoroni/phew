@@ -10,7 +10,7 @@ async def _handler(socket, ip_address):
       response += b"\x81\x80" # response flags
       response += request[4:6] + request[4:6] # qd/an count
       response += b"\x00\x00\x00\x00" # ns/ar count
-      response += request[12:] # origional request body
+      response += request[12:] # original request body
       response += b"\xC0\x0C" # pointer to domain name at byte 12
       response += b"\x00\x01\x00\x01" # type and class (A record / IN class)
       response += b"\x00\x00\x00\x3C" # time to live 60 seconds
