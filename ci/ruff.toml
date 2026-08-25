@@ -38,3 +38,7 @@ lint.ignore = [
     "E402",
     "B905"
 ]
+
+# Tests reach into module internals to drive them
+[lint.per-file-ignores]
+"tests/*" = ["SLF001"]

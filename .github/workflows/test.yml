@@ -1,0 +1,21 @@
+name: Tests
+
+on:
+  push:
+  pull_request:
+
+jobs:
+  test:
+    name: Tests
+    runs-on: ubuntu-24.04
+    steps:
+    - uses: actions/checkout@v7
+
+    - name: Install Python
+      uses: actions/setup-python@v7
+      with:
+        python-version: '3.13'
+
+    - name: Run tests
+      shell: bash
+      run: source ci/python.sh && qa_test

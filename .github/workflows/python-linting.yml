@@ -26,3 +26,7 @@ jobs:
     - name: Lint examples
       shell: bash
       run: source ci/python.sh && qa_examples_check
+
+    - name: Lint tests
+      shell: bash
+      run: source ci/python.sh && qa_tests_check
