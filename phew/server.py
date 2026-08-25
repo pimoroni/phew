@@ -62,9 +62,9 @@ data: {self.data}"""
 
 
 class Response:
-  def __init__(self, body, status=200, headers={}):
+  def __init__(self, body, status=200, headers=None):
     self.status = status
-    self.headers = headers
+    self.headers = headers if headers is not None else {}
     self.body = body
 
   def add_header(self, name, value):
@@ -91,9 +91,9 @@ content_type_map = {
 
 
 class FileResponse(Response):
-  def __init__(self, file, status=200, headers={}):
+  def __init__(self, file, status=200, headers=None):
     self.status = 404
-    self.headers = headers
+    self.headers = headers if headers is not None else {}
     self.file = file
 
     try:
@@ -103,15 +103,16 @@ class FileResponse(Response):
         # auto set content type
         extension = self.file.split(".")[-1].lower()
         if extension in content_type_map:
-          headers["Content-Type"] = content_type_map[extension]
+          self.headers["Content-Type"] = content_type_map[extension]
 
-        headers["Content-Length"] = os.stat(self.file)[6]
+        self.headers["Content-Length"] = os.stat(self.file)[6]
     except OSError:
-      return False
+      pass
 
 
 class Route:
-  def __init__(self, path, handler, methods=["GET"]):
+  def __init__(self, path, handler, methods=None):
+    methods = methods if methods is not None else ["GET"]
     self.path = path
     self.methods = methods
     self.handler = handler
@@ -317,8 +318,9 @@ async def _handle_request(reader, writer):
 
 
 # adds a new route to the routing table
-def add_route(path, handler, methods=["GET"]):
+def add_route(path, handler, methods=None):
   global _routes
+  methods = methods if methods is not None else ["GET"]
   _routes.append(Route(path, handler, methods))
   # descending complexity order so most complex routes matched first
   _routes = sorted(_routes, key=lambda route: len(route.path_parts), reverse=True)
@@ -330,7 +332,8 @@ def set_callback(handler):
 
 
 # decorator shorthand for adding a route
-def route(path, methods=["GET"]):
+def route(path, methods=None):
+  methods = methods if methods is not None else ["GET"]
   def _route(f):
     add_route(path, f, methods=methods)
     return f
