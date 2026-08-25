@@ -238,6 +238,8 @@ async def _handle_request(reader, writer):
     method, uri, protocol = request_line.decode().split()
   except Exception as e:  # noqa: BLE001
     logging.error(e)
+    writer.close()
+    await writer.wait_closed()
     return
 
   request = Request(method, uri, protocol)
@@ -263,6 +265,14 @@ async def _handle_request(reader, writer):
     response = route.call_handler(request)
   elif catchall_handler:
     response = catchall_handler(request)
+  else:
+    response = ("Not Found", 404, "text/plain")
+
+  # a handler that returns nothing would otherwise take the connection down with
+  # it, leaving the socket open and the client waiting
+  if response is None:
+    logging.error(f"! no response returned for {request.method} {request.path}")
+    response = ("Internal Server Error", 500, "text/plain")
 
   # if shorthand body generator only notation used then convert to tuple
   if type(response).__name__ == "generator":

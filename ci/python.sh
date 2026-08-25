@@ -30,6 +30,18 @@ function qa_examples_fix {
     qa_fix examples/
 }
 
+function qa_tests_check {
+    qa_check tests/
+}
+
+function qa_tests_fix {
+    qa_fix tests/
+}
+
 function qa_spelling_check {
     codespell
+}
+
+function qa_test {
+    python3 -m unittest discover -s tests -p "*_test.py" -v
 }
