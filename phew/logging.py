@@ -59,16 +59,18 @@ def truncate(file, target_size):
       # skip a bunch of the input file until we've discarded
       # at least enough
       while discard > 0:
-        chunk = infile.read(1024)
-        discard -= len(chunk)
+        discard_chunk = infile.read(min(discard, 1024))
+        discard -= len(discard_chunk)
 
-      # try to find a line break nearby to split first chunk on
-      break_position = max(
-        chunk.find (b"\n", -discard), # search forward
-        chunk.rfind(b"\n", -discard) # search backwards
-      )
-      if break_position != -1: # if we found a line break..
-        outfile.write(chunk[break_position + 1:])
+      chunk = infile.read(1024)
+
+      if discard_chunk[-1] == b"\n"[0]:
+        outfile.write(chunk)
+      else:
+        # Find the first newline and write from there
+        break_position = chunk.find (b"\n")
+        if break_position != -1:
+          outfile.write(chunk[break_position + 1:])
 
       # now copy the rest of the file
       while True:
@@ -86,6 +88,10 @@ def log(level, text):
   datetime = datetime_string()
   log_entry = "{0} [{1:8} /{2:>4}kB] {3}".format(datetime, level, round(gc.mem_free() / 1024), text)
   print(log_entry)
+
+  if not log_file:
+    return
+
   with open(log_file, "a") as logfile:
     logfile.write(log_entry + "\n")
 

@@ -568,7 +568,7 @@ The entry will automatically have the current date and time, the `level` value, 
 Shorthand method for writing debug messages to the log.
 
 ```python
-warn("> this is a story")
+debug("> this is a story")
 ```
 
 #### info(*items)
@@ -593,7 +593,14 @@ warn("> my life got flipped")
 Shorthand method for writing errors to the log.
 
 ```python
-warn("> turned upside down")
+error("> turned upside down")
+```
+#### exception(*items)
+
+Shorthand method for writing errors to the log.
+
+```python
+exception("> magic smoke escaped")
 ```
 
 #### set_truncate_thresholds(truncate_at, truncate_to)
@@ -627,7 +634,7 @@ Pass in the IP address of your device once in access point mode.
 #### connect_to_wifi
 
 ```python
-connect_to_wifi(ssid, password, timeout=30)
+connect_to_wifi(ssid, password, timeout_seconds=30)
 ```
 
 Connects to the network specified by `ssid` with the provided password.

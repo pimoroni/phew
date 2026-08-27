@@ -1,0 +1,5 @@
+2021-01-01 00:02:20 [info     / 130kB] > GET / (200 OK) [693ms]
+2021-01-01 00:02:21 [debug    / 113kB] > parsed template: /style.css (took 13 ms)
+2021-01-01 00:02:22 [debug    / 110kB] > parsed template: index.html (took 97 ms)
+2021-01-01 00:02:24 [info     / 130kB] > GET /basic (200 OK) [1418ms]
+2021-01-01 00:02:28 [debug    / 113kB] > parsed template: /style.css (took 14 ms)

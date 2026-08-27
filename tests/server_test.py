@@ -114,5 +114,25 @@ class ResponseHeadersTest(unittest.TestCase):
     self.assertEqual(server.FileResponse("no/such/file").status, 404)
 
 
+class QueryStringTest(unittest.TestCase):
+  def test_decodes_keys_and_values(self):
+    self.assertEqual(
+      server._parse_query_string("nickname=%C2%B0dial&other=1"),
+      {"nickname": "\u00b0dial", "other": "1"},
+    )
+
+  def test_parameter_without_a_value(self):
+    self.assertEqual(server._parse_query_string("flag"), {"flag": ""})
+    self.assertEqual(server._parse_query_string("a=1&flag"), {"a": "1", "flag": ""})
+
+  def test_empty_parameters_are_skipped(self):
+    self.assertEqual(server._parse_query_string("a=1&&b=2"), {"a": "1", "b": "2"})
+    self.assertEqual(server._parse_query_string(""), {})
+
+  def test_malformed_escapes_do_not_raise(self):
+    for query in ("a=%FF", "a=%ZZ", "a=%", "a=%C3"):
+      self.assertIsInstance(server._parse_query_string(query), dict)
+
+
 if __name__ == "__main__":
   unittest.main()

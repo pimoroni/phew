@@ -1,0 +1,9 @@
+# Set the default behavior, in case people don't have core.autocrlf set.
+* text=auto
+
+# Declare files that will always have CRLF line endings on checkout.
+testlog_1.txt text eol=lf
+testlog_no_newline_at_eof.txt text eol=lf
+
+# Declare DER keys and certs as binary
+*.der binary
