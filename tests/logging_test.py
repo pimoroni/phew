@@ -19,22 +19,22 @@ def copy(s, t):
             t = t.rstrip("/") + "/" + s
     except OSError:
         pass
-    with open(s, "rb") as s:
-        with open(t, "wb") as t:
+    with open(s, "rb") as source:
+        with open(t, "wb") as target:
             while True:
-                l = s.read(512)
-                if not l: break
-                t.write(l)
+                chunk = source.read(512)
+                if not chunk:
+                    break
+                target.write(chunk)
 
 class TestUtils(unittest.TestCase):
 
     def test_truncate_after_last_newline(self):
         size = 10
         copy("tests/testlog_1.txt", "tests/templogfile.txt")
-        start_size = os.stat("tests/templogfile.txt").st_size
         logging.truncate("tests/templogfile.txt", target_size=size)
-        with open("tests/templogfile.txt", "r") as l:
-            self.assertEqual("", l.read(4))
+        with open("tests/templogfile.txt", "r") as f:
+            self.assertEqual("", f.read(4))
         truncated_size = os.stat("tests/templogfile.txt").st_size
         self.assertEqual(0, truncated_size)
 
@@ -42,20 +42,18 @@ class TestUtils(unittest.TestCase):
     def test_truncate_between_first_and_last_newlines(self):
         size = 4000
         copy("tests/testlog_1.txt", "tests/templogfile.txt")
-        start_size = os.stat("tests/templogfile.txt").st_size
         logging.truncate("tests/templogfile.txt", target_size=size)
-        with open("tests/templogfile.txt", "r") as l:
-            self.assertEqual("2021", l.read(4))
+        with open("tests/templogfile.txt", "r") as f:
+            self.assertEqual("2021", f.read(4))
         truncated_size = os.stat("tests/templogfile.txt").st_size
         self.assertEqual(size, truncated_size + 32)
 
     def test_truncate_before_first_newline(self):
         size = 8615
         copy("tests/testlog_1.txt", "tests/templogfile.txt")
-        start_size = os.stat("tests/templogfile.txt").st_size
         logging.truncate("tests/templogfile.txt", target_size=size)
-        with open("tests/templogfile.txt", "r") as l:
-            self.assertEqual("2021", l.read(4))
+        with open("tests/templogfile.txt", "r") as f:
+            self.assertEqual("2021", f.read(4))
         truncated_size = os.stat("tests/templogfile.txt").st_size
         self.assertEqual(size, truncated_size + 59)
 
@@ -65,8 +63,8 @@ class TestUtils(unittest.TestCase):
             start_size = os.stat("tests/templogfile.txt").st_size
             size = start_size - 64
             logging.truncate("tests/templogfile.txt", target_size=size)
-            with open("tests/templogfile.txt", "r") as l:
-                self.assertEqual("2021-01-01 00:02:21", l.read(19))
+            with open("tests/templogfile.txt", "r") as f:
+                self.assertEqual("2021-01-01 00:02:21", f.read(19))
             truncated_size = os.stat("tests/templogfile.txt").st_size
             self.assertEqual(size, truncated_size, msg=f"Truncate first {size}")
 
@@ -75,8 +73,8 @@ class TestUtils(unittest.TestCase):
         copy("tests/testlog_1.txt", "tests/templogfile.txt")
         start_size = os.stat("tests/templogfile.txt").st_size
         logging.truncate("tests/templogfile.txt", target_size=size)
-        with open("tests/templogfile.txt", "r") as l:
-            self.assertEqual("2021", l.read(4))
+        with open("tests/templogfile.txt", "r") as f:
+            self.assertEqual("2021", f.read(4))
         truncated_size = os.stat("tests/templogfile.txt").st_size
         self.assertEqual(start_size, truncated_size)
 
@@ -84,8 +82,8 @@ class TestUtils(unittest.TestCase):
 
         copy("tests/testlog_1.txt", "tests/templogfile.txt")
         logging.truncate("tests/templogfile.txt", target_size=0)
-        with open("tests/templogfile.txt", "r") as l:
-            self.assertEqual("", l.read(4))
+        with open("tests/templogfile.txt", "r") as f:
+            self.assertEqual("", f.read(4))
         truncated_size = os.stat("tests/templogfile.txt").st_size
         self.assertEqual(0, truncated_size)
 
@@ -93,10 +91,9 @@ class TestUtils(unittest.TestCase):
     def test_truncate_after_last_newline_no_newline_at_eof(self):
         size = 10
         copy("tests/testlog_no_newline_at_eof.txt", "tests/templogfile.txt")
-        start_size = os.stat("tests/templogfile.txt").st_size
         logging.truncate("tests/templogfile.txt", target_size=size)
-        with open("tests/templogfile.txt", "r") as l:
-            self.assertEqual("", l.read(4))
+        with open("tests/templogfile.txt", "r") as f:
+            self.assertEqual("", f.read(4))
         truncated_size = os.stat("tests/templogfile.txt").st_size
         self.assertEqual(0, truncated_size)
 
@@ -105,8 +102,8 @@ class TestUtils(unittest.TestCase):
 
         copy("tests/testlog_no_newline_at_eof.txt", "tests/templogfile.txt")
         logging.truncate("tests/templogfile.txt", target_size=0)
-        with open("tests/templogfile.txt", "r") as l:
-            self.assertEqual("", l.read(4))
+        with open("tests/templogfile.txt", "r") as f:
+            self.assertEqual("", f.read(4))
         truncated_size = os.stat("tests/templogfile.txt").st_size
         self.assertEqual(0, truncated_size)
 
@@ -114,5 +111,5 @@ class TestUtils(unittest.TestCase):
     def tearDown(self):
         os.remove("tests/templogfile.txt")
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     unittest.main()

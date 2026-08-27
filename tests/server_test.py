@@ -114,5 +114,22 @@ class ResponseHeadersTest(unittest.TestCase):
     self.assertEqual(server.FileResponse("no/such/file").status, 404)
 
 
+class UrldecodeTest(unittest.TestCase):
+  def test_ascii(self):
+    self.assertEqual(server.urldecode("hello+world"), "hello world")
+    self.assertEqual(server.urldecode("plain"), "plain")
+
+  def test_multibyte_utf8(self):
+    self.assertEqual(server.urldecode("%C2%B0C"), "\u00b0C")
+    self.assertEqual(server.urldecode("%E2%82%AC5"), "\u20ac5")
+    self.assertEqual(server.urldecode("%F0%9F%8F%B4"), "\U0001f3f4")
+
+  def test_query_string(self):
+    self.assertEqual(
+      server._parse_query_string("nickname=%C2%B0dial&other=1"),
+      {"nickname": "\u00b0dial", "other": "1"},
+    )
+
+
 if __name__ == "__main__":
   unittest.main()

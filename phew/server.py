@@ -23,9 +23,9 @@ def urldecode(text):
   while True:
     start = text.find("%", token_caret)
     if start == -1:
-      result += text[token_caret:]
+      result += text[token_caret:].encode()
       break
-    result += text[token_caret:start]
+    result += text[token_caret:start].encode()
     code = int(text[start + 1:start + 3], 16)
     result.append(code)
     token_caret = start + 3
