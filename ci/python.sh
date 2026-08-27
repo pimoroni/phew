@@ -15,11 +15,11 @@ function qa_fix {
 }
 
 function qa_phew_check {
-    qa_check __init__.py phew/
+    qa_check __init__.py phew/ hatch_build.py
 }
 
 function qa_phew_fix {
-    qa_fix __init__.py phew/
+    qa_fix __init__.py phew/ hatch_build.py
 }
 
 function qa_examples_check {

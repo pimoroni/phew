@@ -49,9 +49,10 @@ GET = b"GET /thing HTTP/1.1\r\nHost: pico.wireless\r\n\r\n"
 
 
 class HandleRequestTest(unittest.TestCase):
+  """Drives the module-level API, which is what existing applications use."""
+
   def setUp(self):
-    server._routes = []
-    server.catchall_handler = None
+    server.default_phew_app = None
     # the real logging module wants a working machine.RTC and writes to log.txt
     logging_patch = patch.object(server, "logging")
     self.logging = logging_patch.start()
@@ -59,7 +60,7 @@ class HandleRequestTest(unittest.TestCase):
 
   def handle(self, request=GET):
     writer = Writer()
-    asyncio.run(server._handle_request(Reader(request), writer))
+    asyncio.run(server.default_phew()._handle_request(Reader(request), writer))
     status_line = writer.written.split(b"\r\n")[0].decode()
     return status_line, writer
 
