@@ -1,4 +1,3 @@
-import os
 import unittest
 from unittest import mock
 from unittest.mock import patch
@@ -37,17 +36,15 @@ class TestUrlDecode(unittest.TestCase):
         for k,v in self.encoding.items():
             self.assertEqual(k, server.urldecode(v))
 
-    def test_urldecode_invalid(self):
+    def test_urldecode_invalid_code(self):
         self.assertEqual("%XX ", server.urldecode("%XX%20"))
 
-    def test_urldecode_invalid(self):
+    def test_urldecode_invalid_unicode(self):
 
         replacement = chr(int("0xFFFD", 16))
         self.assertEqual("ABCD " + replacement + " ABCD", server.urldecode("ABCD %8d%ef%65%20 ABCD"))
 
     def test_urldecode_invalid_code_after_valid(self):
-
-        replacement = chr(int("0xFFFD", 16))
         self.assertEqual("___A%XX___", server.urldecode("___%41%XX___"))
 
     def test_urldecode_invalid_unicode_before_invalid_code(self):
@@ -56,5 +53,5 @@ class TestUrlDecode(unittest.TestCase):
         self.assertEqual("___" + replacement + "%XX___", server.urldecode("___%8d%ef%XX___"))
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     unittest.main()

@@ -16,8 +16,10 @@ def file_exists(filename):
 
 
 def urldecode(text):
-  ''' Decode url encoding. Handles non hex characters after % and replaces invalid encoding with
-      standard unicode replacement character 0xFFFD (? in diamond)'''
+  """Decode url encoding, tolerating malformed input.
+
+  Non-hex characters after a % are passed through literally, and byte sequences
+  that are not valid utf-8 become the unicode replacement character."""
   text = text.replace("+", " ")
   result = []
   token_caret = 0
@@ -28,36 +30,37 @@ def urldecode(text):
       result += text[token_caret:]
       break
     result += text[token_caret:start]
-    unicode = bytearray()
+    encoded = bytearray()
+    # a utf-8 character can span several % escapes, so gather the whole run
     while len(text) > start and text[start] == "%":
       try:
-        code = int(text[start + 1:start + 3], 16)
-        unicode.append(code)
-      except:
-        try:
-          result += unicode.decode()
-        except:
-          # Replacement unicode character for error on decoding
-          result += chr(int("0xFFFD", 16))
-        # not a unicode encoding so just use the string
+        encoded.append(int(text[start + 1:start + 3], 16))
+      except ValueError:
+        result += _decode_or_replace(encoded)
+        # not an encoded byte, so pass the text through as-is
         result += text[start:start + 3]
-        unicode = bytearray()
+        encoded = bytearray()
       token_caret = start + 3
       start = start + 3
-    try:
-      result += unicode.decode()
-    except:
-      # Replacement unicode character for error on decoding
-      result += chr(int("0xFFFD", 16))
+    result += _decode_or_replace(encoded)
   return "".join(result)
+
+
+def _decode_or_replace(encoded):
+  try:
+    return encoded.decode()
+  except (UnicodeError, UnicodeDecodeError):
+    return "\ufffd"
+
 
 def _parse_query_string(query_string):
   result = {}
   for parameter in query_string.split("&"):
-    key, value = parameter.split("=", 1)
-    key = urldecode(key)
-    value = urldecode(value)
-    result[key] = value
+    if not parameter:
+      continue
+    # a parameter with no "=" is a key with an empty value
+    key, _, value = parameter.partition("=")
+    result[urldecode(key)] = urldecode(value)
   return result
 
 
